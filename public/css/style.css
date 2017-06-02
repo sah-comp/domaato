@@ -1,0 +1,1403 @@
+/*
+	HTML5 Reset :: style.css
+	----------------------------------------------------------
+	We have learned much from/been inspired by/taken code where offered from:
+	
+	Eric Meyer					:: http://ericmeyer.com
+	HTML5 Doctor				:: http://html5doctor.com
+	and the HTML5 Boilerplate	:: http://html5boilerplate.com
+	
+-------------------------------------------------------------------------------*/
+
+/* Let's default this puppy out
+-------------------------------------------------------------------------------*/
+
+html, body, body div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, figure, footer, header, hgroup, menu, nav, section, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}									
+
+article, aside, figure, footer, header, hgroup, nav, section {display: block;}
+
+/* Responsive images and other embedded objects
+   Note: keeping IMG here will cause problems if you're using foreground images as sprites.
+   If this default setting for images is causing issues, you might want to replace it with a .responsive class instead. */
+img,
+object,
+embed {max-width: 100%; height: auto;}
+
+/* force a vertical scrollbar to prevent a jumpy page */
+html {overflow-y: scroll;}
+
+/* we use a lot of ULs that aren't bulleted. 
+	don't forget to restore the bullets within content. */
+ul {list-style: none;}
+
+blockquote, q {quotes: none;}
+
+blockquote:before, 
+blockquote:after, 
+q:before, 
+q:after {content: ''; content: none;}
+
+a {margin: 0; padding: 0; font-size: 100%; vertical-align: baseline; background: transparent;}
+
+del {text-decoration: line-through;}
+
+abbr[title], dfn[title] {border-bottom: 1px dotted #000; cursor: help;}
+
+/* tables still need cellspacing="0" in the markup */
+table {border-collapse: collapse; border-spacing: 0;}
+th {font-weight: bold; vertical-align: bottom;}
+td {font-weight: normal; vertical-align: top;}
+
+hr {display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: 1em 0; padding: 0;}
+
+input, select {vertical-align: middle;}
+
+pre {
+	white-space: pre; /* CSS2 */
+	white-space: pre-wrap; /* CSS 2.1 */
+	white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
+	word-wrap: break-word; /* IE */
+}
+
+input[type="radio"] {vertical-align: text-bottom;}
+input[type="checkbox"] {vertical-align: bottom; *vertical-align: baseline;}
+.ie6 input {vertical-align: text-bottom;}
+
+select, input, textarea {font: 99% sans-serif;}
+
+textarea { overflow: auto; } /* www.sitepoint.com/blogs/2010/08/20/ie-remove-textarea-scrollbars/ */
+
+table {font-size: inherit; font: 100%;}
+ 
+/* Accessible focus treatment
+	people.opera.com/patrickl/experiments/keyboard/test */
+a:hover, a:active {outline: none;}
+
+small {font-size: 85%;}
+
+strong, th {font-weight: bold;}
+
+td, td img {vertical-align: top;} 
+
+/* Make sure sup and sub don't screw with your line-heights
+	gist.github.com/413930 */
+sub, sup {font-size: 75%; line-height: 0; position: relative;}
+sup {top: -0.5em;}
+sub {bottom: -0.25em;}
+
+/* standardize any monospaced elements */
+pre, code, kbd, samp {font-family: monospace, sans-serif;}
+
+/* hand cursor on clickable elements */
+.clickable,
+label, 
+input[type=button], 
+input[type=submit], 
+button {cursor: pointer;}
+
+/* Webkit browsers add a 2px margin outside the chrome of form elements */
+button, input, select, textarea {margin: 0;}
+
+/*
+ * 1. Remove default vertical scrollbar in IE6/7/8/9
+ * 2. Allow only vertical resizing
+ */
+textarea { overflow: auto; vertical-align: top; resize: vertical; }
+
+/* Apply box sizing to some input elements so percentage width and other measures work together */
+input[type=text],
+input[type=password],
+input[type=email],
+input[type=number],
+input[type=date],
+input[type=time],
+input[type=url],
+textarea {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/* make buttons play nice in IE */
+button {width: auto; overflow: visible;}
+ 
+/* scale images in IE7 more attractively */
+.ie7 img {-ms-interpolation-mode: bicubic;}
+
+/* prevent BG image flicker upon hover */
+.ie6 html {filter: expression(document.execCommand("BackgroundImageCache", false, true));}
+
+/* =============================================================================
+   Code
+   ========================================================================== */
+/**
+ * Redeclare monospace font family: h5bp.com/j
+ */
+pre,
+code,
+kbd,
+samp {
+  font: 1em Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+code {
+  color: #009933;
+}
+pre {
+  /* Blue stribes to make it look like paper */
+
+  background-color: #fefefe;
+  background-image: -moz-linear-gradient(top, #e2f1f7 1px, transparent 1px);
+  background-image: -ms-linear-gradient(top, #e2f1f7 1px, transparent 1px);
+  background-image: -webkit-linear-gradient(top, #e2f1f7 1px, transparent 1px);
+  background-image: -o-linear-gradient(top, #e2f1f7 1px, transparent 1px);
+  background-image: linear-gradient(top, #e2f1f7 1px, transparent 1px);
+  background-size: 100% 26px;
+  box-shadow: inset 0 1px 1px #ffffff, 0 0 15px rgba(204, 204, 204, 0.35);
+  border: 1px solid #e0e0e0;
+  border-radius: 3px;
+  color: #222222;
+  font-size: 14px;
+  line-height: 26px;
+  padding: 26px 25px;
+  margin: 0 0 25px;
+  position: relative;
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+pre code {
+  background: none;
+  color: inherit;
+  font: inherit;
+}
+pre ol.linenums {
+  line-height: 26px;
+}
+/**
+ * Line numbering for the Google Prettify script
+ */
+/* Add to red stribes to make it look like a notebook */
+pre[class*="linenums"]:before {
+  border: 1px solid #f1e9ea;
+  border-width: 0 1px;
+  content: "";
+  width: 4px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 50px;
+  z-index: 1;
+}
+ol.linenums {
+  color: #aeaeae;
+  margin: 0 0 0 0;
+  padding: 0 0 0 24px;
+}
+ol.linenums li {
+  padding-left: 24px;
+}
+/*  Google Code Prettify */
+.pln {
+  color: #000;
+}
+.str {
+  color: #008800;
+}
+.kwd {
+  color: #000088;
+}
+.com {
+  color: #880000;
+}
+.typ {
+  color: #660066;
+}
+.lit {
+  color: #006666;
+}
+.pun,
+.opn,
+.clo {
+  color: #666600;
+}
+pre .tag {
+  color: #000088;
+}
+.atn {
+  color: #660066;
+}
+.atv {
+  color: #008800;
+}
+.dec,
+.var {
+  color: #660066;
+}
+.fun {
+  color: #ff0000;
+}
+
+/**
+ * Simple grid system
+ * @credits Twitter Bootstrap
+ */
+.row {
+  width: 100%;
+  *zoom: 1;
+}
+.row:before,
+.row:after {
+  display: table;
+  content: "";
+}
+.row:after {
+  clear: both;
+}
+.row [class*="span"] {
+  float: left;
+  margin-left: 2.127659574%;
+  *margin-left: 2.0744680846382977%;
+}
+.row [class*="span"]:first-child {
+  margin-left: 0;
+}
+.row .span12 {
+  width: 99.99999998999999%;
+  *width: 99.94680850063828%;
+}
+.row .span11 {
+  width: 91.489361693%;
+  *width: 91.4361702036383%;
+}
+.row .span10 {
+  width: 82.97872339599999%;
+  *width: 82.92553190663828%;
+}
+.row .span9 {
+  width: 74.468085099%;
+  *width: 74.4148936096383%;
+}
+.row .span8 {
+  width: 65.95744680199999%;
+  *width: 65.90425531263828%;
+}
+.row .span7 {
+  width: 57.446808505%;
+  *width: 57.3936170156383%;
+}
+.row .span6 {
+  width: 48.93617020799999%;
+  *width: 48.88297871863829%;
+}
+.row .span5 {
+  width: 40.425531911%;
+  *width: 40.3723404216383%;
+}
+.row .span4 {
+  width: 31.914893614%;
+  *width: 31.8617021246383%;
+}
+.row .span3 {
+  width: 23.404255317%;
+  *width: 23.3510638276383%;
+}
+.row .span2 {
+  width: 14.89361702%;
+  *width: 14.8404255306383%;
+}
+.row .span1 {
+  width: 6.382978723%;
+  *width: 6.329787233638298%;
+}
+
+/* =============================================================================
+   Alert messages, taken from http://jayj.dk/a-free-html5-and-css3-theme
+   ========================================================================== */
+.alert {
+  background-color: #ededed;
+  border-left: 5px solid #d9d9d9;
+  border-radius: 0 5px 5px 0;
+  color: #222222;
+  padding: 10px 14px;
+  margin-bottom: 25px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+.alert h4 {
+  border-bottom: 0;
+  color: inherit;
+  padding-bottom: 0;
+  margin: 10px 0;
+}
+.alert p + p {
+  margin-bottom: 5px;
+}
+.alert-warning {
+  background-color: #fef9c7;
+  border-color: #fcdd4a;
+  color: #3b3601;
+}
+.alert-success {
+  background-color: #dff0d8;
+  border-color: #54b646;
+  color: #0d370d;
+}
+.alert-danger,
+.alert-error {
+  background-color: #f2dede;
+  border-color: #ce838f;
+  color: #7a0b0a;
+}
+.alert-info {
+  background-color: #d9edf7;
+  border-color: #049cdb;
+  color: #0c3346;
+}
+
+/* =============================================================================
+   Lists: http://jayj.dk/a-free-html5-and-css3-theme/
+   ========================================================================== */
+ul,
+ol {
+  line-height: 1.5;
+  margin: 1em 0;
+  padding: 0 0 0 1.25em;
+}
+ul {
+  list-style: square;
+}
+ol {
+  list-style-type: decimal;
+}
+ol ol {
+  list-style: upper-roman;
+}
+ol ol ol {
+  list-style: lower-roman;
+}
+ol ol ol ol {
+  list-style: upper-alpha;
+}
+ol ol ol ol ol {
+  list-style: lower-alpha;
+}
+ul ul,
+ol ol,
+ul ol,
+ol ul {
+  margin: 10px 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* ==|== primary styles =====================================================
+   Author: info@sah-company.com
+   ========================================================================== */
+
+/* Set your font stuff for the document here */
+body {font: 1.2em/1 "Georgia", Palantino serif;}
+
+body.loading {
+    background-image: url(/img/loader.gif);
+    background-position: 50% 0.5em;
+    background-repeat: no-repeat;
+}
+
+/* Layout with 2-columns and footer sticking to the bottom */
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    margin: 0 0 6.5em;
+}
+
+body > footer {
+    border-top: 1px solid silver;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 4.5em;
+    padding: 1em;
+}
+
+.app-info,
+.sys-info {
+    padding: 1em 0;
+    color: gray;
+    font-size: smaller;
+    float: left;
+}
+.app-info a {
+    color: gray;
+    text-decoration: none;
+}
+.sys-info {
+    float: right;
+}
+
+.notification {
+    padding: 1em;
+}
+
+/* headlines */
+h1, h2, h3, h4, h5, h6, p, ul, ol {
+    margin-bottom: 1em;
+}
+
+/* list stuff */
+ul {
+    list-style: disc;
+    padding-left: 1.2em;
+}
+
+ul li ul {
+    margin-bottom: inherit;
+}
+
+select {
+    font-size: small;
+}
+
+
+/* using local fonts? make sure to read up on Paul Irish's 
+	Bulletproof @font-face syntax: http://mky.be/font-face/bulletproof/ */
+
+/* we like off-black for text */
+body, select, input, textarea {color: #222;}
+
+a {color: #333;} /*#03f*/
+a:hover {color: #666;} /*#69f*/
+
+/* Custom text-selection colors (remove any text shadows: twitter.com/miketaylr/status/12228805301) */
+::-moz-selection{background: #fcd700; color: #fff; text-shadow: none;}
+::selection {background: #fcd700; color: #fff; text-shadow: none;} 
+
+/*	j.mp/webkit-tap-highlight-color */
+a:link {-webkit-tap-highlight-color: #fcd700;} 
+
+ins {background-color: #fcd700; color: #000; text-decoration: none;}
+mark {background-color: #fcd700; color: #000; font-style: italic; font-weight: bold;}
+
+
+/* article */
+article header {
+    position: relative;
+}
+
+article.main > header h1,
+article.main > header h2,
+article.main > header h3,
+article.main > header h4,
+article.main > header h5,
+article.main > header h6,
+article.main > p {
+    padding: 0.5em 1em;
+    margin: 0;
+}
+
+/* Main navigation */
+
+body > header,
+header#header-toolbar {
+    background-color: rgb(254, 254, 254);
+}
+
+body > header {
+    z-index: 1000000;
+}
+
+header#header-toolbar.scroll-to-fixed-fixed {
+    border-bottom: 1px solid silver;
+}
+
+body > header > nav {
+    /*background-color: rgb(254, 254, 254);*/
+}
+
+body > header > h1 {
+    margin: 0;
+    padding: 0;
+}
+
+a.logo {
+    display: block;
+    width: 3em;
+    height: 2em;
+    background-image: url(/img/logo.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 16px 16px;
+}
+
+ul.main-navigation,
+ul.main-navigation ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	line-height: 1;
+    border-top: 1px solid silver;
+	border-bottom: 1px solid silver;
+}
+
+ul.main-navigation > li {
+	position: relative;
+	float: left;
+}
+/*
+ul.main-navigation > li:last-child {
+    margin-right: 1em;
+}
+*/
+ul.main-navigation li ul > li {
+    border-bottom: 1px solid silver;
+}
+
+ul.main-navigation li ul > li:last-child {
+    border-bottom: 0;
+}
+
+ul.main-navigation a {
+	text-decoration: none;
+	display: block;
+	padding: 0.5em 1em 0.5em 1em;
+	/*text-shadow: 0px -1px -1px #eee;*/
+}
+
+ul.main-navigation li.parent {
+    background-image: url(/img/desc.png);
+    background-repeat: no-repeat;
+    background-position: center right;
+}
+
+/* sub-menu of master nav */
+ul.main-navigation li ul {
+    margin: 0;
+    background-color: rgb(254, 254, 254);
+    position: absolute;
+    min-width: 100%;
+    top: 2em;
+    margin-top: -1px;
+    left: -1px;
+	display: none;
+	z-index: 1;
+	border: 1px solid silver;
+	border-top: 1px solid white;
+    /*box-shadow: 1px 1px 1px rgb(128, 128, 128);*/
+}
+
+ul.main-navigation li ul li {
+	position: relative;
+	display: block;
+	white-space: nowrap;
+    background: none;
+	width: 100%;
+}
+
+ul.main-navigation > li:hover ul {
+    display: block;
+}
+
+/* Account navigation */
+ul.account-navigation,
+ul.panel-navigation {
+    position: absolute;
+    top: 0.5em;
+    right: 1em;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+}
+
+ul.account-navigation li,
+ul.panel-navigation li {
+    display: inline;
+    float: left;
+}
+
+ul.account-navigation a img {
+    float: left;
+    margin-right: 0.25em;
+}
+
+ul.account-navigation a,
+ul.panel-navigation a {
+    display: block;
+    font-size: 0.8em;
+    padding: 0.222em 0.444em;
+    text-decoration: none;
+}
+
+/* Pagination menu */
+ul.pagination-navigation {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+ul.pagination-navigation li {
+    display: inline-block;
+}
+
+ul.pagination-navigation li.prev {
+    float: left;
+}
+
+ul.pagination-navigation li.next {
+    float: right;
+}
+
+ul.pagination-navigation a {
+    display: block;
+    padding: 0.222em 0.444em;
+    border: 1px solid gray;
+    text-decoration: none;
+}
+
+
+/* Forms */
+form {
+}
+
+form.inline,
+form.inline-add {
+    padding: 0 1em 0 0;
+    line-height: 1;
+    border-top: none;
+}
+
+form.inline-add {
+    padding: 0 1em 0 0.5em;
+}
+
+form.page-add {
+    padding: 0;
+}
+
+.page-meta,
+.preview {
+    border-left: 1px solid red;
+    margin-left: -0.5em;
+    padding-left: 1em;
+}
+.preview {
+    border-left: 1px solid silver;
+}
+
+.page-meta .buttons {
+    padding-left: 1em;
+}
+
+a.toggle-options {
+    display: block;
+    padding-left: 16px;
+    background: url(/img/right.png) left center no-repeat;
+    text-decoration: none;
+    margin-left: -0.8em;
+    margin-bottom: 0.5em;
+    
+}
+a.toggle-options.active {
+    background: url(/img/desc.png) left center no-repeat;
+}
+
+.panel.page-add input.fn.fn-page-name {
+    margin: 0;
+    width: 100%;
+}
+
+form.inline-add.slice fieldset,
+form.inline-add.slice div.buttons {
+    float: left;
+    margin-right: 1em;
+}
+
+form.langchooser {
+    padding: 0 0.444em;
+}
+
+form.langchooser select {
+    padding: 0;
+    margin: 0;
+    font-size: small;
+}
+
+form div.row {
+    margin-bottom: 0.5em;
+}
+
+fieldset {
+    margin-bottom: 0.5em;
+}
+
+fieldset.tab fieldset {
+    position: relative;
+    border-bottom: 1px dotted gray;
+}
+
+fieldset.tab fieldset:last-child {
+    border-bottom: none;
+}
+
+legend {
+    font-family: 'Georgia', serif;
+    margin-bottom: 0.25em;
+    font-style: italic;
+    font-size: small;
+}
+
+label {
+    display: inline-block;
+    font-weight: bold;
+    margin-bottom: 0.25em;
+    color: rgb(0, 128, 212);
+}
+
+input[type=text],
+input[type=password],
+input[type=email],
+input[type=tel],
+input[type=url],
+input[type=number],
+input[type=date]
+input[type=time],
+textarea {
+    width: 100%;
+    padding: 0.25em;
+}
+
+/* detailed form stuff */
+.panel .buttons,
+.inline .buttons {
+    text-align: right;
+}
+
+.buttons input[type=submit].danger {
+    float: left;
+}
+
+.panel legend,
+.inline legend,
+.inline-add legend {
+    display: none;
+}
+
+.panel {
+    padding: 0.5em 1em;
+    border-top: 1px solid silver;
+    position: relative;
+}
+
+.panel .row {
+    position: relative;
+    margin-bottom: 1em;
+}
+
+.panel .row.nomargins {
+    margin: 0;
+}
+
+.panel .row.last {
+    margin-bottom: 0;
+}
+
+.panel .container,
+.panel .item {
+    position: relative;
+}
+
+.tabs {
+    position: relative;
+    border-bottom: 1px solid gray;
+    margin-bottom: 1em;
+    height: 29px;
+}
+
+ul.tab-navigation {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+ul.tab-navigation li {
+    float: none;
+    display: inline-block;
+}
+
+ul.tab-navigation a {
+    background-color: white;
+    text-decoration: none;
+    border: 1px solid gray;
+    color: inherit;
+    padding: 1px 25px;
+    display: inline-block;
+    margin-top: -12px;
+}
+
+ul.tab-navigation a.selected {
+    border-bottom: 1px solid white;
+}
+
+.panel label {
+    float: left;
+    width: 23.404255317%;
+    padding-top: 0.444em;
+    white-space: nowrap;
+    text-align: right;
+    font-weight: normal;
+}
+
+.panel p.info {
+    margin-top: 0.25em;
+    /*margin-left: 30%;*/
+    margin-left: 25.404255317%;
+    margin-bottom: 0;
+    font-size: small;
+    padding-left: 0.5em;
+    color: gray;
+}
+
+th.label {
+    width: 25.404255317%;
+}
+
+.panel label.cb {
+    text-align: left;
+    width: auto;
+    padding-left: 26.0%;
+}
+
+.panel input[type=text],
+.panel input[type=password],
+.panel input[type=email],
+.panel input[type=url],
+.panel input[type=number],
+.panel input[type=date],
+.panel input[type=time],
+.panel input[type=datetime],
+.panel input[type=tel],
+.panel input[type=file],
+.panel textarea,
+.panel select {
+    width: 74.468085099%;
+    /*float: right;*/
+    margin-left: 2%;
+    padding: 0.222em;
+}
+.panel input[type=file],
+.panel input[type=datetime] {
+    width: auto;
+}
+.panel .row select {
+    margin-top: 0.444em;
+}
+.page-add .row select {
+    margin-top: 0;
+}
+
+select.filter-select {
+    margin-top: 0.333em;
+}
+
+.panel input[type=number],
+.panel input.number,
+.panel select {
+    width: auto;
+}
+
+.panel select.cb {
+    /*margin-left: 32%;*/
+    margin-left: 27.666%;
+}
+
+.panel input.autowidth {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.detach,
+.attach {
+    width: 26px;
+    height: 26px;/*1em font-size + 2 x 0.222em padding in input fields*/
+    padding: 0;
+    margin: 0;
+    z-index: 1;
+    background-image: url(/img/glyphicons/glyphicons_191_circle_minus.png);
+    position: absolute;
+    left: 6px;
+    top: 50%;
+    margin-top: -13px;
+}
+
+.ir.attach {
+    background-image: url(/img/glyphicons/glyphicons_190_circle_plus.png);
+    left: 36px;
+    display: none;
+}
+
+fieldset.tab fieldset:last-child .attach {
+    display: block;
+}
+
+
+/* label in .tab will stretch */
+.panel .tab [class*="span"] label,
+.panel label.left {
+    width: 100%;
+    margin: 0;
+    text-align: left;
+}
+
+/* input, textarea and select in a tab will stretch */
+.panel .tab [class*="span"] input,
+.panel .tab [class*="span"] textarea,
+.panel .tab [class*="span"] select {
+    width: 100%;
+    margin-left: 0;
+}
+
+.panel .tab [class*="span"] input[type=checkbox] {
+    position: static;
+    left: auto;
+    width: auto;
+}
+
+input[required=required] {
+    font-weight: bold;
+}
+
+input[readonly=readonly] {
+    padding-right: 20px;
+    background: url(/img/glyphicons/glyphicons_203_lock.png) right center no-repeat;
+    background-size: 16px 19px;
+}
+/*
+.container input[type=text],
+.container input[type=password],
+.container input[type=email],
+.container input[type=url],
+.container input[type=number],
+.container input[type=date],
+.container input[type=time],
+.container input[type=url],
+.container input[type=tel],
+.container textarea,
+.container select {
+    margin-left: 0;
+    width: 100%;
+    padding: 0.222em;
+}
+*/
+
+
+
+input[type=text]:focus,
+input[type=password]:focus,
+input[type=email]:focus,
+input[type=url]:focus,
+input[type=number]:focus,
+input[type=date]:focus,
+input[type=time]:focus,
+input[type=datetime]:focus,
+input[type=url]:focus,
+input[type=tel]:focus,
+textarea:focus {
+    background-color: #feffbc;
+}
+
+input[type=checkbox],
+input[type=radio] {
+    margin: 0 0.222em 0 2%;
+    width: auto;
+    padding: 0;
+}
+input[type=number],
+input.number,
+input.monetary {
+    text-align: right;
+}
+
+.panel .row input[type=checkbox],
+.panel .row input[type=radio] {
+    position: absolute;
+    /*left: 23.404255317%;*/
+    left: 20.404255317%;
+    /*left: 28%;*/
+    top: 0.6em;
+}
+
+.panel .container {
+    min-height: 34px;
+}
+
+.panel .container.autoheight {
+    min-height: 0;
+}
+
+.panel .container input[type=checkbox],
+.panel .container input[type=radio] {
+    position: static;
+    left: auto;
+}
+
+/* form table stuff */
+.panel table {
+    table-layout: fixed;
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+.panel table thead th {
+    text-align: left;
+}
+
+.panel table thead th.switch,
+.panel table thead th.edit {
+    width: 24px;
+    background-color: white;
+}
+
+/* adjust top if you want a higher main-menu */
+.panel table caption {
+    text-align: center;
+    font-size: smaller;
+    color: gray;
+    padding: 0.5em 0 1em 0;
+}
+
+.panel th,
+.panel td {
+    text-align: left;
+    font-size: 1em;
+    padding: 0.222em 0.444em;
+}
+
+.panel th,
+.panel td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.panel th.number,
+.panel td.number {
+    text-align: right;
+}
+
+.panel thead tr {
+    background-color: gray;
+}
+
+.panel thead tr.filter {
+    background-color: white;
+    color: black;
+}
+
+
+.panel a.action.action-edit {
+    display: block;
+    width: 24px;
+    height: 24px;
+    background: url(/img/glyphicons/glyphicons_030_pencil.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+}
+
+.panel input[type=submit].filter-refresh {
+    width: 24px;
+    height: 24px;
+    background-image: url(/img/glyphicons/glyphicons_320_filter.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: auto 16px;
+}
+.panel input[type=submit].filter-clear {
+    width: 24px;
+    height: 24px;
+    background-image: url(/img/glyphicons/glyphicons_192_circle_remove.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+}
+
+input[type=submit].danger {
+    color: red;
+}
+
+.panel tfoot tr {
+    background-color: silver;
+}
+
+.panel thead th {
+    color: white;
+    white-space: nowrap;
+    font-weight: normal;
+    vertical-align: top;
+}
+
+.panel thead tr.filter th {
+    color: inherit;
+    padding: 0.25em;
+}
+
+.panel thead tr.filter input[type=text].filter {
+    width: 100%;
+    margin-left: 0;
+}
+
+.panel thead th.active {
+    background-color: rgb(33, 33, 33);
+}
+
+.panel thead th.order a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    background-repeat: no-repeat;
+    background-position: center right;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.panel thead th.order.dir-ASC a {
+    padding-right: 1em;
+    background-image: url(/img/asc.png);
+}
+
+.panel thead th.order.dir-DESC a {
+    padding-right: 1em;
+    background-image: url(/img/desc.png);
+}
+
+.panel tbody tr:nth-child(odd) {
+    background-color: rgb(243, 246, 250);
+}
+
+/* cms, sitemap */
+#cms-container {
+    position: relative;
+    left: 0;
+    right: 0;
+    border-top: 1px solid silver;
+    padding: 0;
+    padding-top: 1em;
+}
+
+#sitemap ul {
+    line-height: 1.5;
+    margin: 0;
+    padding-left: 1em;
+    list-style: none;
+}
+
+#sitemap a,
+#pages-container a {
+    display: block;
+    text-decoration: none;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+#sitemap a:hover,
+#sitemap a.active,
+#pages-container a:hover,
+#pages-container a.active {
+    color: red;
+}
+
+#pages-container .unpublished {
+    color: gray;
+}
+
+#sitemap,
+#pages-container {
+    margin-top: 1.5em;
+    padding-top: 1em;
+    border-top: 1px solid silver;
+}
+
+#pages-container,
+#page-container {
+    position: relative;
+    line-height: 1.5;
+}
+
+#pages-container ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.slice-container {
+    position: relative;
+    border-left: 1px solid silver;
+    margin-left: -0.5em;
+    padding-left: 1em;
+    margin-bottom: 1em;
+    min-height: 1em;
+}
+.slice-container.active {
+    border-left: 1px solid red;
+}
+.slice-container.ui-state-highlight {
+    border-left: 1px solid green;
+}
+
+p.sitemap-choose,
+p.page-choose {
+    width: 100%;
+    font-size: smaller;
+    color: gray;
+    text-align: center;
+    padding-top: 8em;
+}
+
+img.gravatar-account,
+img.media-preview-icon {
+    position: absolute;
+    top: 1em;
+    left: 1em;
+    float: left;
+    z-index: 1;
+}
+
+/* Rounded gravatar: A background-image tag in html */
+.circular {
+	width: 72px;
+	height: 72px;
+	border-radius: 36px;
+	-webkit-border-radius: 36px;
+	-moz-border-radius: 36px;
+	background: url(/img/glyphicons/glyphicons_003_user.png) center center;
+	background-repeat: no-repeat;
+	background-color: white; /* stanze */
+    -webkit-box-shadow: 0px 1em 1em rgba(0, 0, 0, .66);
+}
+
+.circular .circular-48 {
+	width: 48px;
+	height: 48px;
+	border-radius: 24px;
+	-webkit-border-radius: 24px;
+	-moz-border-radius: 24px;    
+}
+
+.circular .circular-32 {
+	width: 32px;
+	height: 32px;
+	border-radius: 16px;
+	-webkit-border-radius: 16px;
+	-moz-border-radius: 16px;    
+}
+
+.circular .circular-16 {
+	width: 16px;
+	height: 16px;
+	border-radius: 8px;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;    
+}
+
+.no-shadow {
+    -webkit-box-shadow: none;
+}
+
+/* Mix, rip and burn some of the above together */
+
+/* within a dialog a errornous input field will be erdbeer colored */
+.panel div.row.error label,
+.panel label.error {
+    color: #7a0b0a;
+}
+
+.validation-errors {
+    font-size: small;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==|== non-semantic helper classes ========================================
+   Please define your styles before this section.
+   ========================================================================== */
+
+/* For image replacement */
+.ir { display: block; border: 0; text-indent: -999em; overflow: hidden; background-color: transparent; background-repeat: no-repeat; text-align: left; direction: ltr; *line-height: 0; }
+.ir br { display: none; }
+
+/* Hide from both screenreaders and browsers: h5bp.com/u */
+.hidden { display: none !important; visibility: hidden; }
+
+/* Hide only visually, but have it available for screenreaders: h5bp.com/v */
+.visuallyhidden { border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; }
+
+/* Extends the .visuallyhidden class to allow the element to be focusable when navigated to via the keyboard: h5bp.com/p */
+.visuallyhidden.focusable:active, .visuallyhidden.focusable:focus { clip: auto; height: auto; margin: 0; overflow: visible; position: static; width: auto; }
+
+/* Hide visually and from screenreaders, but maintain layout */
+.invisible { visibility: hidden; }
+
+/* Contain floats: h5bp.com/q */
+.clearfix:before, .clearfix:after { content: ""; display: table; }
+.clearfix:after { clear: both; }
+.clearfix { *zoom: 1; }
+
+
+/* Print styles!
+-------------------------------------------------------------------------------*/
+@media print {
+
+
+
+}
+
+
+/* Media queries!
+-------------------------------------------------------------------------------*/
+
+/* Consider this: www.cloudfour.com/css-media-query-for-mobile-is-fools-gold/ */
+@media screen and (max-device-width: 480px) {
+	
+		
+}
+
+@media all and (orientation: portrait) {
+	
+}
+
+@media all and (orientation: landscape) {
+	
+}
+
