@@ -1,0 +1,10 @@
+.DS_Store
+composer.lock
+composer.phar
+vendor/
+favicon.ico
+tests/setup.php
+app/config/config.php
+public/upload/
+app/res/tpl/cache/
+docs/
