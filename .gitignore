@@ -6,5 +6,6 @@ favicon.ico
 tests/setup.php
 app/config/config.php
 public/upload/
+public/.htaccess
 app/res/tpl/cache/
 docs/
