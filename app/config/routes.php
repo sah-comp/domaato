@@ -22,6 +22,9 @@ Flight::route('(/@language:[a-z]{2})/*', function($language) {
 
 /**
  * Top level url routes to either '/' domain or the welcome controller jumps in.
+ *
+ * As Domaato is a portal, more light a web based application rather than a company website
+ * the welcome controller is not used, but the Domaato splash screen controller is plugged instead.
  */
 
 Flight::route('(/[a-z]{2})/', function() {
@@ -31,8 +34,8 @@ Flight::route('(/[a-z]{2})/', function() {
     }
     else
     {
-	    $welcomeController = new Controller_Welcome();
-	    $welcomeController->index();
+	    $domaatoController = new Controller_Domaato();
+	    $domaatoController->index();
 	}
 });
 
