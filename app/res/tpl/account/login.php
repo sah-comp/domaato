@@ -42,6 +42,16 @@
                 value="<?php echo htmlspecialchars($record->ipaddr) ?>" />
             <input
                 type="hidden"
+                id="domaato-lat"
+                name="dialog[lat]"
+                value="<?php echo htmlspecialchars($record->lat) ?>" />
+            <input
+                type="hidden"
+                id="domaato-lon"
+                name="dialog[lon]"
+                value="<?php echo htmlspecialchars($record->lon) ?>" />
+            <input
+                type="hidden"
                 name="dialog[attempt]"
                 value="<?php echo htmlspecialchars($record->attempt) ?>" />
             <input type="hidden" name="goto" value="<?php echo $goto ?>" />

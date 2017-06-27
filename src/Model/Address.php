@@ -46,8 +46,46 @@ class Model_Address extends Model
 	        unset($this->bean->country);
 	    }
         $this->bean->formattedaddress = $this->getFormattedAddress();
+        
+        if ( defined ('GOOGLE_API_KEY') && GOOGLE_API_KEY ) {
+            $addr = $this->bean->street . ' ' . $this->bean->zip . ' ' . $this->bean->city . ' ' . $this->bean->country->name;
+            $geo = $this->geocode($addr, GOOGLE_API_KEY);
+            if ( $geo->status == 'OK' ) {
+                $this->bean->lat = $geo->lat;
+                $this->bean->lon = $geo->lon;
+            }
+        }
+        
         parent::update();
 	}
+	
+    /**
+     * Geocodes an address using Google API (limit 2500/day).
+     *
+     * @see https://gist.github.com/chrisveness/c8b2a90bcfa91aa1e919
+     * @param  string $address address to be geocoded
+     * @param  string $api your Google API key
+     * @return object {lat, lon, status, address}
+     */
+    function geocode($address, $api = GOOGLE_API_KEY)
+    {
+        error_log('Geocode address' . $address);
+        // qv developers.google.com/maps/documentation/geocoding
+        $locn = (object)array('lat' => null, 'lon' => null, 'status' => null, 'address' => null);
+        $url = 'http://maps.googleapis.com/maps/api/geocode/json';
+        $arg = array('address' => $address, 'api' => $api);
+        $qry = http_build_query($arg);
+        $json = json_decode(file_get_contents($url . '?' . $qry));
+        if ($json->status != 'OK') {
+            $locn->status = $json->status;
+            return $locn;
+        }
+        $locn->status = 'OK';
+        $locn->lat = $json->results[0]->geometry->location->lat;
+        $locn->lon = $json->results[0]->geometry->location->lng;
+        $locn->address = $json->results[0]->formatted_address;
+        return $locn;
+    }
     
     /**
 	 * Returns a formatted address based on the country of the address.

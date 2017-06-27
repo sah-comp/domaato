@@ -21,6 +21,15 @@ class Controller_Login extends Controller
      * May hold a message (textile) to the user that want to re-enter a password.
      */
     public $message;
+    
+    /**
+     * Container for javascripts to load.
+     *
+     * @var array
+     */
+    public $javascripts = array(
+        '/js/domaato-locator'
+    );
 
     /**
      * Renders the login page.
@@ -69,7 +78,8 @@ class Controller_Login extends Controller
         Flight::render('html5', array(
             'title' => I18n::__('login_head_title'),
             'language' => Flight::get('language'),
-            'stylesheets' => array('custom', 'default')
+            'stylesheets' => array('custom', 'default'),
+            'javascripts' => $this->javascripts
         ));
     }
 }

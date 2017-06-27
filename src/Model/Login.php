@@ -42,6 +42,8 @@ class Model_Login extends Model
             $this->addError(I18n::__('login_pw_wrong'), 'pw');
             return false;
         }
+        $user->lat = $this->bean->lat;
+        $user->lon = $this->bean->lon;
         $this->bean->user = $user;
         return true;
     }
