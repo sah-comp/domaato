@@ -70,6 +70,7 @@ class Controller_Login extends Controller
         } else {
             $goto = Flight::request()->query->goto;
         }
+        Flight::render('shared/header', array(), 'header');
         Flight::render('account/login', array(
             'goto' => htmlspecialchars($goto),
             'record' => $login,

@@ -90,6 +90,24 @@
                     <?php endforeach ?>
                 </select>
             </div>
+            <div
+                class="row <?php echo $record->hasError('systemofunits') ? 'error' : '' ?>">
+                <label
+                    for="user-systemofunits">
+                    <?php echo I18n::__('user_label_systemofunits') ?>
+                </label>
+                <select
+                    id="user-systemofunits"
+                    name="dialog[systemofunits]">
+                    <?php foreach (array('metric','imperial','us') as $_attr_name): ?>
+                    <option
+                        value="<?php echo $_attr_name ?>"
+                        <?php echo ($record->systemofunits == $_attr_name) ? 'selected="selected"' : '' ?>>
+                        <?php echo I18n::__('user_label_unit_'.$_attr_name) ?>
+                    </option>
+                    <?php endforeach ?>
+                </select>
+            </div>
         </fieldset>
         <!-- End of account form -->
         <div class="buttons">
