@@ -410,7 +410,7 @@ ol ul {
    ========================================================================== */
 
 /* Set your font stuff for the document here */
-body {font: 1.2em/1 "Georgia", Palantino serif;}
+body {font: 1.2em/1 "Georgia", Palantino serif;/*-webkit-font-smoothing: antialiased;*/}
 
 body.loading {
     background-image: url(/img/loader.gif);
@@ -540,7 +540,7 @@ a.logo {
     display: block;
     width: 3em;
     height: 2em;
-    background-image: url(/img/logo.jpg);
+    background-image: url(/img/favicon-32x32.png);
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 16px 16px;

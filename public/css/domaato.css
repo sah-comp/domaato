@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700');
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,900');
 /*
 	HTML5 Reset :: style.css
 	----------------------------------------------------------
@@ -420,6 +420,7 @@ body {
     font-size: 16px;
     line-height: 1.5;
     font-weight: 400;
+	-webkit-font-smoothing: antialiased;
 }
 
 /**
@@ -428,6 +429,8 @@ body {
  * @todo Use correct colors
  */
 body#splash {
+    background: rgb(120, 190, 32);
+    /*
     background: rgba(110,197,28,1);
     background: -moz-linear-gradient(-45deg, rgba(110,197,28,1) 0%, rgba(88,162,42,1) 100%);
     background: -webkit-linear-gradient(-45deg, rgba(110,197,28,1) 0%, rgba(88,162,42,1) 100%);
@@ -435,37 +438,25 @@ body#splash {
     background: -ms-linear-gradient(-45deg, rgba(110,197,28,1) 0%, rgba(88,162,42,1) 100%);
     background: linear-gradient(135deg, rgba(110,197,28,1) 0%, rgba(88,162,42,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6ec51c', endColorstr='#58a22a', GradientType=1 );
-    
+    */
     color: white;
 }
 
 /* Replace the text with a logo image */
 body#splash header h1 {
-    font-size: 6rem;
+    position: absolute;
+    background: url(/img/domaato-logo-white.png);
+    background-size: 320px 72px;
+    background-position: center;
+    background-repeat: no-repeat;
+    top: 50%;
+    font-weight: 900;
     text-align: center;
-}
-
-/* form on splash screen is big and sexy */
-body#splash form {
-    margin: 0 auto;
-    padding: 0;
-    width: 42rem;
-}
-
-body#splash div.alert {
-    margin: 2rem auto;
-    width: 40rem;
-}
-
-body#splash input {
-    width: 100%;
-    font-size: 2rem;
-    padding: 0.25rem;
-    color: rgb(89, 162, 42);
-}
-
-body#splash p.input-info {
-    font-size: 0.8rem;
+    height: 72px;
+    width: 320px;
+    left: 50%;
+    margin-left: -160px;
+    margin-top: -36px;
 }
 
 
