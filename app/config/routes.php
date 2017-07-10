@@ -67,6 +67,13 @@ Flight::route('(/[a-z]{2})/admin(/index)', function() {
 	$adminController->index();
 });
 
+/**
+ * Route to file a report
+ */
+Flight::route('(/[a-z]{2})/fileareport', function() {
+	$reportController = new Controller_Report();
+	$reportController->index();
+});
 
 /**
  * Routes to the scaffold controller.
