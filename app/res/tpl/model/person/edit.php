@@ -271,7 +271,8 @@
     <?php Flight::render('shared/navigation/tabs', array(
         'tab_id' => 'person-tabs',
         'tabs' => array(
-            'person-address' => I18n::__('person_address_tab')
+            'person-address' => I18n::__('person_address_tab'),
+            'person-bizkind' => I18n::__('person_bizkind_tab'),
         ),
         'default_tab' => 'person-address'
     )) ?>
@@ -294,6 +295,33 @@
                 )) ?>
                 <?php endforeach ?>
             </div>
+    </fieldset>
+    <fieldset
+        id="person-bizkind"
+        class="tab"      
+        style="display: none;">
+        <legend class="verbose"><?php echo I18n::__('user_legend_bizkind') ?></legend>
+        <?php foreach (R::findAll('bizkind') as $_id => $_bizkind): ?>
+        <div class="row">
+            <input
+                type="hidden"
+                name="dialog[sharedBizkind][<?php echo $_bizkind->getId() ?>][type]"
+                value="bizkind" />
+            <input
+                type="hidden"
+                name="dialog[sharedBizkind][<?php echo $_bizkind->getId() ?>][id]"
+                value="0" />
+            <label
+                for="user-bizkind-<?php echo $_bizkind->getId() ?>"
+                class="cb"><?php echo htmlspecialchars($_bizkind->i18n(Flight::get('language'))->name) ?></label>
+            <input
+                type="checkbox"
+                id="user-bizkind-<?php echo $_bizkind->getId() ?>"
+                name="dialog[sharedBizkind][<?php echo $_bizkind->getId() ?>][id]"
+                value="<?php echo $_bizkind->getId() ?>"
+                <?php echo (isset($record->sharedBizkind[$_bizkind->getId()])) ? 'checked="checked"' : '' ?> />
+        </div>
+        <?php endforeach ?>
     </fieldset>
 </div>
 <!-- end of person edit form -->
