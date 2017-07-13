@@ -146,6 +146,19 @@ class Model_User extends Model
     }
     
     /**
+     * Returns an array with places beans near this users location.
+     *
+     * @param int $range the radius around this users current location places are looked up
+     * @uses Model_Person::nearBy()
+     */
+    public function placesNearBy($range = 25)
+    {
+        $units = Flight::get('units');
+        $radius = $units[$this->bean->systemofunits]['earth_radius'];
+        return Model_Person::nearBy($this->bean->lat, $this->bean->lon, $range, $radius);
+    }
+    
+    /**
      * Adds a notification message for this user.
      *
      * @param string $message

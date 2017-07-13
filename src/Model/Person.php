@@ -37,6 +37,39 @@ class Model_Person extends Model
         $this->bean->enabled = ! $this->bean->enabled;
         R::store($this->bean);
     }
+    
+    /**
+     * Returns an array with person beans near by the given location.
+     *
+     * @see http://www.movable-type.co.uk/scripts/latlong.html
+     * @param float $latitude
+     * @param float $longitude
+     * @param int $range the distance in which locations are looked up
+     * @param int $radius the approximate radius of earth in kilometers or miles
+     * @return array $places
+     */
+    public static function nearBy($lat, $lon, $range = 25, $radius = 6371)
+    {
+        $sql = <<<SQL
+            SELECT
+                person.id AS person_id,
+                ( :radius * acos( cos( radians(:lat) ) * cos( radians( lat ) ) * cos( radians( lon ) - radians(:lon) ) + sin( radians(:lat) ) * sin( radians( lat ) ) ) ) AS distance
+            FROM
+                address
+            LEFT JOIN
+                person ON person_id = person.id
+            WHERE
+                person_id IS NOT NULL
+            ORDER BY
+                distance
+SQL;
+        $rows = R::getAssoc( $sql, array(
+            ':radius' => $radius,
+            ':lat' => $lat,
+            ':lon' => $lon
+        ) );
+        return R::batch( 'person', array_keys($rows) );
+    }
 
     /**
      * Returns an array with attributes for lists.
