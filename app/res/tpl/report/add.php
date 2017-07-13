@@ -27,7 +27,7 @@
         <![endif]-->
 	</head>
 
-	<body id="find-a-location">
+	<body id="add-a-report">
 		<!--[if lt IE 7]>
 		<?php echo Flight::textile(I18n::__('browser_is_ancient')) ?>
 		<![endif]-->
@@ -36,8 +36,8 @@
 		</header>
 		<article>
             <form
-                id="form-location"
-                class="panel location"
+                id="form-report"
+                class="panel report"
                 method="POST"
                 accept-charset="utf-8">
                 <div>
@@ -49,49 +49,22 @@
                         value="<?php echo htmlspecialchars($record->stamp) ?>" />
                 </div>
                 <fieldset>
-                    <legend><?php echo I18n::__('location_legend') ?></legend>
+                    <legend><?php echo I18n::__('report_legend') ?></legend>
                     <div
-                        class="row <?php echo $record->hasError('name') ? 'error' : '' ?>">
+                        class="row <?php echo $record->hasError('content') ? 'error' : '' ?>">
                         <label
-                            for="location-name">
-                            <?php echo I18n::__('location_label_name') ?>
+                            for="report-content">
+                            <?php echo I18n::__('report_label_content') ?>
                         </label>
-                        <input
-                            type="text"
-                            id="location-name"
-                            name="dialog[name]"
-                            value="<?php echo htmlspecialchars($record->name) ?>"
-                            required="required"
-            				autofocus="autofocus" />
-                    </div>
-                    <div
-                        class="row <?php echo $record->hasError('place') ? 'error' : '' ?>">
-                        <label
-                            for="location-place">
-                            <?php echo I18n::__('location_label_place') ?>
-                        </label>
-                        <input
-                            type="text"
-                            id="location-place"
-                            name="dialog[place]"
-                            value="<?php echo htmlspecialchars($record->place) ?>" />
+                        <textarea
+                            id="report-content"
+                            required="required"><?php echo htmlspecialchars( $record->content ) ?></textarea>
                     </div>
                 </fieldset>
                 <div class="buttons">
-                    <input type="submit" name="submit" value="<?php echo I18n::__('location_submit') ?>" />
+                    <input type="submit" name="submit" value="<?php echo I18n::__('report_submit') ?>" />
                 </div>
             </form>
-            <section id="places">
-                <?php foreach ($places as $_id => $_place): ?>
-                <div
-                    id="place-<?php echo $_place->getId() ?>"
-                    class="place">
-                    <h2>
-                        <a href="<?php echo Url::build( '/fileareport/' . $_place->getId() ) ?>"><?php echo htmlspecialchars( $_place->name ) ?></a>
-                    </h2>
-                </div>
-                <?php endforeach ?>
-            </section>
 		</article>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<script src="/js/domaato.js"></script>

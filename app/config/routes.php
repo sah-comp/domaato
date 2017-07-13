@@ -70,9 +70,13 @@ Flight::route('(/[a-z]{2})/admin(/index)', function() {
 /**
  * Route to file a report
  */
-Flight::route('(/[a-z]{2})/fileareport', function() {
+Flight::route('(/[a-z]{2})/fileareport(/@id:[0-9]+)', function($id) {
 	$reportController = new Controller_Report();
-	$reportController->index();
+	if ( $id === NULL ) {
+	    $reportController->index();
+	} else {
+        $reportController->add( $id );
+	}
 });
 
 /**
