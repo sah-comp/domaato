@@ -28,6 +28,38 @@ class Model_Person extends Model
     }
     
     /**
+     * Lookup a searchterm and returns the resultset as an array.
+     *
+     * @param string $term The searchterm
+     * @param string (optional) $query The prepared query or SQL to use for search
+     * @return array
+     */
+    public function clairvoyant($term, $query = 'default')
+    {
+        switch ( $query ) {
+            default:
+                $sql = <<<SQL
+                    SELECT
+                        person.id AS id,
+                        person.name AS label,
+                        person.name AS value
+                    FROM
+                        person
+                    WHERE
+                        person.name LIKE :searchtext OR
+                        person.nickname LIKE :searchtext OR
+                        person.lastname LIKE :searchtext OR
+                        person.firstname LIKE :searchtext OR
+                        person.organization LIKE :searchtext
+                    ORDER BY
+                        person.name
+SQL;
+        }
+        $result = R::getAll($sql, array(':searchtext' => $term . '%' ) );
+        return $result;
+    }
+    
+    /**
      * Toggle the enabled attribute and store the bean.
      *
      * @return void
@@ -192,6 +224,48 @@ SQL;
             new Validator_HasValue(),
             new Validator_IsUnique(array('bean' => $this->bean, 'attribute' => 'nickname'))
         ));
+    }
+    
+    /**
+     * Sets the Wilson score and the positive and negative votes on this person.
+     *
+     * @see http://www.evanmiller.org/how-not-to-sort-by-average-rating.html
+     *
+     * @param bool $vote True (1) will count as positive, false (0) will count as negative vote
+     * @return float $score The Wilson score for this person
+     */
+    public function setWilsonScore( $vote )
+    {
+        $positive = R::getCell( "SELECT count(id) FROM report WHERE person_id = :pid AND vote = 1", 
+            array( ':pid' => $this->bean->getId() )
+        );
+        $negative = R::getCell( "SELECT count(id) FROM report WHERE person_id = :pid AND vote = 0", 
+            array( ':pid' => $this->bean->getId() )
+        );
+        if ( $vote ) {
+            $positive++;
+        } else {
+            $negative++;
+        }
+        $score = (($positive + 1.9208) / ($positive + $negative) - 1.96 * sqrt(($positive * $negative) / 
+               ($positive + $negative) + 0.9604) / ($positive + $negative)) / 
+               (1 + 3.8416 / ($positive + $negative));
+        $this->bean->positive = $positive;
+        $this->bean->negative = $negative;
+        return $this->bean->score = $score;
+    }
+    
+    /**
+     * Returns an user bean.
+     *
+     * @return RedBeanPHP\OODBBean $owner
+     */
+    public function owner()
+    {
+        if ( ! $owner = $this->bean->fetchAs( 'user' )->owner ) {
+            $owner = R::dispense( 'user' );
+        }
+        return $owner;
     }
 
     /**

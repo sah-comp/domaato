@@ -1,5 +1,10 @@
 /* Ready, Set, Go. */
 $(document).ready(function() {
+    
+    /**
+     * Initialize autocomplete form fields. This requires the file jquery-clairvoyant.js
+     */
+    initAutocompletes();
 
     /**
      * The notifications section will animate a little to catch atttention by users.

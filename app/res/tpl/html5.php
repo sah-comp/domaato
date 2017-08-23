@@ -58,6 +58,7 @@
         <script src="/js/jquery.idTabs.min.js"></script>
         <script src="/js/jquery.form.min.js"></script>
         <script src="/js/jquery-scrolltofixed-min.js"></script>
+        <script src="/js/jquery-clairvoyant.js"></script>
         <?php if (isset($javascripts) && is_array($javascripts)): ?>
             <?php foreach ($javascripts as $_n=>$_js): ?>
             <script src="<?php echo $_js; ?>.js"></script>

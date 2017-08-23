@@ -68,9 +68,17 @@ Flight::route('(/[a-z]{2})/admin(/index)', function() {
 });
 
 /**
+ * Route to autocomplete for jquery backed autocomplete form fields.
+ */
+Flight::route('(/[a-z]{2})/autocomplete/@type:[a-z]+/@query:[a-z]+', function( $type, $query ) {
+	$autocompleteController = new Controller_Autocomplete();
+    $autocompleteController->autocomplete( $type, $query );
+});
+
+/**
  * Route to file a report
  */
-Flight::route('(/[a-z]{2})/fileareport(/@id:[0-9]+)', function($id) {
+Flight::route('(/[a-z]{2})/file-a-report(/@id:[0-9]+)', function($id) {
 	$reportController = new Controller_Report();
 	if ( $id === NULL ) {
 	    $reportController->index();

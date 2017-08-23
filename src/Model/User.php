@@ -69,6 +69,36 @@ class Model_User extends Model
     }
     
     /**
+     * Lookup a searchterm and returns the resultset as an array.
+     *
+     * @param string $term The searchterm
+     * @param string (optional) $query The prepared query or SQL to use for search
+     * @return array
+     */
+    public function clairvoyant($term, $query = 'default')
+    {
+        switch ( $query ) {
+            default:
+                $sql = <<<SQL
+                    SELECT
+                        user.id AS id,
+                        CONCAT(user.name, ' ', user.email) AS label,
+                        user.name AS value
+                    FROM
+                        user
+                    WHERE
+                        user.name LIKE :searchtext OR
+                        user.email LIKE :searchtext OR
+                        user.shortname LIKE :searchtext
+                    ORDER BY
+                        user.name
+SQL;
+        }
+        $result = R::getAll($sql, array(':searchtext' => $term . '%' ) );
+        return $result;
+    }
+    
+    /**
      * Returns the current user bean or an empty user bean.
      *
      * A session must have been started before calling this method.

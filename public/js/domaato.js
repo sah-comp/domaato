@@ -1,4 +1,11 @@
 /* Ready, Set, Go. */
 $(document).ready(function() {
-    // your code goes here
+    
+    initAutocompletes();
+
+    /**
+     * The notifications section will animate a little to catch atttention by users.
+     */
+    $(".notification").slideDown("slow");
+
 });

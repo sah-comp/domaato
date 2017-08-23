@@ -305,6 +305,32 @@ SQL;
         if ($switch !== null) $this->auto_tag = $switch;
         return $this->auto_tag;
     }
+    
+    /**
+     * Lookup a searchterm and returns the resultset as an array.
+     *
+     * This is only a stub. You have to define a certain query for each of your beans
+     * you would like to be searchable from autocomplete fields.
+     *
+     * @param string $term The searchterm
+     * @param string (optional) $query The prepared query or SQL to use for search
+     * @return array
+     */
+    public function clairvoyant($term, $query = 'default')
+    {
+        error_log('Search for ' . $term . ' with query ' . $query);
+        switch ( $query ) {
+            default:
+                $result = array(
+                    array(
+                        'id' => '1',
+                        'label' => 'Dummy result for autocomplete',
+                        'value' => 'Dummy'
+                    )
+                );
+        }
+        return $result;
+    }
 
     /**
      * Returns a *i18n bean for this bean.

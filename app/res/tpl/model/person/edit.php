@@ -273,6 +273,7 @@
         'tabs' => array(
             'person-address' => I18n::__('person_address_tab'),
             'person-bizkind' => I18n::__('person_bizkind_tab'),
+            'person-owner' => I18n::__('person_owner_tab')
         ),
         'default_tab' => 'person-address'
     )) ?>
@@ -322,6 +323,40 @@
                 <?php echo (isset($record->sharedBizkind[$_bizkind->getId()])) ? 'checked="checked"' : '' ?> />
         </div>
         <?php endforeach ?>
+    </fieldset>
+    <fieldset
+        id="person-owner"
+        class="tab"
+        style="display: none;">
+        <legend class="verbose"><?php echo I18n::__('person_legend_owner_tab') ?></legend>
+        <div>
+            <input 
+                type="hidden" 
+                id="person-owner-type" 
+                name="dialog[owner][type]" 
+                value="<?php echo $record->owner()->getMeta( 'type' ) ?>">
+            <input 
+                type="hidden" 
+                id="person-owner-id" 
+                name="dialog[owner][id]" 
+                value="<?php echo $record->owner()->getId() ?>">
+        </div>
+        <div
+            class="row <?php echo $record->hasError('owner_id') ? 'error' : '' ?>">
+            <label
+                for="person-owner-name">
+                <?php echo I18n::__('person_label_owner') ?>
+            </label>
+            <input
+                type="text"
+                id="person-owner-name"
+                name="dialog[owner][name]"
+                class="autocomplete"
+                data-source="<?php echo Url::build('/autocomplete/user/name/?callback=?') ?>"
+                data-spread='<?php echo json_encode(array('person-owner-name' => 'value', 'person-owner-id' => 'id')) ?>'
+                value="<?php echo htmlspecialchars($record->owner()->name) ?>" />
+                <p class="info"><?php echo I18n::__('person_info_owner') ?></p>
+        </div>
     </fieldset>
 </div>
 <!-- end of person edit form -->

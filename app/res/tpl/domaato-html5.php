@@ -1,8 +1,8 @@
 <?php
 /**
- * Cinnebar.
+ * Domaato.
  *
- * @package Cinnebar
+ * @package Domaato
  * @subpackage Template
  * @author $Author$
  * @version $Id$
@@ -19,6 +19,7 @@
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width">
 
+		<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 		<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
         <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
         <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
@@ -39,21 +40,46 @@
         <meta name="theme-color" content="#ffffff">
         
 		<link rel="stylesheet" href="/css/domaato.css">
+		<?php if (isset($stylesheets) && is_array($stylesheets)): ?>
+            <?php foreach ($stylesheets as $_n=>$_stylesheet): ?>
+            <link rel="stylesheet" href="/css/<?php echo $_stylesheet; ?>.css">
+            <?php endforeach; ?>
+		<?php endif ?>
 		<!--[if lt IE 9]>
         <script src="/js/html5shiv.js"></script>
         <![endif]-->
 	</head>
 
-	<body id="splash">
+	<body>
 		<!--[if lt IE 7]>
 		<?php echo Flight::textile(I18n::__('browser_is_ancient')) ?>
 		<![endif]-->
-		<header>
-		    <h1 class="ir">Domaato</h1>
-		</header>
-		<article>
-		</article>
+		
+		<!-- Header (optional) -->
+		<?php echo isset($header) ? $header : null ?>
+		<!-- End of optional header -->
+
+		<!-- Notification (optional) -->
+		<?php echo isset($notification) ? $notification : null ?>
+		<!-- End of optional notification -->
+
+        <!-- Content (required) -->
+		<?php echo $content; ?>
+		<!-- End of required content -->
+		
+		<!-- Footer (optional) -->
+		<?php echo isset($footer) ? $footer : null ?>
+		<!-- End of optional footer -->
+
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
+        <script src="/js/jquery-scrolltofixed-min.js"></script>
+        <script src="/js/jquery-clairvoyant.js"></script>
+        <?php if (isset($javascripts) && is_array($javascripts)): ?>
+            <?php foreach ($javascripts as $_n=>$_js): ?>
+            <script src="<?php echo $_js; ?>.js"></script>
+            <?php endforeach; ?>
+		<?php endif ?>
 		<script src="/js/domaato.js"></script>
 	</body>
 </html>
