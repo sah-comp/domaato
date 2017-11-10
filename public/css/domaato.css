@@ -423,6 +423,153 @@ body {
 	-webkit-font-smoothing: antialiased;
 }
 
+body > header,
+header#header-toolbar {
+    background-color: rgb(254, 254, 254);
+}
+
+body > header {
+    border-top: 3px solid rgb(120, 190, 32);
+    padding-top: 3px;
+    z-index: 1000000;
+}
+
+header#header-toolbar.scroll-to-fixed-fixed {
+    border-bottom: 1px solid silver;
+}
+
+body > header > nav {
+    /*background-color: rgb(254, 254, 254);*/
+}
+
+body > header > h1 {
+    margin: 0;
+    padding: 0;
+}
+
+a.logo {
+    display: block;
+    width: 3em;
+    height: 2em;
+    background-image: url(/favicon-16x16.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 16px 16px;
+}
+
+ul.main-navigation,
+ul.main-navigation ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	line-height: 1;
+    border-top: 1px solid silver;
+	border-bottom: 1px solid silver;
+}
+
+ul.main-navigation > li {
+	position: relative;
+	float: left;
+}
+/*
+ul.main-navigation > li:last-child {
+    margin-right: 1em;
+}
+*/
+ul.main-navigation li ul > li {
+    border-bottom: 1px solid silver;
+}
+
+ul.main-navigation li ul > li:last-child {
+    border-bottom: 0;
+}
+
+ul.main-navigation a {
+	text-decoration: none;
+	display: block;
+	padding: 0.5em 1em 0.5em 1em;
+	/*text-shadow: 0px -1px -1px #eee;*/
+}
+
+ul.main-navigation li.parent {
+    background-image: url(/img/desc.png);
+    background-repeat: no-repeat;
+    background-position: center right;
+}
+
+/* sub-menu of master nav */
+ul.main-navigation li ul {
+    margin: 0;
+    background-color: rgb(254, 254, 254);
+    position: absolute;
+    min-width: 100%;
+    top: 2em;
+    margin-top: -1px;
+    left: -1px;
+	display: none;
+	z-index: 1;
+	border: 1px solid silver;
+	border-top: 1px solid white;
+    /*box-shadow: 1px 1px 1px rgb(128, 128, 128);*/
+}
+
+ul.main-navigation li ul li {
+	position: relative;
+	display: block;
+	white-space: nowrap;
+    background: none;
+	width: 100%;
+}
+
+ul.main-navigation > li:hover ul {
+    display: block;
+}
+
+
+/* Account navigation */
+ul.account-navigation,
+ul.panel-navigation {
+    position: absolute;
+    top: 0.6em;
+    right: 1em;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+}
+
+ul.account-navigation li,
+ul.panel-navigation li {
+    display: inline;
+    float: left;
+}
+
+ul.account-navigation a img {
+    float: left;
+    margin-right: 0.25em;
+}
+
+ul.account-navigation a,
+ul.panel-navigation a {
+    display: block;
+    font-size: 0.8em;
+    padding: 0.222em 0.444em;
+    text-decoration: none;
+}
+
+/**
+ * Form
+ */
+form.langchooser {
+    padding: 0 0.444em;
+}
+
+form.langchooser select {
+    padding: 0;
+    margin: 0;
+    font-size: small;
+}
+
 /**
  * Layout and style the splash screen.
  */

@@ -38,12 +38,13 @@
         <meta name="msapplication-TileColor" content="#ffffff">
         <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
         <meta name="theme-color" content="#ffffff">
+		<link rel="stylesheet" href="/css/jquery.fullpage.min.css">        
 		<?php if (isset($stylesheets) && is_array($stylesheets)): ?>
             <?php foreach ($stylesheets as $_n=>$_stylesheet): ?>
             <link rel="stylesheet" href="/css/<?php echo $_stylesheet; ?>.css">
             <?php endforeach; ?>
 		<?php endif ?>
-        <link rel="stylesheet" href="/css/domaato.css">
+		<link rel="stylesheet" href="/css/domaato.css">
 		<!--[if lt IE 9]>
         <script src="/js/html5shiv.js"></script>
         <![endif]-->
@@ -72,13 +73,14 @@
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
-        <script src="/js/jquery-scrolltofixed-min.js"></script>
-        <script src="/js/jquery-clairvoyant.js"></script>
+        <script src="/js/jquery.easings.min.js"></script>
+        <script src="/js/scrolloverflow.min.js"></script>
+        <script src="/js/jquery.fullpage.min.js"></script>
         <?php if (isset($javascripts) && is_array($javascripts)): ?>
             <?php foreach ($javascripts as $_n=>$_js): ?>
             <script src="<?php echo $_js; ?>.js"></script>
             <?php endforeach; ?>
 		<?php endif ?>
-		<script src="/js/domaato.js"></script>
+		<script src="/js/domaato-website.js"></script>
 	</body>
 </html>
