@@ -423,151 +423,153 @@ body {
 	-webkit-font-smoothing: antialiased;
 }
 
-body > header,
-header#header-toolbar {
-    background-color: rgb(254, 254, 254);
-}
-
 body > header {
-    border-top: 3px solid rgb(120, 190, 32);
-    padding-top: 3px;
-    z-index: 1000000;
+    position: fixed;
+	left: 20px;
+	right: 20px;
+	top: 20px;
+	height: 3rem;
+	z-index: 100;
+}
+/**
+ * Layout and optics of the domaato website.
+ */
+#splash section {
+    background: rgb(120, 190, 32);
+    color: white;
+    text-align: center;
 }
 
-header#header-toolbar.scroll-to-fixed-fixed {
-    border-bottom: 1px solid silver;
-}
-
-body > header > nav {
-    /*background-color: rgb(254, 254, 254);*/
-}
-
-body > header > h1 {
-    margin: 0;
-    padding: 0;
-}
-
-a.logo {
-    display: block;
-    width: 3em;
-    height: 2em;
-    background-image: url(/favicon-16x16.png);
+/* Replace the text with a logo image */
+body > header h1.brand,
+#splash h1.brand {
+    background: url(/img/domaato-logo-white.png);
+    background-size: 320px 72px;
+    background-position: center;
     background-repeat: no-repeat;
-    background-position: center center;
-    background-size: 16px 16px;
+    font-weight: 900;
+    height: 72px;
+    width: 100%;
 }
 
-ul.main-navigation,
-ul.main-navigation ul {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-	line-height: 1;
-    border-top: 1px solid silver;
-	border-bottom: 1px solid silver;
-}
-
-ul.main-navigation > li {
-	position: relative;
-	float: left;
-}
-/*
-ul.main-navigation > li:last-child {
-    margin-right: 1em;
-}
-*/
-ul.main-navigation li ul > li {
-    border-bottom: 1px solid silver;
-}
-
-ul.main-navigation li ul > li:last-child {
-    border-bottom: 0;
-}
-
-ul.main-navigation a {
-	text-decoration: none;
-	display: block;
-	padding: 0.5em 1em 0.5em 1em;
-	/*text-shadow: 0px -1px -1px #eee;*/
-}
-
-ul.main-navigation li.parent {
-    background-image: url(/img/desc.png);
-    background-repeat: no-repeat;
-    background-position: center right;
-}
-
-/* sub-menu of master nav */
-ul.main-navigation li ul {
-    margin: 0;
-    background-color: rgb(254, 254, 254);
-    position: absolute;
-    min-width: 100%;
-    top: 2em;
-    margin-top: -1px;
-    left: -1px;
-	display: none;
-	z-index: 1;
-	border: 1px solid silver;
-	border-top: 1px solid white;
-    /*box-shadow: 1px 1px 1px rgb(128, 128, 128);*/
-}
-
-ul.main-navigation li ul li {
-	position: relative;
-	display: block;
-	white-space: nowrap;
-    background: none;
-	width: 100%;
-}
-
-ul.main-navigation > li:hover ul {
+body > header h1.brand a {
     display: block;
+    width: 100%;
+    height: 100%;
 }
 
-
-/* Account navigation */
-ul.account-navigation,
-ul.panel-navigation {
-    position: absolute;
-    top: 0.6em;
-    right: 1em;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    line-height: 1;
+body > header h1.brand {
+    opacity: 0;
+    background-size: 106px 24px;
+    height: 24px;
+    width: 106px;
+    -webkit-transition: opacity 1s;
+    transition: opacity 1s;
 }
 
-ul.account-navigation li,
-ul.panel-navigation li {
-    display: inline;
-    float: left;
+#splash section#home h2 {
+    font-weight: 400;
+    font-size: 2rem;
+    letter-spacing: 1px;
 }
 
-ul.account-navigation a img {
-    float: left;
-    margin-right: 0.25em;
-}
-
-ul.account-navigation a,
-ul.panel-navigation a {
-    display: block;
-    font-size: 0.8em;
-    padding: 0.222em 0.444em;
-    text-decoration: none;
+body > header h1.brand.active {
+    opacity: 1;
 }
 
 /**
- * Form
+ * Fullpage restylings
  */
-form.langchooser {
-    padding: 0 0.444em;
+#fp-nav ul li a span,
+.fp-slidesNav ul li a span {
+    background: #ffffff;
 }
 
-form.langchooser select {
-    padding: 0;
-    margin: 0;
-    font-size: small;
+/**
+ * Users and customers testiomonials
+ */
+.testimonial-wrap {
+	width: 30rem;
+	margin: 2rem auto;
+	padding: 2rem;
+	position: relative;	
+}
+
+.testimonial-wrap blockquote {
+	position: relative;
+}
+
+.testimonial-wrap cite {
+	font-style: normal;
+}
+
+/**
+ * User testimonials
+ */
+
+.testimonial {
+	width: 50rem;
+}
+
+.testimonial blockquote p {
+	font-size: 3rem;
+	color: white;
+	font-weight: 500;
+	line-height: 1.5;
+	font-style: italic;
+	text-indent: 100px;
+	position: relative;
+	text-align: left;
+}
+
+.testimonial blockquote p:before {
+	content: '\201C';
+	font-family: 'Times New Roman', Times, serif;
+	font-style: normal;
+	font-weight: 700;
+	position: absolute;
+	font-size: 12rem;
+	top: -6rem;
+	left: -6rem;
+	color: white;
+	text-shadow: 7px 14px 10px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial .testimonial-attribution {
+	text-align: right;
+	padding: 20px 100px 20px 20px;
+	position: relative;
+}
+
+.testimonial .testimonial-thumb {
+	display: block;
+	width: 120px;
+	height: 120px;
+	border: 5px solid #fff;
+	border-radius: 50%;
+	background-repeat: no-repeat;
+	background-position: center center;
+	position: absolute;
+	right: -40px;
+	bottom: -30px;
+	box-shadow: 
+		inset 1px 1px 4px rgba(0, 0, 0, 0.5),
+		0 2px 3px rgba(0, 0, 0, 0.6);
+}
+
+.testimonial .testimonial-author {
+	font-weight: 700;
+	font-size: 1rem;
+	color: rgba(254, 254, 254, 1);
+}
+
+.testimonial .testimonial-author a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.testimonial .testimonial-author a:hover {
+    text-decoration: none;
 }
 
 /* Autocomplete

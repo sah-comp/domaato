@@ -44,36 +44,20 @@
             <link rel="stylesheet" href="/css/<?php echo $_stylesheet; ?>.css">
             <?php endforeach; ?>
 		<?php endif ?>
-		<link rel="stylesheet" href="/css/domaato.css">
+		<link rel="stylesheet" href="/css/domaato-website.css">
 		<!--[if lt IE 9]>
         <script src="/js/html5shiv.js"></script>
         <![endif]-->
 	</head>
 
 	<body>
-		<!--[if lt IE 7]>
-		<?php echo Flight::textile(I18n::__('browser_is_ancient')) ?>
-		<![endif]-->
-		
-		<!-- Header (optional) -->
-		<?php echo isset($header) ? $header : null ?>
-		<!-- End of optional header -->
-
-		<!-- Notification (optional) -->
-		<?php echo isset($notification) ? $notification : null ?>
-		<!-- End of optional notification -->
 
         <!-- Content (required) -->
 		<?php echo $content; ?>
 		<!-- End of required content -->
-		
-		<!-- Footer (optional) -->
-		<?php echo isset($footer) ? $footer : null ?>
-		<!-- End of optional footer -->
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
-        <script src="/js/jquery.easings.min.js"></script>
         <script src="/js/scrolloverflow.min.js"></script>
         <script src="/js/jquery.fullpage.min.js"></script>
         <?php if (isset($javascripts) && is_array($javascripts)): ?>
