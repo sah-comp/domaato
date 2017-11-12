@@ -1,8 +1,26 @@
-var sliderInterval = 4000,
-	pauseSlider = 0;
+/**
+ * Set up timings and semaphores.
+ */
+var sliderInterval = 4000;
+var pauseSlider = 0;
+var countCounted = false;
+
+/**
+ * Options countUp
+ */
+var countOptions = {
+    useEasing: true,
+    useGrouping: true,
+    separator: '.',
+    decimal: ','
+};
 
 /* Ready, Set, Go. */
 $(document).ready(function() {
+    
+    /**
+     * Make it a one page website.
+     */
     $('#splash').fullpage({
         sectionSelector: 'section',
 		fixedElements: 'header',
@@ -13,6 +31,9 @@ $(document).ready(function() {
 		slidesNavPosition: 'bottom',
 		controlArrows: false,
         afterRender: function () {
+            /**
+             * Init interval for slides and add stopping on mouse over situation.
+             */
     		pauseSlider = setInterval( function() {
                 $.fn.fullpage.moveSlideRight();
     		}, sliderInterval);
@@ -25,11 +46,29 @@ $(document).ready(function() {
         	});
         },
         afterLoad: function(anchorLink, index) {
+            /**
+             * When the first section is active no logo is show in the header.
+             */
             if ( index == 1 ) {
                 $( 'body > header h1.brand' ).removeClass( 'active' );
             } else {
                 $( 'body > header h1.brand' ).addClass( 'active' );
             }
+            
+            /**
+             * On the third section count count has a feast if not already he counted.
+             */
+            if ( ! countCounted && index == 3 ) {
+                countCounted = true;
+                var countReport = new CountUp( 'count-report', 0, $( '#count-report' ).data( 'target' ), 0, 1, countOptions);
+                countReport.start();
+                var countCompany = new CountUp( 'count-company', 0, $( '#count-company' ).data( 'target' ), 0, 1, countOptions);
+                countCompany.start();
+                var countVote = new CountUp( 'count-vote', 0, $( '#count-vote' ).data( 'target' ), 0, 1, countOptions);
+                countVote.start();
+            }
+            
         }
     });
+    
 });

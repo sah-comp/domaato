@@ -64,6 +64,26 @@
 
     </section>
 
+    <section id="facts" data-tooltip="<?php echo I18n::__( 'domaato_section_facts' ) ?>">
+        
+        <div class="row">
+            
+            <div class="span4">
+                <span id="count-report" class="counter" data-target="17500">0</span> Berichte
+            </div>
+            
+            <div class="span4">
+                <span id="count-company" class="counter" data-target="500">0</span> Firmen
+            </div>
+            
+            <div class="span4">
+                <span id="count-vote" class="counter" data-target="317500">0</span> Bewertungen
+            </div>
+            
+        </div>
+
+    </section>
+
     <section id="customers" data-tooltip="<?php echo I18n::__( 'domaato_section_customers' ) ?>">
         
         <div class="slide">

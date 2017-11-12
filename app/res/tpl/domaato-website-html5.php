@@ -60,6 +60,7 @@
         <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
         <script src="/js/scrolloverflow.min.js"></script>
         <script src="/js/jquery.fullpage.min.js"></script>
+        <script src="/js/countUp.min.js"></script>
         <?php if (isset($javascripts) && is_array($javascripts)): ?>
             <?php foreach ($javascripts as $_n=>$_js): ?>
             <script src="<?php echo $_js; ?>.js"></script>
