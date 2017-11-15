@@ -423,6 +423,10 @@ body {
 	-webkit-font-smoothing: antialiased;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 900;
+}
+
 body > header {
     position: fixed;
 	left: 20px;
@@ -434,10 +438,52 @@ body > header {
 /**
  * Layout and optics of the domaato website.
  */
+
+section#contact p {
+    margin-bottom: 1rem;
+}
+
 #splash section {
     background: rgb(120, 190, 32);
     color: white;
     text-align: center;
+}
+
+#splash section#home {
+}
+
+#splash section#testimonials {
+}
+
+#splash section#facts {
+    /*background: rgb(255, 200, 69);*/
+}
+
+#splash section#customers {
+}
+
+#splash section#contact {
+    background: rgb(0, 181, 226);
+}
+
+#splash section#home a.nextSlide {
+    position: absolute;
+    bottom: 2rem;
+    font-size: 0.8rem;
+    text-decoration: none;
+    color: white;
+    display: block;
+    width: 100%;
+}
+
+.contact-wrapper {
+    text-align: left;
+    padding-left: 5rem;
+}
+
+.contact-wrapper a {
+    text-decoration: none;
+    color: white;
 }
 
 /* Replace the text with a logo image */
@@ -545,16 +591,16 @@ body > header h1.brand.active {
 	display: block;
 	width: 120px;
 	height: 120px;
-	border: 5px solid #fff;
+	border: 6px solid white;
 	border-radius: 50%;
 	background-repeat: no-repeat;
 	background-position: center center;
 	position: absolute;
 	right: -40px;
 	bottom: -30px;
-	box-shadow: 
+	/*box-shadow: 
 		inset 1px 1px 4px rgba(0, 0, 0, 0.5),
-		0 2px 3px rgba(0, 0, 0, 0.6);
+		0 2px 3px rgba(0, 0, 0, 0.6);*/
 }
 
 .testimonial .testimonial-author {
@@ -570,6 +616,22 @@ body > header h1.brand.active {
 
 .testimonial .testimonial-author a:hover {
     text-decoration: none;
+}
+
+/**
+ * Counter stuff.
+ *
+ * The count counted just for fun.
+ */
+div.counter p {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+div.counter p.counter {
+    font-size: 2.33rem;
+    font-weight: 700;
+    letter-spacing: -2px;
 }
 
 /* Autocomplete

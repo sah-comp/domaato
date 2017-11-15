@@ -108,6 +108,18 @@
                     <?php endforeach ?>
                 </select>
             </div>
+            <div class="row <?php echo ($record->hasError('testimonial')) ? 'error' : ''; ?>">
+                <label
+                    for="user-testimonial">
+                    <?php echo I18n::__('user_label_testimonial') ?>
+                </label>
+                <textarea
+                    id="user-testimonial"
+                    name="dialog[testimonial]"
+                    rows="5"
+                    cols="60"><?php echo htmlspecialchars($record->testimonial) ?></textarea>
+                <p class="info"><?php echo I18n::__('user_info_testimonial') ?></p>
+            </div>
         </fieldset>
         <!-- End of account form -->
         <div class="buttons">

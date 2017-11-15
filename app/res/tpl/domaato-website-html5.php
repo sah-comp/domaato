@@ -38,7 +38,8 @@
         <meta name="msapplication-TileColor" content="#ffffff">
         <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
         <meta name="theme-color" content="#ffffff">
-		<link rel="stylesheet" href="/css/jquery.fullpage.min.css">        
+		<link rel="stylesheet" href="/css/jquery.fullpage.min.css">
+		<link rel="stylesheet" href="/css/animations.css">
 		<?php if (isset($stylesheets) && is_array($stylesheets)): ?>
             <?php foreach ($stylesheets as $_n=>$_stylesheet): ?>
             <link rel="stylesheet" href="/css/<?php echo $_stylesheet; ?>.css">
@@ -61,6 +62,7 @@
         <script src="/js/scrolloverflow.min.js"></script>
         <script src="/js/jquery.fullpage.min.js"></script>
         <script src="/js/countUp.min.js"></script>
+        <script src="/js/css3-animate-it.js"></script>
         <?php if (isset($javascripts) && is_array($javascripts)): ?>
             <?php foreach ($javascripts as $_n=>$_js): ?>
             <script src="<?php echo $_js; ?>.js"></script>

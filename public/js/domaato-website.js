@@ -32,12 +32,30 @@ $(document).ready(function() {
 		controlArrows: false,
         afterRender: function () {
             /**
+             * All links with class nextSlide will scroll one section down.
+             */
+            $('.nextSlide').on('click', function(event) {
+                event.preventDefault();
+                $.fn.fullpage.moveSectionDown();
+                return false;
+            });
+            
+            /**
+             * Clicking the header brand will bring you back to section 1, aka. home.
+             */
+            $('body > header h1 a').on('click', function(event) {
+                event.preventDefault();
+                $.fn.fullpage.moveTo(1);
+                return false;
+            });
+
+            /**
              * Init interval for slides and add stopping on mouse over situation.
              */
     		pauseSlider = setInterval( function() {
                 $.fn.fullpage.moveSlideRight();
     		}, sliderInterval);
-    		$('.fp-slides .slide').hover(function(ev) {
+    		$('.fp-slides .slide .fp-tableCell').hover(function(ev) {
     	    	clearInterval(pauseSlider);
     		}, function(ev) {
     		    pauseSlider = setInterval( function() {
@@ -56,7 +74,7 @@ $(document).ready(function() {
             }
             
             /**
-             * On the third section count count has a feast if not already he counted.
+             * On the third section count count has a feast, if not already he counted.
              */
             if ( ! countCounted && index == 3 ) {
                 countCounted = true;

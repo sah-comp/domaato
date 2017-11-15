@@ -7,60 +7,42 @@
  * @author $Author$
  * @version $Id$
  */
+
+/**
+ * Find three users who have testimonials.
+ */
+$_users = R::find( 'user', " testimonial > '' LIMIT 3 " );
 ?>
 <header>
     <h1 class="brand ir"><a href="<?php echo Url::build( '/' ) ?>" title="<?php echo I18n::__( 'app_name_domaato' ) . ' ' . I18n::__( 'app_claim_domaato' ) ?>">Domaato</a></h1>
 </header>
-<div id="splash">
+<div id="splash" class="animatedParent">
     
     <section id="home" data-tooltip="<?php echo I18n::__( 'domaato_section_home' ) ?>">
         <h1 class="brand ir">Domaato</h1>
         <h2><?php echo I18n::__( 'app_claim_domaato' ) ?></h2>
+        <a href="#explore" class="nextSlide animated bounceInUp delay-666"><?php echo I18n::__( 'domaato_ahref_explore' ) ?></a>
     </section>
     
     <section id="testimonials" data-tooltip="<?php echo I18n::__( 'domaato_section_testimonials' ) ?>">
+        
+<?php foreach ( $_users as $_id => $_user ): ?>
 
-        <div class="slide">
+    <div class="slide">
 
-            <div class="testimonial-wrap testimonial">
-                <blockquote cite="<?php echo Url::build('/profile/1') ?>">
-                    <p>Cras ut suscipit leo. Sed fermentum sodales nibh eget porta. Sed fringilla arcu ut lacinia rutrum. Suspendisse et urna sapien.</p>
-                </blockquote>
-                <div class="testimonial-attribution">
-                    <p class="testimonial-author"><a href="#max">Stephan Hombergs</a></p>
-                    <div class="testimonial-thumb" style="background-image: url(<?php echo Gravatar::src( 'info@sah-company.com', 120 ) ?>)"></div>
-                </div>
+        <div class="testimonial-wrap testimonial">
+            <blockquote cite="">
+                <p><?php echo htmlspecialchars( $_user->testimonial ) ?></p>
+            </blockquote>
+            <div class="testimonial-attribution">
+                <p class="testimonial-author"><a href="<?php echo Url::build( '/profile/' . $_user->getId() ) ?>"><?php echo htmlspecialchars( $_user->getName() ) ?></a></p>
+                <div class="testimonial-thumb" style="background-image: url(<?php echo Gravatar::src( $_user->email, 120 ) ?>)"></div>
             </div>
-
         </div>
 
-        <div class="slide">
-
-            <div class="testimonial-wrap testimonial">
-                <blockquote cite="<?php echo Url::build('/profile/1') ?>">
-                    <p>Sed fermentum sodales nibh eget porta. Sed fringilla arcu ut lacinia rutrum. Suspendisse et urna sapien.</p>
-                </blockquote>
-                <div class="testimonial-attribution">
-                    <p class="testimonial-author"><a href="#max">Alexander Berg</a></p>
-                    <div class="testimonial-thumb" style="background-image: url(<?php echo Gravatar::src( 'ich@7ich.de', 120 ) ?>)"></div>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="slide">
-
-            <div class="testimonial-wrap testimonial">
-                <blockquote cite="<?php echo Url::build('/profile/1') ?>">
-                    <p>Sed fringilla arcu ut lacinia rutrum. Suspendisse et urna sapien. Sed fermentum sodales nibh eget porta</p>
-                </blockquote>
-                <div class="testimonial-attribution">
-                    <p class="testimonial-author"><a href="#max">Max Mustermann</a></p>
-                    <div class="testimonial-thumb" style="background-image: url(<?php echo Gravatar::src( 'max@7ich.de', 120 ) ?>)"></div>
-                </div>
-            </div>
-
-        </div>
+    </div>
+    
+<?php endforeach ?>
 
     </section>
 
@@ -68,16 +50,19 @@
         
         <div class="row">
             
-            <div class="span4">
-                <span id="count-report" class="counter" data-target="17500">0</span> Berichte
+            <div class="span4 counter">
+                <p id="count-report" class="counter" data-target="17500">0</p>
+                <p><?php echo I18n::__( 'domaato_counter_reports' ) ?></p>
             </div>
             
-            <div class="span4">
-                <span id="count-company" class="counter" data-target="500">0</span> Firmen
+            <div class="span4 counter">
+                <p id="count-company" class="counter" data-target="500">0</p>
+                <p><?php echo I18n::__( 'domaato_counter_companies' ) ?></p>
             </div>
             
-            <div class="span4">
-                <span id="count-vote" class="counter" data-target="317500">0</span> Bewertungen
+            <div class="span4 counter">
+                <p id="count-vote" class="counter" data-target="317500">0</p>
+                <p><?php echo I18n::__( 'domaato_counter_votes' ) ?></p>
             </div>
             
         </div>
@@ -98,6 +83,46 @@
             <h2>Fielmann</h2>
         </div>
 
+    </section>
+    
+    <section id="contact" data-tooltip="<?php echo I18n::__( 'domaato_section_contact' ) ?>">
+        
+        <div class="row">
+            
+            <div class="span4">
+                
+                <div class="contact-wrapper">
+                
+                    <h2><?php echo I18n::__( 'domaato_headline_contact' ) ?></h2>
+                
+                    <p>
+                    Domaato<br />
+                    Kochstraße 6<br />
+                    34121 Kassel<br />
+                    Germany
+                    </p>
+                
+                    <p>
+                    Telefon +49 561 123 456 67
+                    </p>
+                
+                    <p>
+                    E-Mail <a href="mailto:info@domaato.de">info@domaato.de</a><br />
+                    Web <a href="https://domaato.de">https://domaato.de</a>
+                    </p>
+
+                </div>
+                
+            </div>
+            
+            <div class="span8">
+                
+                Contact form
+                
+            </div>
+            
+        </div>
+        
     </section>
 
 </div>
