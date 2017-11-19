@@ -415,6 +415,10 @@ body {
     width: 100%;
 }
 
+:focus {
+    outline: none;
+}
+
 body {
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
@@ -439,7 +443,8 @@ body > header {
  * Layout and optics of the domaato website.
  */
 
-section#contact p {
+section#contact p,
+.newsletter-form p {
     margin-bottom: 1rem;
 }
 
@@ -474,6 +479,54 @@ section#contact p {
     color: white;
     display: block;
     width: 100%;
+}
+
+.newsletter-form {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(255, 200, 69);
+    border-top: 4px solid white;
+    padding: 3rem 0;
+}
+
+.newsletter-form form {
+    padding: 0 3rem;
+}
+
+.newsletter-form form fieldset {
+    padding: 0.5rem;
+}
+
+.newsletter-form input[type="email"] {
+    padding: 0.25rem;
+}
+
+.newsletter-form input[type=submit] {
+    padding: 0.5rem 2rem;
+    background-color: rgb(120, 190, 32);
+    color: white;
+    border: 2px solid white;
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -o-border-radius: 1rem;
+    border-radius: 1rem;
+}
+.newsletter-form input[type=submit]:active,
+.newsletter-form input[type=submit]:focus {
+    background-color: white;
+    color: rgb(120, 190, 32);
+    border: 2px solid rgb(120, 190, 32);
+}
+
+.newsletter-form input[type=submit][disabled=disabled].processing {
+    background-image: url(/img/loader.gif);
+    background-position: center right;
+    background-repeat: no-repeat;
+    background-color: white;
+    color: rgb(120, 190, 32);
+    cursor: progress;
+    border: 2px solid rgb(120, 190, 32);
 }
 
 .contact-wrapper {

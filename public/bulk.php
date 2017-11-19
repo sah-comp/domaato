@@ -3,6 +3,7 @@
  * Cinnebar.
  *
  * @package Cinnebar
+ * @todo Make this a command and a controller with a web interface
  * @subpackage System
  * @author $Author$
  * @version $Id$

@@ -44,4 +44,14 @@ class Url
        }
        return $internalAbsUrl;
     }
+    
+    /**
+     * Returns the protocol and server name for use with canonical urls.
+     *
+     * @return string
+     */
+    static public function host()
+    {
+        return (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
+    }
 }

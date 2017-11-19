@@ -66,6 +66,33 @@ $_users = R::find( 'user', " testimonial > '' LIMIT 3 " );
             </div>
             
         </div>
+        
+        <div id="newsletter-container" class="newsletter-form">
+            
+            <h2><?php echo I18n::__( 'domaato_headline_newsletter' ) ?></h2>
+            <p><?php echo I18n::__( 'domaato_paragraph_newsletter' ) ?></p>
+            
+            <form
+                id="newsletter-optin"
+                class="ajaxed"
+                action="<?php echo Url::build('/newsletter/opt-in') ?>"
+                data-container="newsletter-container"
+                method="POST"
+                accept-charset="utf-8"
+                enctype="multipart/form-data">
+                <fieldset>
+                    <input
+                        type="email"
+                        id="newsletter-email"
+                        name="dialog[email]"
+                        placeholder="<?php echo I18n::__( 'domaato_placeholder_email' ) ?>"
+                        value="<?php echo htmlspecialchars( '' ) ?>"
+                        size="48"
+                        required="required" />
+                    <input type="submit" name="submit" value="<?php echo I18n::__( 'domaato_newsletter_submit') ?>" />
+                </fieldset>
+            </form>
+        </div>
 
     </section>
 
@@ -117,7 +144,7 @@ $_users = R::find( 'user', " testimonial > '' LIMIT 3 " );
             
             <div class="span8">
                 
-                Contact form
+                Contact form or map or whatever.
                 
             </div>
             

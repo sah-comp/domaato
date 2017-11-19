@@ -70,7 +70,7 @@ Flight::route('(/[a-z]{2})/admin(/index)', function() {
 /**
  * Route to autocomplete for jquery backed autocomplete form fields.
  */
-Flight::route('(/[a-z]{2})/autocomplete/@type:[a-z]+/@query:[a-z]+', function( $type, $query ) {
+Flight::route( '(/[a-z]{2})/autocomplete/@type:[a-z]+/@query:[a-z]+', function( $type, $query ) {
 	$autocompleteController = new Controller_Autocomplete();
     $autocompleteController->autocomplete( $type, $query );
 });
@@ -78,13 +78,29 @@ Flight::route('(/[a-z]{2})/autocomplete/@type:[a-z]+/@query:[a-z]+', function( $
 /**
  * Route to file a report
  */
-Flight::route('(/[a-z]{2})/file-a-report(/@id:[0-9]+)', function($id) {
+Flight::route( '(/[a-z]{2})/file-a-report(/@id:[0-9]+)', function( $id ) {
 	$reportController = new Controller_Report();
 	if ( $id === NULL ) {
 	    $reportController->index();
 	} else {
         $reportController->add( $id );
 	}
+});
+
+/**
+ * Route to optin to the newsletter
+ */
+Flight::route( 'POST (/[a-z]{2})/newsletter/opt-in', function() {
+	$newsletterController = new Controller_Newsletter();
+	$newsletterController->optin();
+});
+
+/**
+ * Route to newsletter confirmation
+ */
+Flight::route( '(/[a-z]{2})/newsletter/confirm/@token:[0-9a-zA-Z]+', function( $token ) {
+	$newsletterController = new Controller_Newsletter();
+	$newsletterController->confirm( $token );
 });
 
 /**

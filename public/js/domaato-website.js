@@ -48,6 +48,53 @@ $(document).ready(function() {
                 $.fn.fullpage.moveTo(1);
                 return false;
             });
+            
+        	/**
+        	 * Form with class inplace will be ajaxified by jQuery form plugin and
+        	 * the response is placed into the element given in data-container.
+        	 */
+            $(document).on( 'submit', '.ajaxed', function(event) {
+                event.preventDefault();
+                var form = $(this);
+                var container = form.data("container");
+                var btn = $( 'input[type=submit]', form);
+                //btn.attr( 'clicked', true );
+                btn.addClass( 'processing' );
+                btn.attr( 'disabled', true );
+                form.ajaxSubmit({
+                    success: function(response) {
+                        btn.removeClass( 'processing' );
+                        //btn.removeAttr( 'clicked' );
+                        btn.removeAttr( 'disabled' );
+                        //alert( 'You have opted in!' );
+                        /*$("#"+container).empty().append(response);*/
+                    }
+                });
+                return false;
+            });
+            
+            /**
+             * Add attribute clicked when clicked.
+             */
+            /*
+            $('form.ajaxed input[type=submit]').on( 'click', function () {
+                $('input[type=submit]', $(this).parents('form')).removeAttr('clicked');
+                $(this).attr('clicked', true);
+            });
+            */
+            
+            /**
+             * Make submit button disabled after clicking it, so form can only be send once.
+             */
+            /*
+            $('form.ajaxed').on( 'submit', function( event ) {
+                var btn = $('input[type=submit][clicked=true]');
+                btn.addClass('processing');
+                btn.attr('disabled', 'disabled');
+                $('.notification').hide();
+                return true;
+            });
+            */
 
             /**
              * Init interval for slides and add stopping on mouse over situation.
