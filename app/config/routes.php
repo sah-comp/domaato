@@ -104,6 +104,14 @@ Flight::route( '(/[a-z]{2})/newsletter/confirm/@token:[0-9a-zA-Z]+', function( $
 });
 
 /**
+ * Route to Api
+ */
+Flight::route( '(/[a-z]{2})/api/@func:[a-zA-Z]+', function( $func ) {
+	$apiController = new Controller_Api();
+	$apiController->$func();
+});
+
+/**
  * Routes to the scaffold controller.
  *
  * These routes will handle all models in a basic CURD way.
