@@ -75,7 +75,7 @@ class Controller_Report extends Controller_Scaffold
 		$this->layout = 'index';
 		$this->render();
     }
-    
+
     /**
      * Renders a page where user writes a report on a certain business.
      *
@@ -107,7 +107,7 @@ class Controller_Report extends Controller_Scaffold
                 $this->notifyAbout('error');
             }
         }
-		$this->layout = 'add';        
+		$this->layout = 'add';
         $this->render();
     }
 
