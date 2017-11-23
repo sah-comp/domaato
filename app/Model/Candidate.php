@@ -61,14 +61,13 @@ class Model_Candidate extends Model
             ),
         );
     }
-    
+
     /**
-     * Sends an email to that address providing a link that has to be clicked within a time span
-     * to actually set the email address on the mailing list.
+     * Send opt-in email.
      *
      * @return bool Wether a email was sent or not
      */
-    public function broadcast()
+    public function sendOptinMail()
     {
         $mail = new PHPMailer();
         $mail->Charset = 'UTF-8';
@@ -86,16 +85,31 @@ class Model_Candidate extends Model
         $mail->Password = $this->bean->mailserver->pw;
         */
         $result = true;
-        $body_html = '<h1>Test Domaato candidate invite</h1>';
-        $body_html .= '<p><a href="' . Url::host() . Url::build('/newsletter/confirm/' . urlencode( $this->bean->token ) ) . '">' . I18n::__( 'domaato_newsletter_confirm' ) . '</a></p>';
-        $body_text = 'Test Domaato candidate invite';
+
+        ob_start();
+        Flight::render( 'domaato/mail/optin-html', array(
+          'record' => $this->bean,
+          'url' => Url::host() . Url::build( '/newsletter/confirm/' . urlencode( $this->bean->token ))
+        ));
+        $body_html = ob_get_contents();
+        ob_end_clean();
+
+        ob_start();
+        Flight::render( 'domaato/mail/optin-text', array(
+          'record' => $this->bean,
+          'url' => Url::host() . Url::build( '/newsletter/confirm/' . urlencode( $this->bean->token ))
+        ));
+        $body_text = ob_get_contents();
+        ob_end_clean();
+
         $mail->MsgHTML( $body_html );
         $mail->AltBody = $body_text;
         $mail->ClearAddresses();
         $mail->AddAddress( $this->bean->email );
+
         return $result = $mail->Send();
     }
-    
+
     /**
      * Update.
      */
@@ -107,15 +121,14 @@ class Model_Candidate extends Model
         }
         parent::update();
     }
-    
+
     /**
      * Dispense.
      */
     public function dispense()
     {
         $this->addValidator('email', array(
-            new Validator_IsEmail(),
-            new Validator_IsUnique(array('bean' => $this->bean, 'attribute' => 'email'))
+            new Validator_IsEmail()
         ));
     }
 }
