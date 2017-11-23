@@ -26,7 +26,7 @@ class Model_Person extends Model
     {
         $this->setAction('index', array('idle', 'toggleEnabled', 'expunge'));
     }
-    
+
     /**
      * Lookup a searchterm and returns the resultset as an array.
      *
@@ -58,7 +58,7 @@ SQL;
         $result = R::getAll($sql, array(':searchtext' => $term . '%' ) );
         return $result;
     }
-    
+
     /**
      * Toggle the enabled attribute and store the bean.
      *
@@ -69,7 +69,7 @@ SQL;
         $this->bean->enabled = ! $this->bean->enabled;
         R::store($this->bean);
     }
-    
+
     /**
      * Returns an array with person beans near by the given location.
      *
@@ -180,7 +180,7 @@ SQL;
             )
         );
     }
-    
+
     /**
      * Returns an address bean of this person with a given label.
      *
@@ -225,7 +225,7 @@ SQL;
             new Validator_IsUnique(array('bean' => $this->bean, 'attribute' => 'nickname'))
         ));
     }
-    
+
     /**
      * Sets the Wilson score and the positive and negative votes on this person.
      *
@@ -236,10 +236,10 @@ SQL;
      */
     public function setWilsonScore( $vote )
     {
-        $positive = R::getCell( "SELECT count(id) FROM report WHERE person_id = :pid AND vote = 1", 
+        $positive = R::getCell( "SELECT count(id) FROM report WHERE person_id = :pid AND vote = 1",
             array( ':pid' => $this->bean->getId() )
         );
-        $negative = R::getCell( "SELECT count(id) FROM report WHERE person_id = :pid AND vote = 0", 
+        $negative = R::getCell( "SELECT count(id) FROM report WHERE person_id = :pid AND vote = 0",
             array( ':pid' => $this->bean->getId() )
         );
         if ( $vote ) {
@@ -247,14 +247,14 @@ SQL;
         } else {
             $negative++;
         }
-        $score = (($positive + 1.9208) / ($positive + $negative) - 1.96 * sqrt(($positive * $negative) / 
-               ($positive + $negative) + 0.9604) / ($positive + $negative)) / 
+        $score = (($positive + 1.9208) / ($positive + $negative) - 1.96 * sqrt(($positive * $negative) /
+               ($positive + $negative) + 0.9604) / ($positive + $negative)) /
                (1 + 3.8416 / ($positive + $negative));
         $this->bean->positive = $positive;
         $this->bean->negative = $negative;
         return $this->bean->score = $score;
     }
-    
+
     /**
      * Returns an user bean.
      *
@@ -275,14 +275,17 @@ SQL;
      */
     public function update()
     {
-        
+      if ( ! $this->bean->owner_id ) {
+        unset( $this->bean->owner );
+      }
+
         if ($this->bean->email) {
             $this->addValidator('email', array(
                 new Validator_IsEmail(),
                 new Validator_IsUnique(array('bean' => $this->bean, 'attribute' => 'email'))
             ));
         }
-        
+
 		// set the phonetic names
 		$this->bean->phoneticlastname = soundex($this->bean->lastname);
 		$this->bean->phoneticfirstname = soundex($this->bean->firstname);
