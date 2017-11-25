@@ -17,7 +17,7 @@
  * @subpackage Controller
  * @version $Id$
  */
-class Controller_Report extends Controller_Scaffold
+class Controller_Report extends Controller
 {
     /**
      * Container for javascripts to load.
@@ -26,6 +26,20 @@ class Controller_Report extends Controller_Scaffold
      */
     public $javascripts = array(
     );
+
+    /**
+     * Container for beans to browse.
+     *
+     * @var array
+     */
+    public $records = array();
+
+    /**
+     * Holds a instance of a Pagination class.
+     *
+     * @var Pagination
+     */
+    public $pagination;
 
     /**
      * Instatiate a report controller.

@@ -58,13 +58,6 @@ class Controller_Scaffold extends Controller
     public $actions;
 
     /**
-     * Holds the name of the action that was requested.
-     *
-     * @var string
-     */
-    public $action;
-
-    /**
      * Holds the name of the layout to use.
      *
      * @var string
@@ -276,18 +269,6 @@ class Controller_Scaffold extends Controller
             $this->notifyAbout('error');
             return false;
         }
-    }
-
-    /**
-     * Add a notification for currnet user.
-     *
-     * @param string $type of the notification (alert)
-     * @param int (optional) $count number of beans affected
-     */
-    protected function notifyAbout($type, $count = null)
-    {
-        Flight::get('user')->notify(I18n::__("scaffold_{$type}_{$this->action}",
-                                                            null, array($count)), $type);
     }
 
     /**

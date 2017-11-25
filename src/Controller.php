@@ -18,6 +18,13 @@
 class Controller
 {
     /**
+     * Holds the name of the action that was requested.
+     *
+     * @var string
+     */
+    public $action;
+
+    /**
      * Constructs a new Controller.
      */
     public function __construct()
@@ -41,7 +48,19 @@ class Controller
         $plugin = new $plugin_name($this);
         return call_user_func_array(array($plugin, 'execute'), $params);
     }
-    
+
+    /**
+     * Add a notification for currnet user.
+     *
+     * @param string $type of the notification (alert)
+     * @param int (optional) $count number of beans affected
+     */
+    protected function notifyAbout($type, $count = null)
+    {
+        Flight::get('user')->notify(I18n::__("scaffold_{$type}_{$this->action}",
+                                                            null, array($count)), $type);
+    }
+
     /**
      * Go to a internal URL.
      *
