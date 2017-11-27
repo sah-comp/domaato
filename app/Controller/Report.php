@@ -62,32 +62,31 @@ class Controller_Report extends Controller
     public function index()
     {
         Permission::check(Flight::get('user'), 'report', 'index');
-        if ( ! isset( $_SESSION['locus_id'] ) ) {
+        if (! isset($_SESSION['locus_id'])) {
             $_SESSION['locus_id'] = 0;
         }
         $this->record = R::load('locus', $_SESSION['locus_id']);
-		if (Flight::request()->method == 'POST') {
-            $this->record = R::graph( Flight::request()->data->dialog, TRUE );
+        if (Flight::request()->method == 'POST') {
+            $this->record = R::graph(Flight::request()->data->dialog, true);
             $this->record->user = Flight::get('user');
-		    $this->records = R::find( 'person', ' name LIKE :name ', array(
-		        ':name' => $this->record->searchtext . '%'
-		    ));
+            $this->records = R::find('person', ' name LIKE :name ', array(
+                ':name' => $this->record->searchtext . '%'
+            ));
             R::begin();
             try {
                 R::store($this->record);
                 R::commit();
                 //$this->notifyAbout('success');
-            }
-            catch (Exception $e) {
+            } catch (Exception $e) {
                 error_log($e);
                 R::rollback();
                 //$this->notifyAbout('error');
             }
-		} else {
+        } else {
             $this->records = Flight::get('user')->placesNearBy();
-		}
-		$this->layout = 'index';
-		$this->render();
+        }
+        $this->layout = 'index';
+        $this->render();
     }
 
     /**
@@ -95,17 +94,17 @@ class Controller_Report extends Controller
      *
      * @param int $person_id The id of the person bean to attach a report to
      */
-    public function add( $person_id )
+    public function add($person_id)
     {
         $this->action = 'add';
-        $person = R::load( 'person', $person_id );
+        $person = R::load('person', $person_id);
         Permission::check(Flight::get('user'), 'report', 'add');
-        if ( ! isset( $_SESSION['report_id'] ) ) {
+        if (! isset($_SESSION['report_id'])) {
             $_SESSION['report_id'] = 0;
         }
         $this->record = R::load('report', $_SESSION['report_id']);
-		if (Flight::request()->method == 'POST') {
-            $this->record = R::graph( Flight::request()->data->dialog, TRUE );
+        if (Flight::request()->method == 'POST') {
+            $this->record = R::graph(Flight::request()->data->dialog, true);
             $this->record->person = $person;
             $this->record->user = Flight::get('user');
             R::begin();
@@ -114,14 +113,13 @@ class Controller_Report extends Controller
                 R::commit();
                 $this->notifyAbout('success');
                 $this->redirect("/file-a-report");
-            }
-            catch (Exception $e) {
+            } catch (Exception $e) {
                 error_log($e);
                 R::rollback();
                 $this->notifyAbout('error');
             }
         }
-		$this->layout = 'add';
+        $this->layout = 'add';
         $this->render();
     }
 
@@ -130,21 +128,21 @@ class Controller_Report extends Controller
      */
     public function render()
     {
-	    Flight::render('domaato/shared/notification', array(
-	       'record' => $this->record
-	    ), 'notification');
-	    //
+        Flight::render('domaato/shared/notification', array(
+           'record' => $this->record
+        ), 'notification');
+        //
         Flight::render('domaato/shared/navigation/account', array(), 'navigation_account');
-		Flight::render('domaato/shared/navigation/main', array(), 'navigation_main');
+        Flight::render('domaato/shared/navigation/main', array(), 'navigation_main');
         Flight::render('domaato/shared/navigation', array(), 'navigation');
-		Flight::render('domaato/shared/header', array(), 'header');
-		Flight::render('domaato/shared/footer', array(
-		    'pagination' => $this->pagination
-		), 'footer');
-		Flight::render('report/' . $this->layout, array(
+        Flight::render('domaato/shared/header', array(), 'header');
+        Flight::render('domaato/shared/footer', array(
+            'pagination' => $this->pagination
+        ), 'footer');
+        Flight::render('report/' . $this->layout, array(
             'record' => $this->record,
             'records' => $this->records
-		), 'content');
+        ), 'content');
         Flight::render('domaato-html5', array(
             'title' => 'title',
             'language' => Flight::get('language'),

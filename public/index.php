@@ -23,7 +23,7 @@ require __DIR__ . '/../vendor/autoload.php';
  * Configuration.
  */
 require __DIR__ . '/../app/config/config.php';
- 
+
 /**
  * Check if this was called from the command line.
  */

@@ -37,7 +37,7 @@ class Model_Report extends Model
             )
         );
     }
-    
+
     /**
      * Checks if the business this report was filed has an owner and broadcasts it if so.
      *
@@ -45,12 +45,14 @@ class Model_Report extends Model
      */
     public function broadcast()
     {
-        if ( ! $this->bean->person->owner()->getId() ) return false;
-        $mail = new PHPMailer();
+        if (! $this->bean->person->owner()->getId()) {
+            return false;
+        }
+        $mail = new PHPMailer\PHPMailer\PHPMailer();
         $mail->Charset = 'UTF-8';
-        $mail->Subject = utf8_decode( I18n::__( 'domaato_report_subject' ) );
+        $mail->Subject = utf8_decode(I18n::__('domaato_report_subject'));
         $mail->From = 'no-reply@domaato.7ich.de';
-        $mail->FromName = utf8_decode( 'no-reply' );
+        $mail->FromName = utf8_decode('no-reply');
         //$mail->AddReplyTo($this->bean->replytoemail, utf8_decode($this->bean->replytoname));
         /*
         $mail->IsSMTP();
@@ -64,26 +66,26 @@ class Model_Report extends Model
         $result = true;
         $body_html = '<h1>Test Domaato report broadcast</h1>';
         $body_text = 'Test Domaato report broadcast';
-        $mail->MsgHTML( $body_html );
+        $mail->MsgHTML($body_html);
         $mail->AltBody = $body_text;
         $mail->ClearAddresses();
-        $mail->AddAddress( $this->bean->person->owner()->email );
+        $mail->AddAddress($this->bean->person->owner()->email);
         return $result = $mail->Send();
     }
-    
+
     /**
      * Update.
      */
     public function update()
     {
-        if ( ! $this->bean->getId()) {
+        if (! $this->bean->getId()) {
             $this->bean->stamp = time();
-            $this->bean->person->setWilsonScore( $this->bean->vote );
+            $this->bean->person->setWilsonScore($this->bean->vote);
             $this->broadcast();
         }
         parent::update();
     }
-    
+
     /**
      * Dispense.
      */

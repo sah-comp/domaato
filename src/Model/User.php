@@ -67,7 +67,7 @@ class Model_User extends Model
             )
         );
     }
-    
+
     /**
      * Lookup a searchterm and returns the resultset as an array.
      *
@@ -77,7 +77,7 @@ class Model_User extends Model
      */
     public function clairvoyant($term, $query = 'default')
     {
-        switch ( $query ) {
+        switch ($query) {
             default:
                 $sql = <<<SQL
                     SELECT
@@ -94,10 +94,10 @@ class Model_User extends Model
                         user.name
 SQL;
         }
-        $result = R::getAll($sql, array(':searchtext' => $term . '%' ) );
+        $result = R::getAll($sql, array(':searchtext' => $term . '%' ));
         return $result;
     }
-    
+
     /**
      * Returns the current user bean or an empty user bean.
      *
@@ -107,10 +107,12 @@ SQL;
      */
     public function current()
     {
-        if (isset($_SESSION['user']['id'])) return R::load('user', $_SESSION['user']['id']);
+        if (isset($_SESSION['user']['id'])) {
+            return R::load('user', $_SESSION['user']['id']);
+        }
         return R::dispense('user');
     }
-    
+
     /**
      * Logout the user.
      */
@@ -118,7 +120,7 @@ SQL;
     {
         $this->bean->sid = null;
     }
-    
+
     /**
      * Returns the users screenname, depending on what the user has choose in the profile.
      *
@@ -128,7 +130,7 @@ SQL;
     {
         return $this->bean->{$this->bean->screenname};
     }
-    
+
     /**
      * Returns the current backend iso language code.
      *
@@ -138,7 +140,7 @@ SQL;
      */
     public function getLanguage()
     {
-        if ( ! isset($_SESSION['backend']['language'])) {
+        if (! isset($_SESSION['backend']['language'])) {
             $_SESSION['backend']['language'] = Flight::get('language');
         }
         return $_SESSION['backend']['language'];
@@ -151,10 +153,12 @@ SQL;
      */
     public function maxLifetime()
     {
-        if ( ! $this->bean->maxlifetime) return MAX_SESSION_LIFETIME;
+        if (! $this->bean->maxlifetime) {
+            return MAX_SESSION_LIFETIME;
+        }
         return $this->bean->maxlifetime;
     }
-    
+
     /**
      * Returns wether the user is banned or not.
      *
@@ -164,7 +168,7 @@ SQL;
     {
         return $this->bean->isbanned;
     }
-    
+
     /**
      * Returns wether the user is deleted or not.
      *
@@ -174,7 +178,7 @@ SQL;
     {
         return $this->bean->isdeleted;
     }
-    
+
     /**
      * Returns an array with places beans near this users location.
      *
@@ -187,7 +191,7 @@ SQL;
         $radius = $units[$this->bean->systemofunits]['earth_radius'];
         return Model_Person::nearBy($this->bean->lat, $this->bean->lon, $range, $radius);
     }
-    
+
     /**
      * Adds a notification message for this user.
      *
@@ -196,7 +200,9 @@ SQL;
      */
     public function notify($message, $class = 'info')
     {
-        if (empty($message) || ! $this->bean->getId()) return false;
+        if (empty($message) || ! $this->bean->getId()) {
+            return false;
+        }
         $notification = R::dispense('notification');
         $notification->class = $class;
         $notification->content = $message;
@@ -204,16 +210,15 @@ SQL;
             $this->bean->noLoad()->sharedNotification[] = $notification;
             R::store($this->bean);
             return true;
-        }
-        catch (Exception $e) {
+        } catch (Exception $e) {
             return false;
         }
     }
-    
+
     /**
      * Returns an array with unread notification(s) of this user.
      *
-     * If optional parameter is set to false the notifcations are not 
+     * If optional parameter is set to false the notifcations are not
      * deleted after loading.
      *
      * @param bool (optional) $readOnlyOnce defaults to true
@@ -222,7 +227,9 @@ SQL;
     public function getNotifications($readOnlyOnce = true)
     {
         $all = $this->bean->with(' ORDER BY stamp ')->sharedNotification;
-        if ($readOnlyOnce === true) R::trashAll($all);
+        if ($readOnlyOnce === true) {
+            R::trashAll($all);
+        }
         return $all;
     }
 
@@ -230,12 +237,12 @@ SQL;
      * Send an email with a authorization token, allowing to set a new password
      * in a second step.
      *
+     * @todo Implement this feature
+     *
      * @return bool
      */
     public function requestPassword()
     {
-        require VENDORS . '/phpmailer/phpmailer/class.phpmailer.php';
-        require VENDORS . '/phpmailer/phpmailer/class.smtp.php';
         $mail = new PHPMailer();
 
         //$mail->isSMTP();                                      // Set mailer to use SMTP
@@ -261,7 +268,7 @@ SQL;
         $mail->Subject = 'Here is the subject';
         $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
         $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-        
+
         return $mail->send();
     }
 
@@ -276,13 +283,19 @@ SQL;
      */
     public function changePassword($password, $newPassword, $newPasswordRepeat)
     {
-        if ( ! password_verify($password, $this->bean->pw)) return false;
-        if ( $newPassword !== $newPasswordRepeat) return false;
-        if ( empty($newPassword)) return false;
+        if (! password_verify($password, $this->bean->pw)) {
+            return false;
+        }
+        if ($newPassword !== $newPasswordRepeat) {
+            return false;
+        }
+        if (empty($newPassword)) {
+            return false;
+        }
         $this->bean->pw = password_hash($newPassword, PASSWORD_DEFAULT);
         return true;
     }
-    
+
     /**
      * Dispense.
      */
@@ -303,13 +316,13 @@ SQL;
             new Validator_IsUnique(array('bean' => $this->bean, 'attribute' => 'email'))
         ));
     }
-    
+
     /**
      * Update.
      */
     public function update()
     {
-        if ( ! $this->bean->getId()) {
+        if (! $this->bean->getId()) {
             $this->bean->pw = password_hash($this->bean->pw, PASSWORD_DEFAULT);
         }
         parent::update();
