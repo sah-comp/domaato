@@ -53,21 +53,21 @@
 
 	<body>
 
-        <!-- Content (required) -->
+    <!-- Content (required) -->
 		<?php echo $content; ?>
 		<!-- End of required content -->
 
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
-        <script src="/js/jquery.form.min.js"></script>
-        <script src="/js/scrolloverflow.min.js"></script>
-        <script src="/js/jquery.fullpage.min.js"></script>
-        <script src="/js/countUp.min.js"></script>
-        <script src="/js/css3-animate-it.js"></script>
-        <?php if (isset($javascripts) && is_array($javascripts)): ?>
-            <?php foreach ($javascripts as $_n=>$_js): ?>
-            <script src="<?php echo $_js; ?>.js"></script>
-            <?php endforeach; ?>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
+    <script src="/js/jquery.form.min.js"></script>
+    <script src="/js/scrolloverflow.min.js"></script>
+    <script src="/js/jquery.fullpage.min.js"></script>
+    <script src="/js/countUp.min.js"></script>
+    <script src="/js/css3-animate-it.js"></script>
+    <?php if (isset($javascripts) && is_array($javascripts)): ?>
+      <?php foreach ($javascripts as $_n=>$_js): ?>
+      <script src="<?php echo $_js; ?>.js"></script>
+      <?php endforeach; ?>
 		<?php endif ?>
 		<script src="/js/domaato-website.js"></script>
 	</body>

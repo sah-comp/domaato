@@ -1,5 +1,13 @@
-<?php echo I18n::__( 'domaato_mail_optin_headline' ) ?>
+Willkommen zum Domaato Newsletter,
 
-<?php echo I18n::__( 'domaato_mail_optin_intro', null, array( $url )) ?>
+bitte rufen Sie den Link <?php echo $url ?> innerhalb
+von 48 Stunden in Ihrem Browser auf. Dadurch wird Ihre
+E-Mailadresse in den Newsletter-Verteiler aufgenommen.
 
-<?php echo I18n::__( 'domaato_mail_optin_outro') ?>
+Vielen Dank für Ihr Interesse,
+
+Ihr Domaato-Team
+
+
+Domaato
+Das Kundenservice-Portal
