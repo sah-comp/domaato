@@ -51,8 +51,8 @@ class Model_Report extends Model
         $mail = new PHPMailer\PHPMailer\PHPMailer();
         $mail->Charset = 'UTF-8';
         $mail->Subject = utf8_decode(I18n::__('domaato_report_subject'));
-        $mail->From = 'no-reply@domaato.7ich.de';
-        $mail->FromName = utf8_decode('no-reply');
+        $mail->From = Flight::setting()->nlemailaddress;
+        $mail->FromName = utf8_decode(Flight::setting()->nlemailname);
         //$mail->AddReplyTo($this->bean->replytoemail, utf8_decode($this->bean->replytoname));
         /*
         $mail->IsSMTP();
