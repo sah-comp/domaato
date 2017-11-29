@@ -39,6 +39,7 @@ $domains = R::findAll('domain');
         'tab_id' => 'setting-tabs',
         'tabs' => array(
             'setting-folder' => I18n::__('setting_folder_tab'),
+            'setting-newsletter' => I18n::__('setting_newsletter_tab'),
             'setting-currency' => I18n::__('setting_currency_tab')
         ),
         'default_tab' => 'setting-folder'
@@ -59,7 +60,7 @@ $domains = R::findAll('domain');
                 <?php foreach ($domains as $_id => $_domain): ?>
                 <option
                     value="<?php echo $_domain->getId() ?>"
-                    <?php echo ($record->blessedfolder == $_domain->getId()) ? 'selected="selected"' : '' ?>><?php echo htmlspecialchars($_domain->i18n(Flight::get('language'))->name) ?></option>   
+                    <?php echo ($record->blessedfolder == $_domain->getId()) ? 'selected="selected"' : '' ?>><?php echo htmlspecialchars($_domain->i18n(Flight::get('language'))->name) ?></option>
                 <?php endforeach ?>
             </select>
         </div>
@@ -74,7 +75,7 @@ $domains = R::findAll('domain');
                 <?php foreach ($domains as $_id => $_domain): ?>
                 <option
                     value="<?php echo $_domain->getId() ?>"
-                    <?php echo ($record->sitesfolder == $_domain->getId()) ? 'selected="selected"' : '' ?>><?php echo htmlspecialchars($_domain->i18n(Flight::get('language'))->name) ?></option>   
+                    <?php echo ($record->sitesfolder == $_domain->getId()) ? 'selected="selected"' : '' ?>><?php echo htmlspecialchars($_domain->i18n(Flight::get('language'))->name) ?></option>
                 <?php endforeach ?>
             </select>
         </div>
@@ -90,10 +91,50 @@ $domains = R::findAll('domain');
                 <?php foreach ($domains as $_id => $_domain): ?>
                 <option
                     value="<?php echo $_domain->getId() ?>"
-                    <?php echo ($record->homepage == $_domain->getId()) ? 'selected="selected"' : '' ?>><?php echo htmlspecialchars($_domain->i18n(Flight::get('language'))->name) ?></option>   
+                    <?php echo ($record->homepage == $_domain->getId()) ? 'selected="selected"' : '' ?>><?php echo htmlspecialchars($_domain->i18n(Flight::get('language'))->name) ?></option>
                 <?php endforeach ?>
             </select>
             <p class="info"><?php echo I18n::__('setting_homepage_info') ?></p>
+        </div>
+    </fieldset>
+    <fieldset
+        id="setting-newsletter"
+        class="tab"
+        style="display: none;">
+        <legend class="verbose"><?php echo I18n::__('setting_legend_newsletter') ?></legend>
+        <div class="row <?php echo ($record->hasError('nlemailaddress')) ? 'error' : ''; ?>">
+            <label
+                for="setting-nlemailaddress">
+                <?php echo I18n::__('setting_label_nlemailaddress') ?>
+            </label>
+            <input
+                type="email"
+                id="setting-nlemailaddress"
+                name="dialog[nlemailaddress]"
+                value="<?php echo htmlspecialchars($record->nlemailaddress) ?>" />
+        </div>
+        <div class="row <?php echo ($record->hasError('nlemailname')) ? 'error' : ''; ?>">
+            <label
+                for="setting-nlemailname">
+                <?php echo I18n::__('setting_label_nlemailname') ?>
+            </label>
+            <input
+                type="text"
+                id="setting-nlemailname"
+                name="dialog[nlemailname]"
+                value="<?php echo htmlspecialchars($record->nlemailname) ?>" />
+        </div>
+        <div class="row <?php echo ($record->hasError('timeframe')) ? 'error' : ''; ?>">
+            <label
+                for="setting-timeframe">
+                <?php echo I18n::__('setting_label_timeframe') ?>
+            </label>
+            <input
+                type="text"
+                id="setting-timeframe"
+                name="dialog[timeframe]"
+                value="<?php echo htmlspecialchars($record->timeframe) ?>" />
+            <p class="info"><?php echo I18n::__('setting_info_timeframe') ?></p>
         </div>
     </fieldset>
     <fieldset
@@ -112,7 +153,7 @@ $domains = R::findAll('domain');
                 <?php foreach (R::findAll('currency') as $_id => $_currency): ?>
                 <option
                     value="<?php echo $_currency->getId() ?>"
-                    <?php echo ($record->basecurrency == $_currency->getId()) ? 'selected="selected"' : '' ?>><?php echo htmlspecialchars($_currency->name) ?></option>   
+                    <?php echo ($record->basecurrency == $_currency->getId()) ? 'selected="selected"' : '' ?>><?php echo htmlspecialchars($_currency->name) ?></option>
                 <?php endforeach ?>
             </select>
         </div>
