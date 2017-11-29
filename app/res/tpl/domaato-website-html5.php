@@ -20,7 +20,6 @@
 		<meta name="viewport" content="width=device-width">
 
 		<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-		<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
         <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
         <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
         <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
