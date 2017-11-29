@@ -18,29 +18,25 @@
 class Controller_Newsletter extends Controller
 {
     /**
-     * Defines the time period within a opt-in is valid in hours.
-     */
-    const TOKEN_AGE = 48;
-
-    /**
      * Tries to confirm a candidate email address.
      *
      * @todo Implement a cron job that deletes candidate which are older than max token Age
      *
+     * @uses Flight::setting()
      * @param string $token
+     * @return bool true when email was added, false when email was not added
      */
     public function confirm($token)
     {
         $candidate = R::findOne('candidate', " token = ? LIMIT 1 ", array( $token ));
         if (! $candidate) {
-            error_log('Newsletter opt-in token not found');
+            $this->render('error');
             return false;
         }
-        if ($age = ((time() - $candidate->stamp) / 3600) > self::TOKEN_AGE) {
-            error_log('Newsletter opt-in token is no longer valid. Age: ' . $age);
+        if ($age = ((time() - $candidate->stamp) / 3600) > Flight::setting()->timeframe) {
+            $this->render('error');
             return false;
         }
-        error_log($candidate->email . ' is confirmed and...');
         R::begin();
         try {
             $email = R::dispense('email');
@@ -48,12 +44,12 @@ class Controller_Newsletter extends Controller
             R::store($email);
             R::trash($candidate);
             R::commit();
-            error_log('... was added to email');
+            $this->render('success');
             return true;
         } catch (Exception $e) {
             error_log($e);
             R::rollback();
-            error_log('... failed to be added to email');
+            $this->render('error');
             return false;
         }
     }
@@ -107,5 +103,19 @@ class Controller_Newsletter extends Controller
     public function emailAlreadyCandidate()
     {
         error_log('Email already a candidate');
+    }
+
+    /**
+     * Renders the a newsletter result page.
+     *
+     * @param string $message
+     */
+    public function render($message = 'idle')
+    {
+        Flight::render('domaato/newsletter/confirm', array(), 'content');
+        Flight::render('domaato-simple-html5', array(
+            'title' => I18n::__('domaato_newsletter_title'),
+            'language' => Flight::get('language')
+        ));
     }
 }

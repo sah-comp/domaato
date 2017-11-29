@@ -115,19 +115,19 @@
 	<table cellpadding="0" cellspacing="0" border="0" id="backgroundTable">
 	<tr>
 		<td align="center" valign="top">
-      <p style="padding: 20px;">
-        <img class="image_fix" src="http://domaato.dev/img/domaato-logo-white.png" alt="Domaato Logo" title="Domaato - Das Kunden-Serviceportal" width="320" height="72" />
-      </p>
-		<table cellpadding="0" cellspacing="0" border="0" align="center">
-			<tr>
-				<td width="640" valign="top">
-          <p class="headline">Willkommen zum Domaato-Newsletter,</p>
-          <p>klicken Sie bitte innerhalb der n&auml;chsten 48 Stunden <a href="<?php echo $url ?>" target="_blank">zur Registrierung Ihrer E-Mailadresse</a>, um zuk&uuml;nftig den Domaato-Newsletter mit interessanten Informationen und Aktionen zu erhalten.</p>
-          <p>Wenn Sie Ihre E-Mailadresse nicht eingetragen haben oder nur irrt&uuml;mlich, dann tun Sie nichts weiter. Ihre Adresse verf&auml;llt innerhalb von 48 Stunden und wird dann gel&ouml;scht.</p>
-          <p>Domaato ist das Kunden-Serviceportal.</p>
-        </td>
+            <p style="padding: 20px;">
+                <img class="image_fix" src="<?php echo Url::host() ?>/img/domaato-logo-white.png" alt="Domaato Logo" title="Domaato - Das Kunden-Serviceportal" width="320" height="72" />
+            </p>
+		    <table cellpadding="0" cellspacing="0" border="0" align="center">
+			    <tr>
+    			<td width="640" valign="top">
+                    <p class="headline">Willkommen zum Domaato-Newsletter,</p>
+                    <p>klicken Sie bitte innerhalb der n&auml;chsten 48 Stunden <a href="<?php echo $url ?>" target="_blank">zur Registrierung Ihrer E-Mailadresse</a>, um zuk&uuml;nftig den Domaato-Newsletter mit interessanten Informationen und Aktionen zu erhalten.</p>
+                    <p>Wenn Sie Ihre E-Mailadresse nicht eingetragen haben oder nur irrt&uuml;mlich, dann tun Sie nichts weiter. Ihre Adresse verf&auml;llt innerhalb von 48 Stunden und wird dann gel&ouml;scht.</p>
+                    <p>Domaato ist das Kunden-Serviceportal.</p>
+                </td>
 			</tr>
-		</table>
+		    </table>
 		</td>
 	</tr>
 	</table>
