@@ -135,9 +135,13 @@ $(document).ready(function() {
 
         /**
          * In a certain interval update the counters in section facts.
+         *
+         * To get the latest status information from the domaato database we
+         * call the API with our API key and use the status information to
+         * retrieve JSON data.
          */
         var countCountInterval = setInterval(function() {
-          $.get('http://domaato.dev/api/status', function(data) {
+          $.get('http://domaato.dev/api/52fa2902eaad05b96cc35b750c2d635d8c9d4bc7/status', function(data) {
             countReport.update(data.count.report);
             countCompany.update(data.count.customer);
             countUser.update(data.count.user);

@@ -29,7 +29,7 @@
         		width="72"
         		height="72"
         		alt="<?php echo htmlspecialchars($record->getName()) ?>" />
-        </div>     
+        </div>
         <!-- account form -->
         <fieldset>
             <legend><?php echo I18n::__('account_legend') ?></legend>
@@ -107,6 +107,20 @@
                     </option>
                     <?php endforeach ?>
                 </select>
+            </div>
+            <div
+                class="row <?php echo $record->hasError('apikey') ? 'error' : '' ?>">
+                <label
+                    for="user-apikey">
+                    <?php echo I18n::__('user_label_apikey') ?>
+                </label>
+                <input
+                    type="text"
+                    id="user-apikey"
+                    name="dialog[apikey]"
+                    value="<?php echo htmlspecialchars($record->apikey) ?>"
+                    readonly="readonly" />
+                <p class="info"><?php echo I18n::__('user_info_apikey') ?></p>
             </div>
             <div class="row <?php echo ($record->hasError('testimonial')) ? 'error' : ''; ?>">
                 <label
