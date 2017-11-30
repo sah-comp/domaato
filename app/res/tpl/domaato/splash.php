@@ -15,8 +15,14 @@ $_users = R::find('user', " testimonial > '' LIMIT 3 ");
 
 /**
  * Load the initial count information.
+ *
+ * You have to use your API key to construct a api controller which you than can use
+ * to question the status or everything else. The API may answer with JSON encoded
+ * data or PHP arrays, depending on the parameter given.
  */
-$_counter = Controller_Api::status(false);
+$api_controller = new Controller_Api('52fa2902eaad05b96cc35b750c2d635d8c9d4bc7');
+$_counter = $api_controller->status(false);// we want a PHP array
+
 ?>
 <header>
     <h1 class="brand ir"><a href="<?php echo Url::build('/') ?>" title="<?php echo I18n::__('app_name_domaato') . ' ' . I18n::__('app_claim_domaato') ?>">Domaato</a></h1>
