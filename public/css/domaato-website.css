@@ -3,11 +3,11 @@
 	HTML5 Reset :: style.css
 	----------------------------------------------------------
 	We have learned much from/been inspired by/taken code where offered from:
-	
+
 	Eric Meyer					:: http://ericmeyer.com
 	HTML5 Doctor				:: http://html5doctor.com
 	and the HTML5 Boilerplate	:: http://html5boilerplate.com
-	
+
 -------------------------------------------------------------------------------*/
 
 /* Let's default this puppy out
@@ -21,7 +21,7 @@ html, body, body div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquot
 	font-size: 100%;
 	vertical-align: baseline;
 	background: transparent;
-}									
+}
 
 article, aside, figure, footer, header, hgroup, nav, section {display: block;}
 
@@ -35,15 +35,15 @@ embed {max-width: 100%; height: auto;}
 /* force a vertical scrollbar to prevent a jumpy page */
 html {overflow-y: scroll;}
 
-/* we use a lot of ULs that aren't bulleted. 
+/* we use a lot of ULs that aren't bulleted.
 	don't forget to restore the bullets within content. */
 ul {list-style: none;}
 
 blockquote, q {quotes: none;}
 
-blockquote:before, 
-blockquote:after, 
-q:before, 
+blockquote:before,
+blockquote:after,
+q:before,
 q:after {content: ''; content: none;}
 
 a {margin: 0; padding: 0; font-size: 100%; vertical-align: baseline; background: transparent;}
@@ -77,7 +77,7 @@ select, input, textarea {font: 99% sans-serif;}
 textarea { overflow: auto; } /* www.sitepoint.com/blogs/2010/08/20/ie-remove-textarea-scrollbars/ */
 
 table {font-size: inherit; font: 100%;}
- 
+
 /* Accessible focus treatment
 	people.opera.com/patrickl/experiments/keyboard/test */
 a:hover, a:active {outline: none;}
@@ -86,7 +86,7 @@ small {font-size: 85%;}
 
 strong, th {font-weight: bold;}
 
-td, td img {vertical-align: top;} 
+td, td img {vertical-align: top;}
 
 /* Make sure sup and sub don't screw with your line-heights
 	gist.github.com/413930 */
@@ -99,9 +99,9 @@ pre, code, kbd, samp {font-family: monospace, sans-serif;}
 
 /* hand cursor on clickable elements */
 .clickable,
-label, 
-input[type=button], 
-input[type=submit], 
+label,
+input[type=button],
+input[type=submit],
 button {cursor: pointer;}
 
 /* Webkit browsers add a 2px margin outside the chrome of form elements */
@@ -129,7 +129,7 @@ textarea {
 
 /* make buttons play nice in IE */
 button {width: auto; overflow: visible;}
- 
+
 /* scale images in IE7 more attractively */
 .ie7 img {-ms-interpolation-mode: bicubic;}
 
@@ -481,6 +481,21 @@ section#contact p,
     width: 100%;
 }
 
+#newsletter-confirm {
+	height: 100vh;
+	background-color: rgb(120, 190, 32);
+	background-repeat: no-repeat;
+	background-position: center 20px;
+	background-image: url(/img/domaato-logo-white.png);
+	background-size: 320px 72px;
+	padding-top: 120px;
+	text-align: center;
+}
+
+#newsletter-confirm p {
+	color: white;
+}
+
 .newsletter-form {
     position: absolute;
     bottom: 0;
@@ -542,7 +557,7 @@ section#contact p,
 /* Replace the text with a logo image */
 body > header h1.brand,
 #splash h1.brand {
-    background: url(/img/domaato-logo-white.png);
+    background-image: url(/img/domaato-logo-white.png);
     background-size: 320px 72px;
     background-position: center;
     background-repeat: no-repeat;
@@ -591,7 +606,7 @@ body > header h1.brand.active {
 	width: 30rem;
 	margin: 2rem auto;
 	padding: 2rem;
-	position: relative;	
+	position: relative;
 }
 
 .testimonial-wrap blockquote {
@@ -651,7 +666,7 @@ body > header h1.brand.active {
 	position: absolute;
 	right: -40px;
 	bottom: -30px;
-	/*box-shadow: 
+	/*box-shadow:
 		inset 1px 1px 4px rgba(0, 0, 0, 0.5),
 		0 2px 3px rgba(0, 0, 0, 0.6);*/
 }
@@ -696,7 +711,7 @@ div.counter p.counter {
     overflow-y: auto;
     overflow-x: hidden;
     padding-right: 20px;
-}       
+}
 .ui-autocomplete-loading { background: white url('/img/loader.gif') right center no-repeat; }
 
 /* workarounds */
@@ -738,7 +753,7 @@ div.counter p.counter {
 
 
 
-/* using local fonts? make sure to read up on Paul Irish's 
+/* using local fonts? make sure to read up on Paul Irish's
 	Bulletproof @font-face syntax: http://mky.be/font-face/bulletproof/ */
 
 /* we like off-black for text */
@@ -749,10 +764,10 @@ a:hover {color: #666;} /*#69f*/
 
 /* Custom text-selection colors (remove any text shadows: twitter.com/miketaylr/status/12228805301) */
 ::-moz-selection{background: #fcd700; color: #fff; text-shadow: none;}
-::selection {background: #fcd700; color: #fff; text-shadow: none;} 
+::selection {background: #fcd700; color: #fff; text-shadow: none;}
 
 /*	j.mp/webkit-tap-highlight-color */
-a:link {-webkit-tap-highlight-color: #fcd700;} 
+a:link {-webkit-tap-highlight-color: #fcd700;}
 
 ins {background-color: #fcd700; color: #000; text-decoration: none;}
 mark {background-color: #fcd700; color: #000; font-style: italic; font-weight: bold;}
@@ -777,7 +792,7 @@ mark {background-color: #fcd700; color: #000; font-style: italic; font-weight: b
 	height: 48px;
 	border-radius: 24px;
 	-webkit-border-radius: 24px;
-	-moz-border-radius: 24px;    
+	-moz-border-radius: 24px;
 }
 
 .circular .circular-32 {
@@ -785,7 +800,7 @@ mark {background-color: #fcd700; color: #000; font-style: italic; font-weight: b
 	height: 32px;
 	border-radius: 16px;
 	-webkit-border-radius: 16px;
-	-moz-border-radius: 16px;    
+	-moz-border-radius: 16px;
 }
 
 .circular .circular-16 {
@@ -793,7 +808,7 @@ mark {background-color: #fcd700; color: #000; font-style: italic; font-weight: b
 	height: 16px;
 	border-radius: 8px;
 	-webkit-border-radius: 8px;
-	-moz-border-radius: 8px;    
+	-moz-border-radius: 8px;
 }
 
 .no-shadow {
@@ -864,15 +879,14 @@ mark {background-color: #fcd700; color: #000; font-style: italic; font-weight: b
 
 /* Consider this: www.cloudfour.com/css-media-query-for-mobile-is-fools-gold/ */
 @media screen and (max-device-width: 480px) {
-	
-		
+
+
 }
 
 @media all and (orientation: portrait) {
-	
+
 }
 
 @media all and (orientation: landscape) {
-	
-}
 
+}

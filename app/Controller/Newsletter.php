@@ -18,9 +18,9 @@
 class Controller_Newsletter extends Controller
 {
     /**
-     * Tries to confirm a candidate email address.
+     * Tries to confirm a candidate email address and renders a page.
      *
-     * @todo Implement a cron job that deletes candidate which are older than max token Age
+     * @todo Implement a cron job that deletes candidate beans which are older than max token Age
      *
      * @uses Flight::setting()
      * @param string $token
@@ -112,7 +112,7 @@ class Controller_Newsletter extends Controller
      */
     public function render($message = 'idle')
     {
-        Flight::render('domaato/newsletter/confirm', array(), 'content');
+        Flight::render('domaato/newsletter/confirm/' . $message, array(), 'content');
         Flight::render('domaato-simple-html5', array(
             'title' => I18n::__('domaato_newsletter_title'),
             'language' => Flight::get('language')
