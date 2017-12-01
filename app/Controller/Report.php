@@ -61,7 +61,7 @@ class Controller_Report extends Controller
      */
     public function index()
     {
-        Permission::check(Flight::get('user'), 'report', 'index');
+        Permission::check(Flight::get('user'), 'file-a-report', 'index');
         if (! isset($_SESSION['locus_id'])) {
             $_SESSION['locus_id'] = 0;
         }
@@ -96,9 +96,9 @@ class Controller_Report extends Controller
      */
     public function add($person_id)
     {
+        Permission::check(Flight::get('user'), 'file-a-report', 'add');
         $this->action = 'add';
         $person = R::load('person', $person_id);
-        Permission::check(Flight::get('user'), 'report', 'add');
         if (! isset($_SESSION['report_id'])) {
             $_SESSION['report_id'] = 0;
         }
