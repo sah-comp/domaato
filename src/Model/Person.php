@@ -36,7 +36,7 @@ class Model_Person extends Model
      */
     public function clairvoyant($term, $query = 'default')
     {
-        switch ( $query ) {
+        switch ($query) {
             default:
                 $sql = <<<SQL
                     SELECT
@@ -55,7 +55,7 @@ class Model_Person extends Model
                         person.name
 SQL;
         }
-        $result = R::getAll($sql, array(':searchtext' => $term . '%' ) );
+        $result = R::getAll($sql, array(':searchtext' => $term . '%' ));
         return $result;
     }
 
@@ -95,12 +95,12 @@ SQL;
             ORDER BY
                 distance
 SQL;
-        $rows = R::getAssoc( $sql, array(
+        $rows = R::getAssoc($sql, array(
             ':radius' => $radius,
             ':lat' => $lat,
             ':lon' => $lon
-        ) );
-        return R::batch( 'person', array_keys($rows) );
+        ));
+        return R::batch('person', array_keys($rows));
     }
 
     /**
@@ -193,6 +193,16 @@ SQL;
     }
 
     /**
+     * Returns the persons name.
+     *
+     * @return string $name
+     */
+    public function getName()
+    {
+        return $this->bean->name;
+    }
+
+    /**
      * Returns keywords from this bean for tagging.
      *
      * @var array
@@ -234,15 +244,17 @@ SQL;
      * @param bool $vote True (1) will count as positive, false (0) will count as negative vote
      * @return float $score The Wilson score for this person
      */
-    public function setWilsonScore( $vote )
+    public function setWilsonScore($vote)
     {
-        $positive = R::getCell( "SELECT count(id) FROM report WHERE person_id = :pid AND vote = 1",
+        $positive = R::getCell(
+            "SELECT count(id) FROM report WHERE person_id = :pid AND vote = 1",
             array( ':pid' => $this->bean->getId() )
         );
-        $negative = R::getCell( "SELECT count(id) FROM report WHERE person_id = :pid AND vote = 0",
+        $negative = R::getCell(
+            "SELECT count(id) FROM report WHERE person_id = :pid AND vote = 0",
             array( ':pid' => $this->bean->getId() )
         );
-        if ( $vote ) {
+        if ($vote) {
             $positive++;
         } else {
             $negative++;
@@ -262,8 +274,8 @@ SQL;
      */
     public function owner()
     {
-        if ( ! $owner = $this->bean->fetchAs( 'user' )->owner ) {
-            $owner = R::dispense( 'user' );
+        if (! $owner = $this->bean->fetchAs('user')->owner) {
+            $owner = R::dispense('user');
         }
         return $owner;
     }
@@ -275,9 +287,9 @@ SQL;
      */
     public function update()
     {
-      if ( ! $this->bean->owner_id ) {
-        unset( $this->bean->owner );
-      }
+        if (! $this->bean->owner_id) {
+            unset($this->bean->owner);
+        }
 
         if ($this->bean->email) {
             $this->addValidator('email', array(
@@ -286,18 +298,18 @@ SQL;
             ));
         }
 
-		// set the phonetic names
-		$this->bean->phoneticlastname = soundex($this->bean->lastname);
-		$this->bean->phoneticfirstname = soundex($this->bean->firstname);
-		// set the name according to sort rule
-		$this->bean->name = implode(' ', array($this->bean->firstname, $this->bean->lastname));
-		// company name
-		if (trim($this->bean->name) == '' && $this->bean->organization || $this->bean->company) {
-			$this->bean->name = $this->bean->organization;
-		}
-		if (trim($this->bean->name) == '') {
-			$this->bean->name = $this->bean->nickname;
-		}
-		parent::update();
+        // set the phonetic names
+        $this->bean->phoneticlastname = soundex($this->bean->lastname);
+        $this->bean->phoneticfirstname = soundex($this->bean->firstname);
+        // set the name according to sort rule
+        $this->bean->name = implode(' ', array($this->bean->firstname, $this->bean->lastname));
+        // company name
+        if (trim($this->bean->name) == '' && $this->bean->organization || $this->bean->company) {
+            $this->bean->name = $this->bean->organization;
+        }
+        if (trim($this->bean->name) == '') {
+            $this->bean->name = $this->bean->nickname;
+        }
+        parent::update();
     }
 }

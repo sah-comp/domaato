@@ -285,7 +285,9 @@
             <div
                 id="person-<?php echo $record->getId() ?>-address-container"
                 class="container attachable detachable sortable">
-                <?php if (count($record->ownAddress) == 0) $record->ownAddress[] = R::dispense('address') ?>
+                <?php if (count($record->ownAddress) == 0) {
+        $record->ownAddress[] = R::dispense('address');
+    } ?>
                 <?php $index = 0 ?>
                 <?php foreach ($record->ownAddress as $_address_id => $_address): ?>
                 <?php $index++ ?>
@@ -299,7 +301,7 @@
     </fieldset>
     <fieldset
         id="person-bizkind"
-        class="tab"      
+        class="tab"
         style="display: none;">
         <legend class="verbose"><?php echo I18n::__('user_legend_bizkind') ?></legend>
         <?php foreach (R::findAll('bizkind') as $_id => $_bizkind): ?>
@@ -330,15 +332,15 @@
         style="display: none;">
         <legend class="verbose"><?php echo I18n::__('person_legend_owner_tab') ?></legend>
         <div>
-            <input 
-                type="hidden" 
-                id="person-owner-type" 
-                name="dialog[owner][type]" 
-                value="<?php echo $record->owner()->getMeta( 'type' ) ?>">
-            <input 
-                type="hidden" 
-                id="person-owner-id" 
-                name="dialog[owner][id]" 
+            <input
+                type="hidden"
+                id="person-owner-type"
+                name="dialog[owner][type]"
+                value="<?php echo $record->owner()->getMeta('type') ?>">
+            <input
+                type="hidden"
+                id="person-owner-id"
+                name="dialog[owner][id]"
                 value="<?php echo $record->owner()->getId() ?>">
         </div>
         <div
@@ -356,6 +358,35 @@
                 data-spread='<?php echo json_encode(array('person-owner-name' => 'value', 'person-owner-id' => 'id')) ?>'
                 value="<?php echo htmlspecialchars($record->owner()->name) ?>" />
                 <p class="info"><?php echo I18n::__('person_info_owner') ?></p>
+        </div>
+        <div class="row <?php echo ($record->hasError('testimonial')) ? 'error' : ''; ?>">
+            <label
+                for="person-testimonial">
+                <?php echo I18n::__('person_label_testimonial') ?>
+            </label>
+            <textarea
+                id="person-testimonial"
+                name="dialog[testimonial]"
+                rows="5"
+                cols="60"><?php echo htmlspecialchars($record->testimonial) ?></textarea>
+            <p class="info"><?php echo I18n::__('person_info_testimonial') ?></p>
+        </div>
+        <div class="row <?php echo ($record->hasError('public')) ? 'error' : ''; ?>">
+            <input
+                type="hidden"
+                name="dialog[public]"
+                value="0" />
+            <input
+                id="person-public"
+                type="checkbox"
+                name="dialog[public]"
+                <?php echo ($record->public) ? 'checked="checked"' : '' ?>
+                value="1" />
+            <label
+                for="person-public"
+                class="cb">
+                <?php echo I18n::__('person_label_public') ?>
+            </label>
         </div>
     </fieldset>
 </div>
