@@ -134,6 +134,23 @@
                     cols="60"><?php echo htmlspecialchars($record->testimonial) ?></textarea>
                 <p class="info"><?php echo I18n::__('user_info_testimonial') ?></p>
             </div>
+            <div class="row <?php echo ($record->hasError('public')) ? 'error' : ''; ?>">
+                <input
+                    type="hidden"
+                    name="dialog[public]"
+                    value="0" />
+                <input
+                    id="user-public"
+                    type="checkbox"
+                    name="dialog[public]"
+                    <?php echo ($record->public) ? 'checked="checked"' : '' ?>
+                    value="1" />
+                <label
+                    for="user-public"
+                    class="cb">
+                    <?php echo I18n::__('user_label_public') ?>
+                </label>
+            </div>
         </fieldset>
         <!-- End of account form -->
         <div class="buttons">
