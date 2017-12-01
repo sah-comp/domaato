@@ -9,9 +9,14 @@
  */
 
 /**
- * Find three users who have testimonials.
+ * Find at most three users who have testimonials and are willing to be published.
  */
-$_users = R::find('user', " testimonial > '' LIMIT 3 ");
+$_users = R::find('user', "testimonial <> '' AND public = 1 ORDER BY RAND() LIMIT 3");
+
+/**
+ * Find at most three customers (person beans) who have testimonials and are willing to be published.
+ */
+$_customers = R::find('person', "testimonial <> '' AND public = 1 ORDER BY RAND() LIMIT 3");
 
 /**
  * Load the initial count information.
@@ -109,17 +114,23 @@ $_counter = $api_controller->status(false);// we want a PHP array
 
     <section id="customers" data-tooltip="<?php echo I18n::__('domaato_section_customers') ?>">
 
-        <div class="slide">
-            <h2>Apple</h2>
+<?php foreach ($_customers as $_id => $_person): ?>
+
+    <div class="slide">
+
+        <div class="testimonial-wrap testimonial">
+            <blockquote cite="">
+                <p><?php echo htmlspecialchars($_person->testimonial) ?></p>
+            </blockquote>
+            <div class="testimonial-attribution">
+                <p class="testimonial-author"><a href="<?php echo Url::build('/buisness/' . $_person->getId()) ?>"><?php echo htmlspecialchars($_person->getName()) ?></a></p>
+                <div class="testimonial-thumb" style="background-image: url(<?php echo Gravatar::src($_person->email, 120) ?>)"></div>
+            </div>
         </div>
 
-        <div class="slide">
-            <h2>Edelhelfer</h2>
-        </div>
+    </div>
 
-        <div class="slide">
-            <h2>Fielmann</h2>
-        </div>
+<?php endforeach ?>
 
     </section>
 
