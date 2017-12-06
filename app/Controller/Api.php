@@ -11,6 +11,8 @@
 /**
  * Api controller.
  *
+ * @todo Implement a callback system to make sure only authorized api keys will work
+ *
  * @package Domaato
  * @subpackage Controller
  * @version $Id$
@@ -53,7 +55,7 @@ class Controller_Api extends Controller
     /**
      * Domaato status.
      *
-     * @param bool $json defines wether to return result as JSON or array, defaults to TRUE
+     * @param bool $json defines wether to return result as JSON or array, defaults to true
      * @return array with information about domaatos status
      */
     public function status($json = true)

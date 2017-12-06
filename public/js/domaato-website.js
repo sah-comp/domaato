@@ -1,25 +1,48 @@
 /**
- * Set up timings and semaphores.
+ * Amount of milliseconds a slide of Fullpage.js is shown.
  */
 var sliderInterval = 4000;
-var pauseSlider = 0;
+
+/**
+ * Holds the interval for pausing a slider when mouse is hovering over the slide.
+ */
+var pauseSlider = null;
+
+/**
+ * Holds the status if counters have already been counted up.
+ */
 var countCounted = false;
+
+/**
+ * Number of seconds to count up the counters.
+ */
+var countUpInterval = 1;
+
+/**
+ * Holds the interval for refreshing the counters.
+ */
+ var countCountInterval = null;
+
+/**
+ * Amount of milliseconds to refresh the counters with values from Domaato status.
+ */
+var countInterval = 1000;
 
 /**
  * Options countUp
  */
 var countOptions = {
-  useEasing: true,
-  useGrouping: true,
-  separator: '.',
-  decimal: ','
+    useEasing: true,
+    useGrouping: true,
+    separator: '.',
+    decimal: ','
 };
 
 /* Ready, Set, Go. */
 $(document).ready(function() {
 
   /**
-   * Make it a one page website.
+   * Using Fullpage.js to make this a one-page website.
    */
   $('#splash').fullpage({
     sectionSelector: 'section',
@@ -58,17 +81,20 @@ $(document).ready(function() {
         event.preventDefault();
         var form = $(this);
         var container = form.data("container");
+        var empty_before_append = form.data("emptybeforeappend");
         var btn = $('input[type=submit]', form);
-        //btn.attr( 'clicked', true );
         btn.addClass('processing');
         btn.attr('disabled', true);
         form.ajaxSubmit({
           success: function(response) {
             btn.removeClass('processing');
-            //btn.removeAttr( 'clicked' );
             btn.removeAttr('disabled');
-            //alert( 'You have opted in!' );
-            /*$("#"+container).empty().append(response);*/
+            //alert( 'Success: Made roundtrip to server and back.' );
+            if (empty_before_append == 'yes') {
+                $("#"+container).empty().append(response);
+            } else {
+                $("#"+container).append(response);
+            }
           }
         });
         return false;
@@ -113,7 +139,7 @@ $(document).ready(function() {
     },
     afterLoad: function(anchorLink, index) {
       /**
-       * When the first section is active no logo is show in the header.
+       * When the first section is active no logo is shown in the header.
        */
       if (index == 1) {
         $('body > header h1.brand').removeClass('active');
@@ -122,15 +148,17 @@ $(document).ready(function() {
       }
 
       /**
-       * On the third section count count has a feast, if not already he counted.
+       * On the third section counters are counting up, if that not already happened.
+       *
+       * @see https://inorganik.github.io/countUp.js/
        */
       if (!countCounted && index == 3) {
         countCounted = true;
-        var countReport = new CountUp('count-report', 0, $('#count-report').data('target'), 0, 1, countOptions);
+        var countReport = new CountUp('count-report', 0, $('#count-report').data('target'), 0, countUpInterval, countOptions);
         countReport.start();
-        var countCompany = new CountUp('count-company', 0, $('#count-company').data('target'), 0, 1, countOptions);
+        var countCompany = new CountUp('count-company', 0, $('#count-company').data('target'), 0, countUpInterval, countOptions);
         countCompany.start();
-        var countUser = new CountUp('count-user', 0, $('#count-user').data('target'), 0, 1, countOptions);
+        var countUser = new CountUp('count-user', 0, $('#count-user').data('target'), 0, countUpInterval, countOptions);
         countUser.start();
 
         /**
@@ -146,7 +174,7 @@ $(document).ready(function() {
             countCompany.update(data.count.customer);
             countUser.update(data.count.user);
           }, 'json');
-        }, 1000);
+      }, countInterval);
 
       }
 

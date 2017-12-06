@@ -14,146 +14,246 @@
 -------------------------------------------------------------------------------*/
 
 html, body, body div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, figure, footer, header, hgroup, menu, nav, section, time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	outline: 0;
-	font-size: 100%;
-	vertical-align: baseline;
-	background: transparent;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
 }
 
-article, aside, figure, footer, header, hgroup, nav, section {display: block;}
+article, aside, figure, footer, header, hgroup, nav, section {
+  display: block;
+}
 
 /* Responsive images and other embedded objects
    Note: keeping IMG here will cause problems if you're using foreground images as sprites.
    If this default setting for images is causing issues, you might want to replace it with a .responsive class instead. */
-img,
-object,
-embed {max-width: 100%; height: auto;}
+
+img, object, embed {
+  max-width: 100%;
+  height: auto;
+}
 
 /* force a vertical scrollbar to prevent a jumpy page */
-html {overflow-y: scroll;}
+
+html {
+  overflow-y: scroll;
+}
 
 /* we use a lot of ULs that aren't bulleted.
 	don't forget to restore the bullets within content. */
-ul {list-style: none;}
 
-blockquote, q {quotes: none;}
-
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {content: ''; content: none;}
-
-a {margin: 0; padding: 0; font-size: 100%; vertical-align: baseline; background: transparent;}
-
-del {text-decoration: line-through;}
-
-abbr[title], dfn[title] {border-bottom: 1px dotted #000; cursor: help;}
-
-/* tables still need cellspacing="0" in the markup */
-table {border-collapse: collapse; border-spacing: 0;}
-th {font-weight: bold; vertical-align: bottom;}
-td {font-weight: normal; vertical-align: top;}
-
-hr {display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: 1em 0; padding: 0;}
-
-input, select {vertical-align: middle;}
-
-pre {
-	white-space: pre; /* CSS2 */
-	white-space: pre-wrap; /* CSS 2.1 */
-	white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
-	word-wrap: break-word; /* IE */
+ul {
+  list-style: none;
 }
 
-input[type="radio"] {vertical-align: text-bottom;}
-input[type="checkbox"] {vertical-align: bottom; *vertical-align: baseline;}
-.ie6 input {vertical-align: text-bottom;}
+blockquote, q {
+  quotes: none;
+}
 
-select, input, textarea {font: 99% sans-serif;}
+blockquote:before, blockquote:after, q:before, q:after {
+  content: '';
+  content: none;
+}
 
-textarea { overflow: auto; } /* www.sitepoint.com/blogs/2010/08/20/ie-remove-textarea-scrollbars/ */
+a {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
 
-table {font-size: inherit; font: 100%;}
+del {
+  text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+  border-bottom: 1px dotted #000;
+  cursor: help;
+}
+
+/* tables still need cellspacing="0" in the markup */
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+th {
+  font-weight: bold;
+  vertical-align: bottom;
+}
+
+td {
+  font-weight: normal;
+  vertical-align: top;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+input, select {
+  vertical-align: middle;
+}
+
+pre {
+  white-space: pre;
+  /* CSS2 */
+  white-space: pre-wrap;
+  /* CSS 2.1 */
+  white-space: pre-line;
+  /* CSS 3 (and 2.1 as well, actually) */
+  word-wrap: break-word;
+  /* IE */
+}
+
+input[type="radio"] {
+  vertical-align: text-bottom;
+}
+
+input[type="checkbox"] {
+  vertical-align: bottom;
+  *vertical-align: baseline;
+}
+
+.ie6 input {
+  vertical-align: text-bottom;
+}
+
+select, input, textarea {
+  font: 99% sans-serif;
+}
+
+textarea {
+  overflow: auto;
+}
+
+/* www.sitepoint.com/blogs/2010/08/20/ie-remove-textarea-scrollbars/ */
+
+table {
+  font-size: inherit;
+  font: 100%;
+}
 
 /* Accessible focus treatment
 	people.opera.com/patrickl/experiments/keyboard/test */
-a:hover, a:active {outline: none;}
 
-small {font-size: 85%;}
+a:hover, a:active {
+  outline: none;
+}
 
-strong, th {font-weight: bold;}
+small {
+  font-size: 85%;
+}
 
-td, td img {vertical-align: top;}
+strong, th {
+  font-weight: bold;
+}
+
+td, td img {
+  vertical-align: top;
+}
 
 /* Make sure sup and sub don't screw with your line-heights
 	gist.github.com/413930 */
-sub, sup {font-size: 75%; line-height: 0; position: relative;}
-sup {top: -0.5em;}
-sub {bottom: -0.25em;}
+
+sub, sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+}
+
+sup {
+  top: -0.5em;
+}
+
+sub {
+  bottom: -0.25em;
+}
 
 /* standardize any monospaced elements */
-pre, code, kbd, samp {font-family: monospace, sans-serif;}
+
+pre, code, kbd, samp {
+  font-family: monospace, sans-serif;
+}
 
 /* hand cursor on clickable elements */
-.clickable,
-label,
-input[type=button],
-input[type=submit],
-button {cursor: pointer;}
+
+.clickable, label, input[type=button], input[type=submit], button {
+  cursor: pointer;
+}
 
 /* Webkit browsers add a 2px margin outside the chrome of form elements */
-button, input, select, textarea {margin: 0;}
+
+button, input, select, textarea {
+  margin: 0;
+}
 
 /*
  * 1. Remove default vertical scrollbar in IE6/7/8/9
  * 2. Allow only vertical resizing
  */
-textarea { overflow: auto; vertical-align: top; resize: vertical; }
+
+textarea {
+  overflow: auto;
+  vertical-align: top;
+  resize: vertical;
+}
 
 /* Apply box sizing to some input elements so percentage width and other measures work together */
-input[type=text],
-input[type=password],
-input[type=email],
-input[type=number],
-input[type=date],
-input[type=time],
-input[type=url],
-textarea {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+
+input[type=text], input[type=password], input[type=email], input[type=number], input[type=date], input[type=time], input[type=url], textarea {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 /* make buttons play nice in IE */
-button {width: auto; overflow: visible;}
+
+button {
+  width: auto;
+  overflow: visible;
+}
 
 /* scale images in IE7 more attractively */
-.ie7 img {-ms-interpolation-mode: bicubic;}
+
+.ie7 img {
+  -ms-interpolation-mode: bicubic;
+}
 
 /* prevent BG image flicker upon hover */
-.ie6 html {filter: expression(document.execCommand("BackgroundImageCache", false, true));}
+
+.ie6 html {
+  filter: expression(document.execCommand("BackgroundImageCache", false, true));
+}
 
 /* =============================================================================
    Code
    ========================================================================== */
+
 /**
  * Redeclare monospace font family: h5bp.com/j
  */
-pre,
-code,
-kbd,
-samp {
+
+pre, code, kbd, samp {
   font: 1em Menlo, Monaco, Consolas, "Courier New", monospace;
 }
+
 code {
   color: #009933;
 }
+
 pre {
   /* Blue stribes to make it look like paper */
-
   background-color: #fefefe;
   background-image: -moz-linear-gradient(top, #e2f1f7 1px, transparent 1px);
   background-image: -ms-linear-gradient(top, #e2f1f7 1px, transparent 1px);
@@ -174,18 +274,23 @@ pre {
   white-space: pre-wrap;
   word-wrap: break-word;
 }
+
 pre code {
   background: none;
   color: inherit;
   font: inherit;
 }
+
 pre ol.linenums {
   line-height: 26px;
 }
+
 /**
  * Line numbering for the Google Prettify script
  */
+
 /* Add to red stribes to make it look like a notebook */
+
 pre[class*="linenums"]:before {
   border: 1px solid #f1e9ea;
   border-width: 0 1px;
@@ -197,51 +302,63 @@ pre[class*="linenums"]:before {
   left: 50px;
   z-index: 1;
 }
+
 ol.linenums {
   color: #aeaeae;
   margin: 0 0 0 0;
   padding: 0 0 0 24px;
 }
+
 ol.linenums li {
   padding-left: 24px;
 }
+
 /*  Google Code Prettify */
+
 .pln {
   color: #000;
 }
+
 .str {
   color: #008800;
 }
+
 .kwd {
   color: #000088;
 }
+
 .com {
   color: #880000;
 }
+
 .typ {
   color: #660066;
 }
+
 .lit {
   color: #006666;
 }
-.pun,
-.opn,
-.clo {
+
+.pun, .opn, .clo {
   color: #666600;
 }
+
 pre .tag {
   color: #000088;
 }
+
 .atn {
   color: #660066;
 }
+
 .atv {
   color: #008800;
 }
-.dec,
-.var {
+
+.dec, .var {
   color: #660066;
 }
+
 .fun {
   color: #ff0000;
 }
@@ -250,70 +367,86 @@ pre .tag {
  * Simple grid system
  * @credits Twitter Bootstrap
  */
+
 .row {
   width: 100%;
   *zoom: 1;
 }
-.row:before,
-.row:after {
+
+.row:before, .row:after {
   display: table;
   content: "";
 }
+
 .row:after {
   clear: both;
 }
+
 .row [class*="span"] {
   float: left;
   margin-left: 2.127659574%;
   *margin-left: 2.0744680846382977%;
 }
+
 .row [class*="span"]:first-child {
   margin-left: 0;
 }
+
 .row .span12 {
   width: 99.99999998999999%;
   *width: 99.94680850063828%;
 }
+
 .row .span11 {
   width: 91.489361693%;
   *width: 91.4361702036383%;
 }
+
 .row .span10 {
   width: 82.97872339599999%;
   *width: 82.92553190663828%;
 }
+
 .row .span9 {
   width: 74.468085099%;
   *width: 74.4148936096383%;
 }
+
 .row .span8 {
   width: 65.95744680199999%;
   *width: 65.90425531263828%;
 }
+
 .row .span7 {
   width: 57.446808505%;
   *width: 57.3936170156383%;
 }
+
 .row .span6 {
   width: 48.93617020799999%;
   *width: 48.88297871863829%;
 }
+
 .row .span5 {
   width: 40.425531911%;
   *width: 40.3723404216383%;
 }
+
 .row .span4 {
   width: 31.914893614%;
   *width: 31.8617021246383%;
 }
+
 .row .span3 {
   width: 23.404255317%;
   *width: 23.3510638276383%;
 }
+
 .row .span2 {
   width: 14.89361702%;
   *width: 14.8404255306383%;
 }
+
 .row .span1 {
   width: 6.382978723%;
   *width: 6.329787233638298%;
@@ -322,6 +455,7 @@ pre .tag {
 /* =============================================================================
    Alert messages, taken from http://jayj.dk/a-free-html5-and-css3-theme
    ========================================================================== */
+
 .alert {
   background-color: #ededed;
   border-left: 5px solid #d9d9d9;
@@ -331,31 +465,36 @@ pre .tag {
   margin-bottom: 25px;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 }
+
 .alert h4 {
   border-bottom: 0;
   color: inherit;
   padding-bottom: 0;
   margin: 10px 0;
 }
-.alert p + p {
+
+.alert p+p {
   margin-bottom: 5px;
 }
+
 .alert-warning {
   background-color: #fef9c7;
   border-color: #fcdd4a;
   color: #3b3601;
 }
+
 .alert-success {
   background-color: #dff0d8;
   border-color: #54b646;
   color: #0d370d;
 }
-.alert-danger,
-.alert-error {
+
+.alert-danger, .alert-error {
   background-color: #f2dede;
   border-color: #ce838f;
   color: #7a0b0a;
 }
+
 .alert-info {
   background-color: #d9edf7;
   border-color: #049cdb;
@@ -365,256 +504,248 @@ pre .tag {
 /* =============================================================================
    Lists: http://jayj.dk/a-free-html5-and-css3-theme/
    ========================================================================== */
-ul,
-ol {
+
+ul, ol {
   line-height: 1.5;
   margin: 1em 0;
   padding: 0 0 0 1.25em;
 }
+
 ul {
   list-style: square;
 }
+
 ol {
   list-style-type: decimal;
 }
+
 ol ol {
   list-style: upper-roman;
 }
+
 ol ol ol {
   list-style: lower-roman;
 }
+
 ol ol ol ol {
   list-style: upper-alpha;
 }
+
 ol ol ol ol ol {
   list-style: lower-alpha;
 }
-ul ul,
-ol ol,
-ul ol,
-ol ul {
+
+ul ul, ol ol, ul ol, ol ul {
   margin: 10px 0;
 }
-
-
-
-
-
-
-
-
-
-
 
 /* ==|== primary styles =====================================================
    Author: info@sah-company.com
    ========================================================================== */
-html,
-body {
-    height: 100%;
-    width: 100%;
+
+html, body {
+  height: 100%;
+  width: 100%;
 }
 
 :focus {
-    outline: none;
+  outline: none;
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
-    font-size: 16px;
-    line-height: 1.5;
-    font-weight: 400;
-	-webkit-font-smoothing: antialiased;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-weight: 900;
+  font-weight: 900;
 }
 
-body > header {
-    position: fixed;
-	left: 20px;
-	right: 20px;
-	top: 20px;
-	height: 3rem;
-	z-index: 100;
+body>header {
+  position: fixed;
+  left: 20px;
+  right: 20px;
+  top: 20px;
+  height: 3rem;
+  z-index: 100;
 }
+
 /**
  * Layout and optics of the domaato website.
  */
 
-section#contact p,
-.newsletter-form p {
-    margin-bottom: 1rem;
+section#contact p, .newsletter-form p {
+  margin-bottom: 1rem;
 }
 
 #splash section {
-    background: rgb(120, 190, 32);
-    color: white;
-    text-align: center;
+  background: rgb(120, 190, 32);
+  color: white;
+  text-align: center;
 }
 
-#splash section#home {
-}
+#splash section#home {}
 
-#splash section#testimonials {
-}
+#splash section#testimonials {}
 
 #splash section#facts {
-    /*background: rgb(255, 200, 69);*/
+  /*background: rgb(255, 200, 69);*/
 }
 
-#splash section#customers {
-}
+#splash section#customers {}
 
 #splash section#contact {
-    background: rgb(0, 181, 226);
+  background: rgb(0, 181, 226);
 }
 
 #splash section#home a.nextSlide {
-    position: absolute;
-    bottom: 2rem;
-    font-size: 0.8rem;
-    text-decoration: none;
-    color: white;
-    display: block;
-    width: 100%;
+  position: absolute;
+  bottom: 2rem;
+  font-size: 0.8rem;
+  text-decoration: none;
+  color: white;
+  display: block;
+  width: 100%;
 }
 
 #newsletter-confirm {
-	height: 100vh;
-	background-color: rgb(120, 190, 32);
-	background-repeat: no-repeat;
-	background-position: center 20px;
-	background-image: url(/img/domaato-logo-white.png);
-	background-size: 320px 72px;
-	padding-top: 120px;
-	text-align: center;
+  height: 100vh;
+  background-color: rgb(120, 190, 32);
+  background-repeat: no-repeat;
+  background-position: center 20px;
+  background-image: url(/img/domaato-logo-white.png);
+  background-size: 320px 72px;
+  padding-top: 120px;
+  text-align: center;
 }
 
 #newsletter-confirm p {
-	color: white;
+  color: white;
 }
 
 .newsletter-form {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    background-color: rgb(255, 200, 69);
-    border-top: 4px solid white;
-    padding: 3rem 0;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: rgb(255, 200, 69);
+  border-top: 4px solid white;
+  padding: 3rem 0;
 }
 
 .newsletter-form form {
-    padding: 0 3rem;
+  padding: 0 3rem;
 }
 
 .newsletter-form form fieldset {
-    padding: 0.5rem;
+  padding: 0.5rem;
 }
 
 .newsletter-form input[type="email"] {
-    padding: 0.25rem;
+  padding: 0.25rem;
 }
 
 .newsletter-form input[type=submit] {
-    padding: 0.5rem 2rem;
-    background-color: rgb(120, 190, 32);
-    color: white;
-    border: 2px solid white;
-    -webkit-border-radius: 1rem;
-    -moz-border-radius: 1rem;
-    -o-border-radius: 1rem;
-    border-radius: 1rem;
+  padding: 0.5rem 2rem;
+  background-color: rgb(120, 190, 32);
+  color: white;
+  border: 2px solid white;
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  -o-border-radius: 1rem;
+  border-radius: 1rem;
 }
-.newsletter-form input[type=submit]:active,
-.newsletter-form input[type=submit]:focus {
-    background-color: white;
-    color: rgb(120, 190, 32);
-    border: 2px solid rgb(120, 190, 32);
+
+.newsletter-form input[type=submit]:active, .newsletter-form input[type=submit]:focus {
+  background-color: white;
+  color: rgb(120, 190, 32);
+  border: 2px solid rgb(120, 190, 32);
 }
 
 .newsletter-form input[type=submit][disabled=disabled].processing {
-    background-image: url(/img/loader.gif);
-    background-position: center right;
-    background-repeat: no-repeat;
-    background-color: white;
-    color: rgb(120, 190, 32);
-    cursor: progress;
-    border: 2px solid rgb(120, 190, 32);
+  background-image: url(/img/loader.gif);
+  background-position: center right;
+  background-repeat: no-repeat;
+  background-color: white;
+  color: rgb(120, 190, 32);
+  cursor: progress;
+  border: 2px solid rgb(120, 190, 32);
 }
 
 .contact-wrapper {
-    text-align: left;
-    padding-left: 5rem;
+  text-align: left;
+  padding-left: 5rem;
 }
 
 .contact-wrapper a {
-    text-decoration: none;
-    color: white;
+  text-decoration: none;
+  color: white;
 }
 
 /* Replace the text with a logo image */
-body > header h1.brand,
-#splash h1.brand {
-    background-image: url(/img/domaato-logo-white.png);
-    background-size: 320px 72px;
-    background-position: center;
-    background-repeat: no-repeat;
-    font-weight: 900;
-    height: 72px;
-    width: 100%;
+
+body>header h1.brand, #splash h1.brand {
+  background-image: url(/img/domaato-logo-white.png);
+  background-size: 320px 72px;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-weight: 900;
+  height: 72px;
+  width: 100%;
 }
 
-body > header h1.brand a {
-    display: block;
-    width: 100%;
-    height: 100%;
+body>header h1.brand a {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
-body > header h1.brand {
-    opacity: 0;
-    background-size: 106px 24px;
-    height: 24px;
-    width: 106px;
-    -webkit-transition: opacity 1s;
-    transition: opacity 1s;
+body>header h1.brand {
+  opacity: 0;
+  background-size: 106px 24px;
+  height: 24px;
+  width: 106px;
+  -webkit-transition: opacity 1s;
+  transition: opacity 1s;
 }
 
 #splash section#home h2 {
-    font-weight: 400;
-    font-size: 2rem;
-    letter-spacing: 1px;
+  font-weight: 400;
+  font-size: 2rem;
+  letter-spacing: 1px;
 }
 
-body > header h1.brand.active {
-    opacity: 1;
+body>header h1.brand.active {
+  opacity: 1;
 }
 
 /**
  * Fullpage restylings
  */
-#fp-nav ul li a span,
-.fp-slidesNav ul li a span {
-    background: #ffffff;
+
+#fp-nav ul li a span, .fp-slidesNav ul li a span {
+  background: #ffffff;
 }
 
 /**
  * Users and customers testiomonials
  */
+
 .testimonial-wrap {
-	width: 30rem;
-	margin: 2rem auto;
-	padding: 2rem;
-	position: relative;
+  width: 30rem;
+  margin: 2rem auto;
+  padding: 2rem;
+  position: relative;
 }
 
 .testimonial-wrap blockquote {
-	position: relative;
+  position: relative;
 }
 
 .testimonial-wrap cite {
-	font-style: normal;
+  font-style: normal;
 }
 
 /**
@@ -622,68 +753,68 @@ body > header h1.brand.active {
  */
 
 .testimonial {
-	width: 50rem;
+  width: 50rem;
 }
 
 .testimonial blockquote p {
-	font-size: 3rem;
-	color: white;
-	font-weight: 500;
-	line-height: 1.5;
-	font-style: italic;
-	text-indent: 100px;
-	position: relative;
-	text-align: left;
+  font-size: 3rem;
+  color: white;
+  font-weight: 500;
+  line-height: 1.5;
+  font-style: italic;
+  text-indent: 100px;
+  position: relative;
+  text-align: left;
 }
 
 .testimonial blockquote p:before {
-	content: '\201C';
-	font-family: 'Times New Roman', Times, serif;
-	font-style: normal;
-	font-weight: 700;
-	position: absolute;
-	font-size: 12rem;
-	top: -6rem;
-	left: -6rem;
-	color: white;
-	text-shadow: 7px 14px 10px rgba(0, 0, 0, 0.1);
+  content: '\201C';
+  font-family: 'Times New Roman', Times, serif;
+  font-style: normal;
+  font-weight: 700;
+  position: absolute;
+  font-size: 12rem;
+  top: -6rem;
+  left: -6rem;
+  color: white;
+  text-shadow: 7px 14px 10px rgba(0, 0, 0, 0.1);
 }
 
 .testimonial .testimonial-attribution {
-	text-align: right;
-	padding: 20px 100px 20px 20px;
-	position: relative;
+  text-align: right;
+  padding: 20px 100px 20px 20px;
+  position: relative;
 }
 
 .testimonial .testimonial-thumb {
-	display: block;
-	width: 120px;
-	height: 120px;
-	border: 6px solid white;
-	border-radius: 50%;
-	background-repeat: no-repeat;
-	background-position: center center;
-	position: absolute;
-	right: -40px;
-	bottom: -30px;
-	/*box-shadow:
+  display: block;
+  width: 120px;
+  height: 120px;
+  border: 6px solid white;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  position: absolute;
+  right: -40px;
+  bottom: -30px;
+  /*box-shadow:
 		inset 1px 1px 4px rgba(0, 0, 0, 0.5),
 		0 2px 3px rgba(0, 0, 0, 0.6);*/
 }
 
 .testimonial .testimonial-author {
-	font-weight: 700;
-	font-size: 1rem;
-	color: rgba(254, 254, 254, 1);
+  font-weight: 700;
+  font-size: 1rem;
+  color: rgba(254, 254, 254, 1);
 }
 
 .testimonial .testimonial-author a {
-    color: inherit;
-    text-decoration: none;
+  color: inherit;
+  text-decoration: none;
 }
 
 .testimonial .testimonial-author a:hover {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 /**
@@ -691,202 +822,440 @@ body > header h1.brand.active {
  *
  * The count counted just for fun.
  */
+
 div.counter p {
-    font-size: 1rem;
-    font-weight: 500;
+  font-size: 1rem;
+  font-weight: 500;
 }
 
 div.counter p.counter {
-    font-size: 2.33rem;
-    font-weight: 700;
-    letter-spacing: -2px;
+  font-size: 2.33rem;
+  font-weight: 700;
+  letter-spacing: -2px;
+}
+
+/**
+ * Newsletter
+ */
+#newsletter-answer {
+  position: absolute;
+  bottom: 8rem;
+  right: 0;
+  width: 26vw;
+  z-index: 1000;
+}
+
+p.triangle-border {
+	text-align: left;
+}
+
+/**
+ * Bubbles.
+ */
+
+.triangle-border {
+  width: 70%;
+  position: relative;
+  padding: 15px;
+  margin: 1em 0 3em;
+  border: 5px solid rgb(120, 190, 32);
+  color: #333;
+  background: #fff;
+  /* css3 */
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+
+/* Variant : for left positioned triangle
+ ------------------------------------------ */
+
+.triangle-border.left {
+  margin-left: 30px;
+}
+
+/* Variant : for right positioned triangle
+ ------------------------------------------ */
+
+.triangle-border.right {
+  margin-right: 30px;
+}
+
+/* THE TRIANGLE
+ ------------------------------------------------------------------------------------------------------------------------------- */
+
+.triangle-border:before {
+  content: "";
+  position: absolute;
+  bottom: -20px;
+  /* value = - border-top-width - border-bottom-width */
+  left: 40px;
+  /* controls horizontal position */
+  border-width: 20px 20px 0;
+  border-style: solid;
+  border-color: rgb(120, 190, 32) transparent;
+  /* reduce the damage in FF3.0 */
+  display: block;
+  width: 0;
+}
+
+/* creates the smaller  triangle */
+
+.triangle-border:after {
+  content: "";
+  position: absolute;
+  bottom: -13px;
+  /* value = - border-top-width - border-bottom-width */
+  left: 47px;
+  /* value = (:before left) + (:before border-left) - (:after border-left) */
+  border-width: 13px 13px 0;
+  border-style: solid;
+  border-color: #fff transparent;
+  /* reduce the damage in FF3.0 */
+  display: block;
+  width: 0;
+}
+
+/* Variant : top
+ ------------------------------------------ */
+
+/* creates the larger triangle */
+
+.triangle-border.top:before {
+  top: -20px;
+  /* value = - border-top-width - border-bottom-width */
+  bottom: auto;
+  left: auto;
+  right: 40px;
+  /* controls horizontal position */
+  border-width: 0 20px 20px;
+}
+
+/* creates the smaller  triangle */
+
+.triangle-border.top:after {
+  top: -13px;
+  /* value = - border-top-width - border-bottom-width */
+  bottom: auto;
+  left: auto;
+  right: 47px;
+  /* value = (:before right) + (:before border-right) - (:after border-right) */
+  border-width: 0 13px 13px;
+}
+
+/* Variant : left
+ ------------------------------------------ */
+
+/* creates the larger triangle */
+
+.triangle-border.left:before {
+  top: 10px;
+  /* controls vertical position */
+  bottom: auto;
+  left: -30px;
+  /* value = - border-left-width - border-right-width */
+  border-width: 15px 30px 15px 0;
+  border-color: transparent rgb(120, 190, 32);
+}
+
+/* creates the smaller  triangle */
+
+.triangle-border.left:after {
+  top: 16px;
+  /* value = (:before top) + (:before border-top) - (:after border-top) */
+  bottom: auto;
+  left: -21px;
+  /* value = - border-left-width - border-right-width */
+  border-width: 9px 21px 9px 0;
+  border-color: transparent #fff;
+}
+
+/* Variant : right
+ ------------------------------------------ */
+
+/* creates the larger triangle */
+
+.triangle-border.right:before {
+  top: 10px;
+  /* controls vertical position */
+  bottom: auto;
+  left: auto;
+  right: -30px;
+  /* value = - border-left-width - border-right-width */
+  border-width: 15px 0 15px 30px;
+  border-color: transparent rgb(120, 190, 32);
+}
+
+/* creates the smaller  triangle */
+
+.triangle-border.right:after {
+  top: 16px;
+  /* value = (:before top) + (:before border-top) - (:after border-top) */
+  bottom: auto;
+  left: auto;
+  right: -21px;
+  /* value = - border-left-width - border-right-width */
+  border-width: 9px 0 9px 21px;
+  border-color: transparent #fff;
 }
 
 /* Autocomplete
 ----------------------------------*/
+
 .ui-autocomplete {
-    position: absolute;
-    cursor: default;
-    max-height: 280px;
-    overflow-y: auto;
-    overflow-x: hidden;
-    padding-right: 20px;
+  position: absolute;
+  cursor: default;
+  max-height: 280px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 20px;
 }
-.ui-autocomplete-loading { background: white url('/img/loader.gif') right center no-repeat; }
+
+.ui-autocomplete-loading {
+  background: white url('/img/loader.gif') right center no-repeat;
+}
 
 /* workarounds */
-* html .ui-autocomplete { width: 1px; } /* without this, the menu expands to 100% in IE6 */
+
+* html .ui-autocomplete {
+  width: 1px;
+}
+
+/* without this, the menu expands to 100% in IE6 */
 
 /* Menu
 ----------------------------------*/
+
 .ui-menu {
-    list-style: none;
-    padding: 2px;
-    margin: 0;
-    display: block;
-    background-color: whitesmoke;
+  list-style: none;
+  padding: 2px;
+  margin: 0;
+  display: block;
+  background-color: whitesmoke;
 }
+
 .ui-menu .ui-menu {
-    margin-top: -3px;
+  margin-top: -3px;
 }
+
 .ui-menu .ui-menu-item {
-    margin: 0;
-    padding: 0;
-    width: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
 }
+
 .ui-menu .ui-menu-item a {
-    text-decoration: none;
-    display: block;
-    padding: .2em .4em;
-    line-height: 1.5;
-    zoom:1;
+  text-decoration: none;
+  display: block;
+  padding: .2em .4em;
+  line-height: 1.5;
+  zoom: 1;
 }
-.ui-menu .ui-menu-item a.ui-state-hover,
-.ui-menu .ui-menu-item a.ui-state-active {
-    /*margin: -1px;*/
+
+.ui-menu .ui-menu-item a.ui-state-hover, .ui-menu .ui-menu-item a.ui-state-active {
+  /*margin: -1px;*/
 }
 
 .ui-helper-hidden-accessible {
-    position: absolute;
-    left: -999em;
+  position: absolute;
+  left: -999em;
 }
-
-
 
 /* using local fonts? make sure to read up on Paul Irish's
 	Bulletproof @font-face syntax: http://mky.be/font-face/bulletproof/ */
 
 /* we like off-black for text */
-body, select, input, textarea {color: #222;}
 
-a {color: #333;} /*#03f*/
-a:hover {color: #666;} /*#69f*/
+body, select, input, textarea {
+  color: #222;
+}
+
+a {
+  color: #333;
+}
+
+/*#03f*/
+
+a:hover {
+  color: #666;
+}
+
+/*#69f*/
 
 /* Custom text-selection colors (remove any text shadows: twitter.com/miketaylr/status/12228805301) */
-::-moz-selection{background: #fcd700; color: #fff; text-shadow: none;}
-::selection {background: #fcd700; color: #fff; text-shadow: none;}
+
+::-moz-selection {
+  background: #fcd700;
+  color: #fff;
+  text-shadow: none;
+}
+
+::selection {
+  background: #fcd700;
+  color: #fff;
+  text-shadow: none;
+}
 
 /*	j.mp/webkit-tap-highlight-color */
-a:link {-webkit-tap-highlight-color: #fcd700;}
 
-ins {background-color: #fcd700; color: #000; text-decoration: none;}
-mark {background-color: #fcd700; color: #000; font-style: italic; font-weight: bold;}
+a:link {
+  -webkit-tap-highlight-color: #fcd700;
+}
 
+ins {
+  background-color: #fcd700;
+  color: #000;
+  text-decoration: none;
+}
 
+mark {
+  background-color: #fcd700;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
 
 /* Rounded gravatar: A background-image tag in html */
+
 .circular {
-	width: 72px;
-	height: 72px;
-	border-radius: 36px;
-	-webkit-border-radius: 36px;
-	-moz-border-radius: 36px;
-	background: url(/img/glyphicons/glyphicons_003_user.png) center center;
-	background-repeat: no-repeat;
-	background-color: white; /* stanze */
-    -webkit-box-shadow: 0px 1em 1em rgba(0, 0, 0, .66);
+  width: 72px;
+  height: 72px;
+  border-radius: 36px;
+  -webkit-border-radius: 36px;
+  -moz-border-radius: 36px;
+  background: url(/img/glyphicons/glyphicons_003_user.png) center center;
+  background-repeat: no-repeat;
+  background-color: white;
+  /* stanze */
+  -webkit-box-shadow: 0px 1em 1em rgba(0, 0, 0, .66);
 }
 
 .circular .circular-48 {
-	width: 48px;
-	height: 48px;
-	border-radius: 24px;
-	-webkit-border-radius: 24px;
-	-moz-border-radius: 24px;
+  width: 48px;
+  height: 48px;
+  border-radius: 24px;
+  -webkit-border-radius: 24px;
+  -moz-border-radius: 24px;
 }
 
 .circular .circular-32 {
-	width: 32px;
-	height: 32px;
-	border-radius: 16px;
-	-webkit-border-radius: 16px;
-	-moz-border-radius: 16px;
+  width: 32px;
+  height: 32px;
+  border-radius: 16px;
+  -webkit-border-radius: 16px;
+  -moz-border-radius: 16px;
 }
 
 .circular .circular-16 {
-	width: 16px;
-	height: 16px;
-	border-radius: 8px;
-	-webkit-border-radius: 8px;
-	-moz-border-radius: 8px;
+  width: 16px;
+  height: 16px;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
 }
 
 .no-shadow {
-    -webkit-box-shadow: none;
+  -webkit-box-shadow: none;
 }
 
 /* Mix, rip and burn some of the above together */
 
 /* within a dialog a errornous input field will be erdbeer colored */
-.panel div.row.error label,
-.panel label.error {
-    color: #7a0b0a;
+
+.panel div.row.error label, .panel label.error {
+  color: #7a0b0a;
 }
 
 .validation-errors {
-    font-size: small;
+  font-size: small;
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* ==|== non-semantic helper classes ========================================
    Please define your styles before this section.
    ========================================================================== */
 
 /* For image replacement */
-.ir { display: block; border: 0; text-indent: -999em; overflow: hidden; background-color: transparent; background-repeat: no-repeat; text-align: left; direction: ltr; *line-height: 0; }
-.ir br { display: none; }
+
+.ir {
+  display: block;
+  border: 0;
+  text-indent: -999em;
+  overflow: hidden;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  text-align: left;
+  direction: ltr;
+  *line-height: 0;
+}
+
+.ir br {
+  display: none;
+}
 
 /* Hide from both screenreaders and browsers: h5bp.com/u */
-.hidden { display: none !important; visibility: hidden; }
+
+.hidden {
+  display: none !important;
+  visibility: hidden;
+}
 
 /* Hide only visually, but have it available for screenreaders: h5bp.com/v */
-.visuallyhidden { border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; }
+
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
 
 /* Extends the .visuallyhidden class to allow the element to be focusable when navigated to via the keyboard: h5bp.com/p */
-.visuallyhidden.focusable:active, .visuallyhidden.focusable:focus { clip: auto; height: auto; margin: 0; overflow: visible; position: static; width: auto; }
+
+.visuallyhidden.focusable:active, .visuallyhidden.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+}
 
 /* Hide visually and from screenreaders, but maintain layout */
-.invisible { visibility: hidden; }
+
+.invisible {
+  visibility: hidden;
+}
 
 /* Contain floats: h5bp.com/q */
-.clearfix:before, .clearfix:after { content: ""; display: table; }
-.clearfix:after { clear: both; }
-.clearfix { *zoom: 1; }
 
+.clearfix:before, .clearfix:after {
+  content: "";
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+.clearfix {
+  *zoom: 1;
+}
 
 /* Print styles!
 -------------------------------------------------------------------------------*/
-@media print {
 
-
-
-}
-
+@media print {}
 
 /* Media queries!
 -------------------------------------------------------------------------------*/
 
 /* Consider this: www.cloudfour.com/css-media-query-for-mobile-is-fools-gold/ */
-@media screen and (max-device-width: 480px) {
 
+@media screen and (max-device-width: 480px) {}
 
-}
+@media all and (orientation: portrait) {}
 
-@media all and (orientation: portrait) {
-
-}
-
-@media all and (orientation: landscape) {
-
-}
+@media all and (orientation: landscape) {}

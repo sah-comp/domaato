@@ -16,7 +16,7 @@ $_users = R::find('user', "testimonial <> '' AND public = 1 ORDER BY RAND() LIMI
 /**
  * Find at most three customers (person beans) who have testimonials and are willing to be published.
  */
-$_customers = R::find('person', "testimonial <> '' AND public = 1 ORDER BY RAND() LIMIT 3");
+$_customers = R::find('person', "testimonial <> '' AND public = 1 AND enabled = 1 ORDER BY RAND() LIMIT 3");
 
 /**
  * Load the initial count information.
@@ -92,7 +92,8 @@ $_counter = $api_controller->status(false);// we want a PHP array
                 id="newsletter-optin"
                 class="ajaxed"
                 action="<?php echo Url::build('/newsletter/opt-in') ?>"
-                data-container="newsletter-container"
+                data-container="newsletter-answer"
+                data-emptybeforeappend="yes"
                 method="POST"
                 accept-charset="utf-8"
                 enctype="multipart/form-data">
@@ -108,6 +109,7 @@ $_counter = $api_controller->status(false);// we want a PHP array
                     <input type="submit" name="submit" value="<?php echo I18n::__('domaato_newsletter_submit') ?>" />
                 </fieldset>
             </form>
+            <div id="newsletter-answer" class="animatedParent"></div>
         </div>
 
     </section>
