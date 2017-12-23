@@ -48,7 +48,7 @@
         <![endif]-->
 	</head>
 
-	<body>
+	<body id="<?php echo $page_id ?>">
 		<!--[if lt IE 7]>
 		<?php echo Flight::textile(I18n::__('browser_is_ancient')) ?>
 		<![endif]-->

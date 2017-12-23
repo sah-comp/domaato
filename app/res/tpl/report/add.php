@@ -9,6 +9,11 @@
  */
 ?>
 <article>
+    <?php
+    Flight::render('model/person/header-biz', array(
+        'record' => $record->person
+    ));
+    ?>
     <form
         id="form-report"
         class="panel report"
@@ -30,22 +35,22 @@
                     for="report-vote-dislike">
                     <?php echo I18n::__('report_label_vote_dislike') ?>
                 </label>
-                <input 
-                    type="radio" 
+                <input
+                    type="radio"
                     id="report-vote-dislike"
-                    name="dialog[vote]" 
+                    name="dialog[vote]"
                     value="0"
-                    <?php echo ( $record->vote == 0 ) ? 'checked="checked"' : '' ?>>
+                    <?php echo ($record->vote == 0) ? 'checked="checked"' : '' ?>>
                 <label
                     for="report-vote-like">
                     <?php echo I18n::__('report_label_vote_like') ?>
                 </label>
-                <input 
-                    type="radio" 
+                <input
+                    type="radio"
                     id="report-vote-like"
-                    name="dialog[vote]" 
+                    name="dialog[vote]"
                     value="1"
-                    <?php echo ( $record->vote == 1 ) ? 'checked="checked"' : '' ?>>
+                    <?php echo ($record->vote == 1) ? 'checked="checked"' : '' ?>>
             </div>
         </fieldset>
         <fieldset>
@@ -59,7 +64,7 @@
                 <textarea
                     id="report-content"
                     name="dialog[content]"
-                    required="required"><?php echo htmlspecialchars( $record->content ) ?></textarea>
+                    required="required"><?php echo htmlspecialchars($record->content) ?></textarea>
             </div>
         </fieldset>
         <div class="buttons">

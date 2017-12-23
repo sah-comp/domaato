@@ -49,8 +49,8 @@ class Model_Report extends Model
             return false;
         }
         $mail = new PHPMailer\PHPMailer\PHPMailer();
-        $mail->Charset = 'UTF-8';
-        $mail->Subject = utf8_decode(I18n::__('domaato_report_subject'));
+        $mail->CharSet = 'UTF-8';
+        $mail->Subject = utf8_decode(I18n::__('domaato_report_owner_subject'));
         $mail->From = Flight::setting()->nlemailaddress;
         $mail->FromName = utf8_decode(Flight::setting()->nlemailname);
         //$mail->AddReplyTo($this->bean->replytoemail, utf8_decode($this->bean->replytoname));
@@ -64,8 +64,24 @@ class Model_Report extends Model
         $mail->Password = $this->bean->mailserver->pw;
         */
         $result = true;
-        $body_html = '<h1>Test Domaato report broadcast</h1>';
-        $body_text = 'Test Domaato report broadcast';
+        Flight::render('domaato/mail/' . Flight::get('language') . '/html-head', array(
+            'title' => I18n::__('domaato_report_owner_subject'),
+        ), 'head');
+
+        ob_start();
+        Flight::render('domaato/mail/' . Flight::get('language') . '/report-owner-html', array(
+            'record' => $this->bean
+        ));
+        $body_html = ob_get_contents();
+        ob_end_clean();
+
+        ob_start();
+        Flight::render('domaato/mail/' . Flight::get('language') . '/report-owner-text', array(
+            'record' => $this->bean
+        ));
+        $body_text = ob_get_contents();
+        ob_end_clean();
+
         $mail->MsgHTML($body_html);
         $mail->AltBody = $body_text;
         $mail->ClearAddresses();
@@ -81,7 +97,6 @@ class Model_Report extends Model
         if (! $this->bean->getId()) {
             $this->bean->stamp = time();
             $this->bean->person->setWilsonScore($this->bean->vote);
-            $this->broadcast();
         }
         parent::update();
     }

@@ -31,6 +31,26 @@ $_counter = $api_controller->status(false);// we want a PHP array
 ?>
 <header>
     <h1 class="brand ir"><a href="<?php echo Url::build('/') ?>" title="<?php echo I18n::__('app_name_domaato') . ' ' . I18n::__('app_claim_domaato') ?>">Domaato</a></h1>
+    <ul class="account-navigation">
+    <?php if (! Flight::has('user')): ?>
+        <li><a href="<?php echo Url::build('/profile') ?>" rel="nofollow"><?php echo I18n::__('domaato_account_login') ?></a></li>
+        <li><a href="<?php echo Url::build('/register') ?>" rel="nofollow"><?php echo I18n::__('domaato_account_register') ?></a></li>
+    <?php else: ?>
+        <li>
+            <a
+                href="<?php echo Url::build('/profile/') ?>">
+    			<img
+    				src="<?php echo Gravatar::src(Flight::get('user')->email, 24) ?>"
+                    class="circular circular-24 no-shadow"
+    				width="24"
+    				height="24"
+    				alt="<?php echo htmlspecialchars(Flight::get('user')->getName()) ?>" />
+    			<?php echo htmlspecialchars(Flight::get('user')->getName()) ?>
+            </a>
+        </li>
+        <li><a href="<?php echo Url::build('/logout') ?>"><?php echo I18n::__('domaato_account_logout') ?></a></li>
+    <?php endif; ?>
+    </ul>
 </header>
 <div id="splash" class="animatedParent">
 
@@ -125,7 +145,7 @@ $_counter = $api_controller->status(false);// we want a PHP array
                 <p><?php echo htmlspecialchars($_person->testimonial) ?></p>
             </blockquote>
             <div class="testimonial-attribution">
-                <p class="testimonial-author"><a href="<?php echo Url::build('/buisness/' . $_person->getId()) ?>"><?php echo htmlspecialchars($_person->getName()) ?></a></p>
+                <p class="testimonial-author"><a href="<?php echo Url::build('/business/' . $_person->getId()) ?>"><?php echo htmlspecialchars($_person->getName()) ?></a></p>
                 <div class="testimonial-thumb" style="background-image: url(<?php echo Gravatar::src($_person->email, 120) ?>)"></div>
             </div>
         </div>

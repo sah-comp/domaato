@@ -9,14 +9,15 @@
  */
 ?>
 <!-- account menu -->
-<ul class="account-navigation clearfix">
+<ul class="account-navigation">
     <li>
         <a
-            href="<?php echo Url::build('/account/') ?>">
+            href="<?php echo Url::build('/profile/') ?>">
 			<img
-				src="<?php echo Gravatar::src(Flight::get('user')->email, 16) ?>"
-				width="16"
-				height="16"
+				src="<?php echo Gravatar::src(Flight::get('user')->email, 24) ?>"
+                class="circular circular-24 no-shadow"
+                width="24"
+                height="24"
 				alt="<?php echo htmlspecialchars(Flight::get('user')->getName()) ?>" />
 			<?php echo htmlspecialchars(Flight::get('user')->getName()) ?>
         </a>
@@ -24,11 +25,8 @@
     <li>
         <a
             href="<?php echo Url::build('/logout/') ?>">
-            <?php echo I18n::__('account_logout_nav') ?>
+            <?php echo I18n::__('domaato_account_logout') ?>
         </a>
-    </li>
-    <li>
-        <?php Flight::render('domaato/shared/navigation/langchooser'); ?>
     </li>
 </ul>
 <!-- End of account menu -->

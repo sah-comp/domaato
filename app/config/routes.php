@@ -86,6 +86,30 @@ Flight::route('(/[a-z]{2})/file-a-report(/@id:[0-9]+)', function ($id) {
 });
 
 /**
+ * Route to review a report
+ */
+Flight::route('(/[a-z]{2})/review-a-report/@id:[0-9]+', function ($id) {
+    $reportController = new Controller_Report();
+    $reportController->edit($id);
+});
+
+/**
+ * Route to add a comment to report bean
+ */
+Flight::route('POST (/[a-z]{2})/review-a-report/@id:[0-9]+/comment/add', function ($id) {
+    $reportController = new Controller_Report();
+    $reportController->comment($id);
+});
+
+/**
+ * Route to view a business (person bean)
+ */
+Flight::route('(/[a-z]{2})/business/@id:[0-9]+', function ($id) {
+    $businessController = new Controller_Business();
+    $businessController->index($id);
+});
+
+/**
  * Route to optin to the newsletter
  */
 Flight::route('POST (/[a-z]{2})/newsletter/opt-in', function () {

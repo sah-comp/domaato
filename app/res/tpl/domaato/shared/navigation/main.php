@@ -9,7 +9,7 @@
  */
 ?>
 <!-- main navigation -->
-<?php echo R::load( 'domain', 15 )
+<?php echo R::load('domain', 15)
                     ->hierMenu('/', Flight::get('language'))
                     ->render(array('class' => 'main-navigation clearfix'));
 ?>

@@ -61,7 +61,7 @@ class Controller_Report extends Controller
      */
     public function index()
     {
-        Permission::check(Flight::get('user'), 'file-a-report', 'index');
+        Permission::check(Flight::get('user'), 'report', 'index');
         if (! isset($_SESSION['locus_id'])) {
             $_SESSION['locus_id'] = 0;
         }
@@ -96,13 +96,13 @@ class Controller_Report extends Controller
      */
     public function add($person_id)
     {
-        Permission::check(Flight::get('user'), 'file-a-report', 'add');
+        Permission::check(Flight::get('user'), 'report', 'add');
         $this->action = 'add';
-        $person = R::load('person', $person_id);
         if (! isset($_SESSION['report_id'])) {
             $_SESSION['report_id'] = 0;
         }
         $this->record = R::load('report', $_SESSION['report_id']);
+        $this->record->person = $person = R::load('person', $person_id);
         if (Flight::request()->method == 'POST') {
             $this->record = R::graph(Flight::request()->data->dialog, true);
             $this->record->person = $person;
@@ -110,9 +110,10 @@ class Controller_Report extends Controller
             R::begin();
             try {
                 R::store($this->record);
+                $this->record->broadcast();
                 R::commit();
                 $this->notifyAbout('success');
-                $this->redirect("/file-a-report");
+                $this->redirect("/review-a-report/" . $this->record->getId());
             } catch (Exception $e) {
                 error_log($e);
                 R::rollback();
@@ -121,6 +122,61 @@ class Controller_Report extends Controller
         }
         $this->layout = 'add';
         $this->render();
+    }
+
+    /**
+     * Renders a page where user reviews a report.
+     *
+     * @param int $report_id The id of the report bean
+     */
+    public function edit($report_id)
+    {
+        Permission::check(Flight::get('user'), 'report', 'edit');
+        $this->action = 'edit';
+        $this->record = R::load('report', $report_id);
+        /*
+        if (Flight::request()->method == 'POST') {
+            $this->record = R::graph(Flight::request()->data->dialog, true);
+            R::begin();
+            try {
+                R::store($this->record);
+                R::commit();
+                $this->notifyAbout('success');
+                $this->redirect("/review-a-report/" . $this->record->getId());
+            } catch (Exception $e) {
+                error_log($e);
+                R::rollback();
+                $this->notifyAbout('error');
+            }
+        }
+        */
+        $this->layout = 'edit';
+        $this->render();
+    }
+
+    /**
+     * Adds a comment to a report and redirects to the report.
+     *
+     * @param int $report_id The id of the report bean
+     */
+    public function comment($report_id)
+    {
+        $this->record = R::load('report', $report_id);
+        $post = Flight::request()->data->dialog;
+        $comment = R::dispense('comment');
+        $comment->user = Flight::get('user');
+        $comment->stamp = time();
+        $comment->report = $this->record;
+        $comment->content = $post['content'];
+        R::begin();
+        try {
+            R::store($comment);
+            R::commit();
+        } catch (Exception $e) {
+            error_log($e);
+            R::rollback();
+        }
+        $this->redirect("/review-a-report/" . $this->record->getId());
     }
 
     /**
@@ -140,11 +196,13 @@ class Controller_Report extends Controller
             'pagination' => $this->pagination
         ), 'footer');
         Flight::render('report/' . $this->layout, array(
+            'language' => Flight::get('language'),
             'record' => $this->record,
             'records' => $this->records
         ), 'content');
         Flight::render('domaato-html5', array(
-            'title' => 'title',
+            'page_id' => 'file-a-report',
+            'title' => I18n::__('domaato_report_' . $this->layout),
             'language' => Flight::get('language'),
             'javascripts' => $this->javascripts
         ));

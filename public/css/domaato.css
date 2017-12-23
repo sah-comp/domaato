@@ -3,11 +3,11 @@
 	HTML5 Reset :: style.css
 	----------------------------------------------------------
 	We have learned much from/been inspired by/taken code where offered from:
-	
+
 	Eric Meyer					:: http://ericmeyer.com
 	HTML5 Doctor				:: http://html5doctor.com
 	and the HTML5 Boilerplate	:: http://html5boilerplate.com
-	
+
 -------------------------------------------------------------------------------*/
 
 /* Let's default this puppy out
@@ -21,7 +21,7 @@ html, body, body div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquot
 	font-size: 100%;
 	vertical-align: baseline;
 	background: transparent;
-}									
+}
 
 article, aside, figure, footer, header, hgroup, nav, section {display: block;}
 
@@ -35,15 +35,15 @@ embed {max-width: 100%; height: auto;}
 /* force a vertical scrollbar to prevent a jumpy page */
 html {overflow-y: scroll;}
 
-/* we use a lot of ULs that aren't bulleted. 
+/* we use a lot of ULs that aren't bulleted.
 	don't forget to restore the bullets within content. */
 ul {list-style: none;}
 
 blockquote, q {quotes: none;}
 
-blockquote:before, 
-blockquote:after, 
-q:before, 
+blockquote:before,
+blockquote:after,
+q:before,
 q:after {content: ''; content: none;}
 
 a {margin: 0; padding: 0; font-size: 100%; vertical-align: baseline; background: transparent;}
@@ -77,7 +77,7 @@ select, input, textarea {font: 99% sans-serif;}
 textarea { overflow: auto; } /* www.sitepoint.com/blogs/2010/08/20/ie-remove-textarea-scrollbars/ */
 
 table {font-size: inherit; font: 100%;}
- 
+
 /* Accessible focus treatment
 	people.opera.com/patrickl/experiments/keyboard/test */
 a:hover, a:active {outline: none;}
@@ -86,7 +86,7 @@ small {font-size: 85%;}
 
 strong, th {font-weight: bold;}
 
-td, td img {vertical-align: top;} 
+td, td img {vertical-align: top;}
 
 /* Make sure sup and sub don't screw with your line-heights
 	gist.github.com/413930 */
@@ -99,9 +99,9 @@ pre, code, kbd, samp {font-family: monospace, sans-serif;}
 
 /* hand cursor on clickable elements */
 .clickable,
-label, 
-input[type=button], 
-input[type=submit], 
+label,
+input[type=button],
+input[type=submit],
 button {cursor: pointer;}
 
 /* Webkit browsers add a 2px margin outside the chrome of form elements */
@@ -129,7 +129,7 @@ textarea {
 
 /* make buttons play nice in IE */
 button {width: auto; overflow: visible;}
- 
+
 /* scale images in IE7 more attractively */
 .ie7 img {-ms-interpolation-mode: bicubic;}
 
@@ -421,17 +421,21 @@ body {
     line-height: 1.5;
     font-weight: 400;
 	-webkit-font-smoothing: antialiased;
+	background-color: rgb(250, 255, 233);
 }
 
 body > header,
 header#header-toolbar {
-    background-color: rgb(254, 254, 254);
+    /*background-color: rgb(254, 254, 254);*/
 }
 
 body > header {
-    border-top: 3px solid rgb(120, 190, 32);
-    padding-top: 3px;
+    background-color: rgb(120, 190, 32);
+	padding: 20px 20px 10px 20px;
     z-index: 1000000;
+	border-bottom: 6px solid rgb(255, 200, 69);
+	/*-webkit-box-shadow: 0px 10px 10px rgba(120, 190, 32, .33);
+    box-shadow: 0px 10px 10px rgba(120, 190, 32, .33);*/
 }
 
 header#header-toolbar.scroll-to-fixed-fixed {
@@ -449,12 +453,14 @@ body > header > h1 {
 
 a.logo {
     display: block;
-    width: 3em;
-    height: 2em;
-    background-image: url(/favicon-16x16.png);
+	background-image: url(/img/domaato-logo-white.png);
+    background-size: 320px 72px;
+    background-position: center;
     background-repeat: no-repeat;
-    background-position: center center;
-    background-size: 16px 16px;
+    font-weight: 900;
+    background-size: 106px 24px;
+    height: 24px;
+    width: 106px;
 }
 
 ul.main-navigation,
@@ -463,8 +469,12 @@ ul.main-navigation ul {
 	margin: 0;
 	padding: 0;
 	line-height: 1;
-    border-top: 1px solid silver;
-	border-bottom: 1px solid silver;
+    /*border-top: 1px solid silver;
+	border-bottom: 1px solid silver;*/
+}
+
+ul.main-navigation {
+	margin-top: 1rem;
 }
 
 ul.main-navigation > li {
@@ -485,10 +495,15 @@ ul.main-navigation li ul > li:last-child {
 }
 
 ul.main-navigation a {
+	color: white;
 	text-decoration: none;
 	display: block;
-	padding: 0.5em 1em 0.5em 1em;
+	padding: 0.5rem 1rem 0.5rem 1rem;
 	/*text-shadow: 0px -1px -1px #eee;*/
+}
+
+ul.main-navigation li:first-child a {
+	margin-left: -1rem;
 }
 
 ul.main-navigation li.parent {
@@ -557,6 +572,124 @@ ul.panel-navigation a {
     text-decoration: none;
 }
 
+/* Account navigation */
+
+ul.account-navigation {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul.account-navigation li {
+    display: inline;
+    float: left;
+}
+
+ul.account-navigation a img {
+    float: left;
+    margin-right: 0.25rem;
+}
+
+ul.account-navigation a {
+    color: white;
+    display: block;
+    font-size: 0.8rem;
+    padding: 0;
+    margin-right: 0.5rem;
+    line-height: 24px;
+    text-decoration: none;
+}
+
+ul.account-navigation li:last-child a {
+    margin-right: 0;
+}
+
+ul.account-navigation a:hover,
+ul.account-navigation a:active {
+    color: rgb(250, 255, 233);
+}
+
+#file-a-report li.domain-33 a {
+	color: rgb(250, 255, 233);
+}
+
+/**
+ * General form stuff
+ */
+legend {
+	display: none;
+}
+
+#form-location {
+	width: 90%;
+	margin: 2rem auto;
+}
+
+#form-location .row {
+	position: relative;
+}
+
+#form-location label {
+	position: absolute;
+	top: 2px;
+	left: 0.5rem;
+	color: #666;
+	font-weight: 900;
+	font-size: 1rem;
+	line-height: 2rem;
+}
+
+#form-location .row.place label {
+	padding-left: 0.5rem;
+	border-left: 1px solid rgb(244, 244, 244);
+}
+
+#form-location .row.searchtext,
+#form-location .row.place,
+#form-location .buttons {
+	float: left;
+	width: 50%;
+}
+
+#form-location input.find-btn {
+	position: relative;
+	top: 2px;
+	background-image: url(/img/glyphicons/glyphicons_027_search.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	width: 40px;
+	height: 2rem;
+	display: block;
+	margin-left: -40px;
+	border-left: 1px solid rgb(244, 244, 244);
+}
+
+#form-location .buttons {
+	width: 0;
+}
+
+#form-location input[type=text] {
+	width: 100%;
+	padding: 0.5rem 1rem 0.5rem 3.33rem;
+	border: 1px solid rgb(244, 244, 244);
+	font-size: 1rem;
+	outline: none;
+}
+
+#form-location .row.searchtext input[type=text] {
+	border-radius: 6px 0 0 6px;
+	border-right: none;
+}
+
+#form-location .row.place input[type=text] {
+	border-radius: 0 6px 6px 0;
+	padding-right: 50px;
+	border-left: none;
+}
+
 /**
  * Form
  */
@@ -579,7 +712,7 @@ form.langchooser select {
     overflow-y: auto;
     overflow-x: hidden;
     padding-right: 20px;
-}       
+}
 .ui-autocomplete-loading { background: white url('/img/loader.gif') right center no-repeat; }
 
 /* workarounds */
@@ -621,7 +754,7 @@ form.langchooser select {
 
 
 
-/* using local fonts? make sure to read up on Paul Irish's 
+/* using local fonts? make sure to read up on Paul Irish's
 	Bulletproof @font-face syntax: http://mky.be/font-face/bulletproof/ */
 
 /* we like off-black for text */
@@ -632,10 +765,10 @@ a:hover {color: #666;} /*#69f*/
 
 /* Custom text-selection colors (remove any text shadows: twitter.com/miketaylr/status/12228805301) */
 ::-moz-selection{background: #fcd700; color: #fff; text-shadow: none;}
-::selection {background: #fcd700; color: #fff; text-shadow: none;} 
+::selection {background: #fcd700; color: #fff; text-shadow: none;}
 
 /*	j.mp/webkit-tap-highlight-color */
-a:link {-webkit-tap-highlight-color: #fcd700;} 
+a:link {-webkit-tap-highlight-color: #fcd700;}
 
 ins {background-color: #fcd700; color: #000; text-decoration: none;}
 mark {background-color: #fcd700; color: #000; font-style: italic; font-weight: bold;}
@@ -653,6 +786,7 @@ mark {background-color: #fcd700; color: #000; font-style: italic; font-weight: b
 	background-repeat: no-repeat;
 	background-color: white; /* stanze */
     -webkit-box-shadow: 0px 1em 1em rgba(0, 0, 0, .66);
+    box-shadow: 0px 1em 1em rgba(0, 0, 0, .66);
 }
 
 .circular .circular-48 {
@@ -660,7 +794,7 @@ mark {background-color: #fcd700; color: #000; font-style: italic; font-weight: b
 	height: 48px;
 	border-radius: 24px;
 	-webkit-border-radius: 24px;
-	-moz-border-radius: 24px;    
+	-moz-border-radius: 24px;
 }
 
 .circular .circular-32 {
@@ -668,7 +802,16 @@ mark {background-color: #fcd700; color: #000; font-style: italic; font-weight: b
 	height: 32px;
 	border-radius: 16px;
 	-webkit-border-radius: 16px;
-	-moz-border-radius: 16px;    
+	-moz-border-radius: 16px;
+}
+
+.circular.circular-24 {
+    width: 24px;
+    height: 24px;
+    border-radius: 12px;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border: 1px solid white;
 }
 
 .circular .circular-16 {
@@ -676,11 +819,12 @@ mark {background-color: #fcd700; color: #000; font-style: italic; font-weight: b
 	height: 16px;
 	border-radius: 8px;
 	-webkit-border-radius: 8px;
-	-moz-border-radius: 8px;    
+	-moz-border-radius: 8px;
 }
 
 .no-shadow {
     -webkit-box-shadow: none;
+	box-shadow: none;
 }
 
 /* Mix, rip and burn some of the above together */
@@ -747,15 +891,14 @@ mark {background-color: #fcd700; color: #000; font-style: italic; font-weight: b
 
 /* Consider this: www.cloudfour.com/css-media-query-for-mobile-is-fools-gold/ */
 @media screen and (max-device-width: 480px) {
-	
-		
+
+
 }
 
 @media all and (orientation: portrait) {
-	
+
 }
 
 @media all and (orientation: landscape) {
-	
-}
 
+}
