@@ -18,6 +18,17 @@
 class Controller_Domaato extends Controller
 {
     /**
+     * Construct a new Domaato.
+     *
+     * Start a session and check for a logged user.
+     */
+    public function __construct()
+    {
+        session_start();
+        Auth::validate();
+    }
+
+    /**
      * Domaato splash page.
      *
      * @return void
@@ -25,7 +36,7 @@ class Controller_Domaato extends Controller
     public function index()
     {
         $this->render();
-        return NULL;
+        return null;
     }
 
     /**
@@ -37,10 +48,10 @@ class Controller_Domaato extends Controller
         Flight::render('domaato-website-html5', array(
             'title' => I18n::__('domaato_splash_title'),
             'language' => Flight::get('language'),
-            'header' => NULL,
-            'navigation' => NULL,
-            'footer' => NULL,
-            'javascripts' => NULL
+            'header' => null,
+            'navigation' => null,
+            'footer' => null,
+            'javascripts' => null
         ));
     }
 }
