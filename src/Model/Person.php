@@ -189,7 +189,10 @@ SQL;
      */
     public function getAddress($label = 'default')
     {
-        return R::findOne('address', 'label = ? AND person_id = ?', array($label, $this->bean->getId()));
+        if (! $address = R::findOne('address', 'label = ? AND person_id = ? LIMIT 1', array($label, $this->bean->getId()))) {
+            $address = R::dispense('address');
+        }
+        return $address;
     }
 
     /**
@@ -290,7 +293,6 @@ SQL;
         if (! $this->bean->owner_id) {
             unset($this->bean->owner);
         }
-
         if ($this->bean->email) {
             $this->addValidator('email', array(
                 new Validator_IsEmail(),
