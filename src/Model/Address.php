@@ -34,31 +34,31 @@ class Model_Address extends Model
     }
 
     /**
-	 * update.
-	 *
-	 * @uses formatAddress() to format the postal address depending on the country code
-	 */
-	public function update()
-	{
-	    if ( $this->bean->country_id) {
-	        $this->bean->country = R::load('country', $this->bean->country_id);
-	    } else {
-	        unset($this->bean->country);
-	    }
+     * update.
+     *
+     * @uses formatAddress() to format the postal address depending on the country code
+     */
+    public function update()
+    {
+        if ($this->bean->country_id) {
+            $this->bean->country = R::load('country', $this->bean->country_id);
+        } else {
+            unset($this->bean->country);
+        }
         $this->bean->formattedaddress = $this->getFormattedAddress();
-        
-        if ( defined ('GOOGLE_API_KEY') && GOOGLE_API_KEY ) {
+
+        if (defined('GOOGLE_API_KEY') && GOOGLE_API_KEY) {
             $addr = $this->bean->street . ' ' . $this->bean->zip . ' ' . $this->bean->city . ' ' . $this->bean->country->name;
             $geo = $this->geocode($addr, GOOGLE_API_KEY);
-            if ( $geo->status == 'OK' ) {
+            if ($geo->status == 'OK') {
                 $this->bean->lat = $geo->lat;
                 $this->bean->lon = $geo->lon;
             }
         }
-        
+
         parent::update();
-	}
-	
+    }
+
     /**
      * Geocodes an address using Google API (limit 2500/day).
      *
@@ -67,9 +67,8 @@ class Model_Address extends Model
      * @param  string $api your Google API key
      * @return object {lat, lon, status, address}
      */
-    function geocode($address, $api = GOOGLE_API_KEY)
+    public function geocode($address, $api = GOOGLE_API_KEY)
     {
-        error_log('Geocode address' . $address);
         // qv developers.google.com/maps/documentation/geocoding
         $locn = (object)array('lat' => null, 'lon' => null, 'status' => null, 'address' => null);
         $url = 'http://maps.googleapis.com/maps/api/geocode/json';
@@ -86,24 +85,26 @@ class Model_Address extends Model
         $locn->address = $json->results[0]->formatted_address;
         return $locn;
     }
-    
+
     /**
-	 * Returns a formatted address based on the country of the address.
-	 *
-	 * The formmatter to be used is determined by the country code (iso) of this postal address.
-	 * If no address formatter with the given country code can be found the address is formatted
-	 * as if it was a german post office address.
-	 *
-	 * @return string $stringWithFormattedPostalAddress
-	 */
-	public function getFormattedAddress()
-	{
-	    if ( ! $this->bean->country) return I18n::__('address_formattedaddress_error_no_country');
-		$formatter_name = 'Formatter_Address_'.strtoupper($this->bean->country->iso);
-        if ( ! class_exists($formatter_name, true)) {
-            return sprintf("%s\n%s %s\n%s\n%s", $this->bean->street, $this->bean->zip, $this->bean->city, $this->bean->county,  $this->bean->country->name);
+     * Returns a formatted address based on the country of the address.
+     *
+     * The formmatter to be used is determined by the country code (iso) of this postal address.
+     * If no address formatter with the given country code can be found the address is formatted
+     * as if it was a german post office address.
+     *
+     * @return string $stringWithFormattedPostalAddress
+     */
+    public function getFormattedAddress()
+    {
+        if (! $this->bean->country) {
+            return I18n::__('address_formattedaddress_error_no_country');
+        }
+        $formatter_name = 'Formatter_Address_'.strtoupper($this->bean->country->iso);
+        if (! class_exists($formatter_name, true)) {
+            return sprintf("%s\n%s %s\n%s\n%s", $this->bean->street, $this->bean->zip, $this->bean->city, $this->bean->county, $this->bean->country->name);
         }
         $formatter = new $formatter_name();
         return $formatter->format($this->bean);
-	}
+    }
 }
