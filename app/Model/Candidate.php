@@ -70,7 +70,7 @@ class Model_Candidate extends Model
     public function sendOptinMail()
     {
         $mail = new PHPMailer\PHPMailer\PHPMailer();
-        $mail->Charset = 'UTF-8';
+        $mail->CharSet = 'UTF-8';
         $mail->Subject = utf8_decode(I18n::__('domaato_candidate_invite_subject'));
         $mail->From = Flight::setting()->nlemailaddress;
         $mail->FromName = utf8_decode(Flight::setting()->nlemailname);
@@ -86,18 +86,22 @@ class Model_Candidate extends Model
         */
         $result = true;
         $url_confirmation = Url::host() . Url::build('/newsletter/confirm/' . urlencode($this->bean->token));
+        Flight::render('domaato/mail/' . Flight::get('language') . '/html-head', array(
+            'title' => I18n::__('domaato_candidate_invite_subject'),
+        ), 'head');
+        
         ob_start();
         Flight::render('domaato/mail/' . Flight::get('language') . '/optin-html', array(
-          'record' => $this->bean,
-          'url' => $url_confirmation
+            'record' => $this->bean,
+            'url' => $url_confirmation
         ));
         $body_html = ob_get_contents();
         ob_end_clean();
 
         ob_start();
         Flight::render('domaato/mail/' . Flight::get('language') . '/optin-text', array(
-          'record' => $this->bean,
-          'url' => $url_confirmation
+            'record' => $this->bean,
+            'url' => $url_confirmation
         ));
         $body_text = ob_get_contents();
         ob_end_clean();
