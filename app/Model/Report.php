@@ -27,6 +27,18 @@ class Model_Report extends Model
     {
         return array(
             array(
+                'name' => 'person_name',
+                'callback' => array(
+                    'name' => 'personName'
+                ),
+                'sort' => array(
+                    'name' => 'person.name'
+                ),
+                'filter' => array(
+                    'tag' => 'text'
+                )
+            ),
+            array(
                 'name' => 'content',
                 'sort' => array(
                     'name' => 'content'
@@ -34,8 +46,62 @@ class Model_Report extends Model
                 'filter' => array(
                     'tag' => 'text'
                 )
+            ),
+            array(
+                'name' => 'vote',
+                'sort' => array(
+                    'name' => 'vote'
+                ),
+                'filter' => array(
+                    'tag' => 'number'
+                )
             )
         );
+    }
+
+    /**
+     * Returns the person name.
+     *
+     * @return string
+     */
+    public function personName()
+    {
+        if (! $this->bean->person) {
+            return '';
+        }
+        return $this->bean->person->name;
+    }
+
+    /**
+     * Returns SQL string.
+     *
+     * @param string (optional) $fields to select
+     * @param string (optional) $where
+     * @param string (optional) $order
+     * @param int (optional) $offset
+     * @param int (optional) $limit
+     * @return string $sql
+     */
+    public function getSql($fields = 'id', $where = '1', $order = null, $offset = null, $limit = null)
+    {
+        $sql = <<<SQL
+		SELECT
+		    {$fields}
+		FROM
+		    {$this->bean->getMeta('type')}
+		LEFT JOIN person ON person.id = person_id
+		WHERE
+		    {$where}
+SQL;
+        //add optional order by
+        if ($order) {
+            $sql .= " ORDER BY {$order}";
+        }
+        //add optional limit
+        if ($offset || $limit) {
+            $sql .= " LIMIT {$offset}, {$limit}";
+        }
+        return $sql;
     }
 
     /**
@@ -94,9 +160,15 @@ class Model_Report extends Model
      */
     public function update()
     {
+        if ($this->bean->person_id) {
+            $this->bean->person = R::load('person', $this->bean->person_id);
+        } else {
+            unset($this->bean->person);
+        }
         if (! $this->bean->getId()) {
             $this->bean->stamp = time();
             $this->bean->person->setWilsonScore($this->bean->vote);
+            //$this->broadcast();
         }
         parent::update();
     }
@@ -106,7 +178,13 @@ class Model_Report extends Model
      */
     public function dispense()
     {
+        $this->addValidator('person_id', array(
+            new Validator_HasValue()
+        ));
         $this->addValidator('content', array(
+            new Validator_HasValue()
+        ));
+        $this->addValidator('vote', array(
             new Validator_HasValue()
         ));
     }
