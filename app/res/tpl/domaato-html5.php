@@ -42,6 +42,7 @@
             <link rel="stylesheet" href="/css/<?php echo $_stylesheet; ?>.css">
             <?php endforeach; ?>
 		<?php endif ?>
+        <link rel="stylesheet" href="/css/form-panel.css">
         <link rel="stylesheet" href="/css/domaato.css">
 		<!--[if lt IE 9]>
         <script src="/js/html5shiv.js"></script>
@@ -79,5 +80,8 @@
             <?php endforeach; ?>
 		<?php endif ?>
 		<script src="/js/domaato.js"></script>
+		<?php if (isset($google_maps) && $google_maps === true): ?>
+		<script async defer src="//maps.googleapis.com/maps/api/js?key=<?php echo GOOGLE_API_KEY ?>&callback=initMap"></script>
+		<?php endif; ?>
 	</body>
 </html>

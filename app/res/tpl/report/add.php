@@ -32,6 +32,7 @@
             <div
                 class="row <?php echo $record->hasError('vote') ? 'error' : '' ?>">
                 <label
+                    class="radio"
                     for="report-vote-dislike">
                     <?php echo I18n::__('report_label_vote_dislike') ?>
                 </label>
@@ -41,7 +42,11 @@
                     name="dialog[vote]"
                     value="0"
                     <?php echo ($record->vote == 0) ? 'checked="checked"' : '' ?>>
+            </div>
+            <div
+                class="row <?php echo $record->hasError('vote') ? 'error' : '' ?>">
                 <label
+                    class="radio"
                     for="report-vote-like">
                     <?php echo I18n::__('report_label_vote_like') ?>
                 </label>
@@ -64,6 +69,7 @@
                 <textarea
                     id="report-content"
                     name="dialog[content]"
+                    rows="13"
                     required="required"><?php echo htmlspecialchars($record->content) ?></textarea>
             </div>
         </fieldset>

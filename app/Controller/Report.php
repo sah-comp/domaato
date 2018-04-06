@@ -42,6 +42,11 @@ class Controller_Report extends Controller
     public $pagination;
 
     /**
+     * Boolean wether to load google maps code or not.
+     */
+    public $google_maps = false;
+
+    /**
      * Instatiate a report controller.
      *
      * A session is started and the report environment is set up.
@@ -121,6 +126,7 @@ class Controller_Report extends Controller
             }
         }
         $this->layout = 'add';
+        $this->google_maps = true;
         $this->render();
     }
 
@@ -204,7 +210,8 @@ class Controller_Report extends Controller
             'page_id' => 'file-a-report',
             'title' => I18n::__('domaato_report_' . $this->layout),
             'language' => Flight::get('language'),
-            'javascripts' => $this->javascripts
+            'javascripts' => $this->javascripts,
+            'google_maps' => $this->google_maps
         ));
     }
 }

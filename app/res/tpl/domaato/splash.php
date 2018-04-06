@@ -60,6 +60,10 @@ $_counter = $api_controller->status(false);// we want a PHP array
         <a href="#explore" class="nextSlide animated bounceInUp delay-666"><?php echo I18n::__('domaato_ahref_explore') ?></a>
     </section>
 
+    <section id="tell-me" data-tooltip="<?php echo I18n::__('domaato_section_tellme') ?>">
+        <h1>Form to tell a report</h1>
+    </section>
+
     <section id="testimonials" data-tooltip="<?php echo I18n::__('domaato_section_testimonials') ?>">
 
 <?php foreach ($_users as $_id => $_user): ?>

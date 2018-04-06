@@ -91,7 +91,8 @@ SQL;
             LEFT JOIN
                 person ON person_id = person.id
             WHERE
-                person_id IS NOT NULL
+                person_id IS NOT NULL AND
+                enabled = 1
             ORDER BY
                 distance
 SQL;
@@ -249,14 +250,8 @@ SQL;
      */
     public function setWilsonScore($vote)
     {
-        $positive = R::getCell(
-            "SELECT count(id) FROM report WHERE person_id = :pid AND vote = 1",
-            array( ':pid' => $this->bean->getId() )
-        );
-        $negative = R::getCell(
-            "SELECT count(id) FROM report WHERE person_id = :pid AND vote = 0",
-            array( ':pid' => $this->bean->getId() )
-        );
+        $positive = $this->bean->withCondition(" vote = 1 ")->countOwn('report');
+        $negative = $this->bean->withCondition(" vote = 0 ")->countOwn('report');
         if ($vote) {
             $positive++;
         } else {
