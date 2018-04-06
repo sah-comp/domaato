@@ -11,7 +11,7 @@ slide_index_counters = 4;
 /**
  * Api Url for status
  */
-apiUrlStatus = 'http://domaato.test/api/52fa2902eaad05b96cc35b750c2d635d8c9d4bc7/status';
+apiUrlStatus = '/api/52fa2902eaad05b96cc35b750c2d635d8c9d4bc7/status';
 
 /**
  * Amount of milliseconds a slide of Fullpage.js is shown.
