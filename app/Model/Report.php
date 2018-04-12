@@ -184,8 +184,5 @@ SQL;
         $this->addValidator('content', array(
             new Validator_HasValue()
         ));
-        $this->addValidator('vote', array(
-            new Validator_HasValue()
-        ));
     }
 }
