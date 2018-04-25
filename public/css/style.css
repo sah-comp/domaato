@@ -453,13 +453,12 @@ ol ul {
 
 
 
-
 /* ==|== primary styles =====================================================
    Author: info@sah-company.com
    ========================================================================== */
 
 /* Set your font stuff for the document here */
-body {font: 1.2em/1 "Georgia", Palantino serif;/*-webkit-font-smoothing: antialiased;*/}
+body {font: 1.2em/1 "Georgia", Palantino serif;}
 
 body.loading {
     background-image: url(/img/loader.gif);
@@ -589,7 +588,7 @@ a.logo {
     display: block;
     width: 3em;
     height: 2em;
-    background-image: url(/img/favicon-32x32.png);
+    background-image: url(/img/logo.jpg);
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 16px 16px;
@@ -935,6 +934,11 @@ th.label {
     padding-left: 26.0%;
 }
 
+.panel .row.nomargins label {
+    margin: 0;
+	width: auto;
+}
+
 .panel input[type=text],
 .panel input[type=password],
 .panel input[type=email],
@@ -1037,9 +1041,7 @@ input[required=required] {
 
 input[readonly=readonly] {
     padding-right: 20px;
-    background-image: url(/img/glyphicons/glyphicons_203_lock.png);
-	background-position: 99% center;
-	background-repeat: no-repeat;
+    background: url(/img/glyphicons/glyphicons_203_lock.png) right center no-repeat;
     background-size: 16px 19px;
 }
 /*
