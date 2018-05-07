@@ -119,7 +119,7 @@
         <?php foreach (R::findAll('action') as $_action_id => $_action): ?>
                 <?php
                 $_permission = $record->getPermission($_action->name);
-                $_roles = $_permission->sharedRole;
+                $_sharedroles = $_permission->sharedRole;
                 ?>
                 <tr>
                     <td>
@@ -152,7 +152,7 @@
                             type="checkbox"
                             name="dialog[ownPermission][<?php echo $_action->getId() ?>][sharedRole][<?php echo $_role->getId() ?>][id]"
                             value="<?php echo $_role->getId() ?>"
-                            <?php echo (isset($_roles[$_role->getId()])) ? 'checked="checked"' : '' ?> />
+                            <?php echo (isset($_sharedroles[$_role->getId()])) ? 'checked="checked"' : '' ?> />
                     </td>
                     <?php endforeach ?>
                 </tr>
