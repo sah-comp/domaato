@@ -63,5 +63,18 @@
             cols="60"
             required="required"><?php echo htmlspecialchars($record->content) ?></textarea>
     </div>
+    <div class="row <?php echo ($record->hasError('memo')) ? 'error' : ''; ?>">
+        <label
+            for="report-memo">
+            <?php echo I18n::__('report_label_memo') ?>
+        </label>
+        <textarea
+            id="report-memo"
+            name="dialog[memo]"
+            rows="4"
+            cols="60"
+            required="required"><?php echo htmlspecialchars($record->memo) ?></textarea>
+		<p class="info"><?php echo I18n::__('report_info_memo') ?></p>
+    </div>
 </fieldset>
 <!-- end of report edit form -->
