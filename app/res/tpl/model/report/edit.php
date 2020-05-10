@@ -76,5 +76,20 @@
             required="required"><?php echo htmlspecialchars($record->memo) ?></textarea>
 		<p class="info"><?php echo I18n::__('report_info_memo') ?></p>
     </div>
+
+    <div class="row <?php echo ($record->hasError('testdb')) ? 'error' : ''; ?>">
+        <label
+            for="report-testdb">
+            <?php echo I18n::__('report_label_testdb') ?>
+        </label>
+        <textarea
+            id="report-testdb"
+            name="dialog[testdb]"
+            rows="4"
+            cols="60"
+            required="required"><?php echo htmlspecialchars($record->testdb) ?></textarea>
+		<p class="info"><?php echo I18n::__('report_info_testdb') ?></p>
+    </div>
+
 </fieldset>
 <!-- end of report edit form -->
