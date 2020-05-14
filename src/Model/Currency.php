@@ -102,9 +102,13 @@ class Model_Currency extends Model
                     'name' => 'currency.exchangerate'
                 ),
                 'class' => 'number',
+				'callback' => array(
+					'name' => 'decimal'
+				),
                 'filter' => array(
                     'tag' => 'number'
-                )
+                ),
+				'width' => '8rem'
             ),
             array(
                 'name' => 'enabled',
@@ -116,7 +120,8 @@ class Model_Currency extends Model
                 ),
                 'filter' => array(
                     'tag' => 'bool'
-                )
+                ),
+				'width' => '5rem'
             )
         );
     }
