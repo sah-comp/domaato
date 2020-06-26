@@ -130,6 +130,23 @@ SQL;
     {
         return $this->bean->{$this->bean->screenname};
     }
+	
+	/**
+	 * Returns a unique name of the person.
+	 *
+	 * Some persons may have non-unique names, e.g. John Doe. To identify the John Doe you really mean,
+	 * this function returns John Doe - Chicago, Brownsonstreet or John Doe, born January 3rd 1984 or
+	 * some other distinct information that belongs to John Doe.
+	 *
+	 * For companies this is mostly the same, but it should use the address, because it mostly will be
+	 * subsidaries of a company which are meant.
+	 *
+	 * @return string
+	 */
+	public function uniqueName()
+	{
+		return $this->bean->name;
+	}
 
     /**
      * Returns the current backend iso language code.

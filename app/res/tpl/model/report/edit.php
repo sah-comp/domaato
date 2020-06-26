@@ -15,9 +15,26 @@
 </div>
 <fieldset>
     <legend class="verbose"><?php echo I18n::__('report_legend') ?></legend>
+    <div class="row <?php echo ($record->hasError('user_id')) ? 'error' : ''; ?>">
+        <label
+            for="report-user">
+            <?php echo I18n::__('report_label_user') ?>
+        </label>
+        <select
+            id="report-user"
+            name="dialog[user_id]"
+            required="required">
+            <option value=""><?php echo I18n::__('report_user_please_select') ?></option>
+            <?php foreach (R::findAll('user', "ORDER BY name") as $_id => $_user): ?>
+            <option
+                value="<?php echo $_user->getId() ?>"
+                <?php echo ($record->user_id == $_user->getId()) ? 'selected="selected"' : '' ?>><?php echo htmlspecialchars($_user->getName()) ?></option>
+            <?php endforeach ?>
+        </select>
+    </div>
     <div class="row <?php echo ($record->hasError('person_id')) ? 'error' : ''; ?>">
         <label
-            for="report-template">
+            for="report-person">
             <?php echo I18n::__('report_label_person') ?>
         </label>
         <select
@@ -25,10 +42,10 @@
             name="dialog[person_id]"
             required="required">
             <option value=""><?php echo I18n::__('report_person_please_select') ?></option>
-            <?php foreach (R::find('person', ' enabled = 1 ORDER BY name') as $_id => $_person): ?>
+            <?php foreach (R::findAll('person', "ORDER BY name") as $_id => $_person): ?>
             <option
                 value="<?php echo $_person->getId() ?>"
-                <?php echo ($record->person_id == $_person->getId()) ? 'selected="selected"' : '' ?>><?php echo htmlspecialchars($_person->name) ?></option>
+                <?php echo ($record->person_id == $_person->getId()) ? 'selected="selected"' : '' ?>><?php echo htmlspecialchars($_person->uniqueName()) ?></option>
             <?php endforeach ?>
         </select>
     </div>
@@ -76,20 +93,5 @@
             required="required"><?php echo htmlspecialchars($record->memo) ?></textarea>
 		<p class="info"><?php echo I18n::__('report_info_memo') ?></p>
     </div>
-
-    <div class="row <?php echo ($record->hasError('testdb')) ? 'error' : ''; ?>">
-        <label
-            for="report-testdb">
-            <?php echo I18n::__('report_label_testdb') ?>
-        </label>
-        <textarea
-            id="report-testdb"
-            name="dialog[testdb]"
-            rows="4"
-            cols="60"
-            required="required"><?php echo htmlspecialchars($record->testdb) ?></textarea>
-		<p class="info"><?php echo I18n::__('report_info_testdb') ?></p>
-    </div>
-
 </fieldset>
 <!-- end of report edit form -->
