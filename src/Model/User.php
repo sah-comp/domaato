@@ -342,6 +342,7 @@ SQL;
         if (! $this->bean->getId()) {
             $this->bean->pw = password_hash($this->bean->pw, PASSWORD_DEFAULT);
         }
+        $this->bean->hash = md5($this->bean->getId() . 'salt');
         $this->bean->apikey = sha1($this->bean->email . ' ' . $this->bean->getId());
         parent::update();
     }

@@ -17,6 +17,7 @@
     class="tabs"
     data-default="<?php echo isset($default_tab) ? $default_tab : '' ?>">
     <ul class="tab-navigation">
+   
         <?php foreach ($tabs as $_tab_id => $_tab_label): ?>
             <li>
                 <a

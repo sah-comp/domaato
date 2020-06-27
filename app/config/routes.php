@@ -58,6 +58,17 @@ Flight::route('(/[a-z]{2})/logout', function () {
  });
 
 /**
+ * Routes to the profile controller.
+ */
+
+Flight::route('(/[a-z]{2})/profile/(@hash:[0-9a-zA-Z]+)', function ($hash) {
+    $profileController = new Controller_Profile();
+    $profileController->index($hash);
+});
+
+
+
+/**
  * Routes to the admin controller.
  */
 Flight::route('(/[a-z]{2})/admin(/index)', function () {

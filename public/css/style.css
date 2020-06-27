@@ -1390,13 +1390,50 @@ img.media-preview-icon {
     font-size: small;
 }
 
+/* Profile Styles start here */
 
+/*
+#profile_container1{
+    border-right: 1px solid #000;
+}
+*/
 
+#report_head{
+    border-bottom:1px solid #000;
+    margin-bottom:10px;
+}
 
+#report_content{
+    padding-top:10px;
+}
 
+#rate_button{
+    float:right;
+}
 
+.positive_result{ 
+    margin-left: 10px;
+    font-size: 1.5rem;
+}
 
+#report_date{
+    font-size: 15px;
+    color: grey;
+    float: right;
+}
 
+#profile_left{
+    width: 23rem;
+    float: right;
+    height: 560px;
+
+}
+
+.myreports{
+    margin-bottom:1.5rem;
+}
+
+/* Profile Styles end here */
 
 
 

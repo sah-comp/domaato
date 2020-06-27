@@ -20,7 +20,7 @@
 		<meta name="viewport" content="width=device-width">
 
 		<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-        
+        <link rel="stylesheet" href="/css/bootstrap.css">
 		<link rel="stylesheet" href="/css/style.css">
 		<?php if (isset($stylesheets) && is_array($stylesheets)): ?>
             <?php foreach ($stylesheets as $_n=>$_stylesheet): ?>
