@@ -18,7 +18,15 @@
  */
 class Controller_Profile extends Controller
 {
-      /**
+    /**
+     * Container for javascripts to load.
+     *
+     * @var array
+     */
+    public $stylesheets = array(
+        'bootstrap'
+    ); 
+    /**
      * Holds the template to render.
      *
      * @var string
@@ -38,8 +46,7 @@ class Controller_Profile extends Controller
      * @var RedBean_OODBBean
      */
     public $record;
-
-    
+  
     /**
      * Checks if the URL for the profile is NULL, redirects to the current user hash if logged in.
      * If not logged in redirects to the login page
@@ -50,7 +57,6 @@ class Controller_Profile extends Controller
     public function index ($hash = null)
     {
         $this->template = 'profile/index';
-
         if ($hash === null) {
             session_start();
             Auth::check();
@@ -59,11 +65,18 @@ class Controller_Profile extends Controller
 
         //Find the hash code of the specific user to pass to the route if user not logged in
 
-        $user = R::findOne('user', " hash = :hash LIMIT 1", [':hash' => $hash]);
- 
+        $this->record = R::findOne('user', " hash = :hash LIMIT 1", [':hash' => $hash]);
+        
+       /* echo '<pre>';
+        echo var_dump ( $this->record );
+        echo '<pre>';*/
         //Finds all the reports of the specific user
 
-        $this->records = R::findAll('report',"user_id=?", [Flight::get('user')->getId()]);
+        $this->records = R::findAll('report',"user_id=?", [$this->record->id]);
+        
+        /* 
+        [Flight::get('user')->getId()]
+        */
         
         //Pass the records to the view
         $this->render();
@@ -73,22 +86,29 @@ class Controller_Profile extends Controller
      * Renders the profile page.
      */
    public function render() {
-    Flight::render('shared/notification', array(), 'notification');
-    //
-    Flight::render('shared/navigation/account', array(), 'navigation_account');
-    Flight::render('shared/navigation/main', array(), 'navigation_main');
-    Flight::render('shared/navigation', array(), 'navigation');
-    // Flight::render('account/toolbar', array(), 'toolbar');
-    Flight::render('shared/header', array(), 'header');
-    Flight::render('shared/footer', array(), 'footer');
-    Flight::render($this->template, array(
-        'record' => Flight::get('user'),
-        'records'=> $this->records
-    ), 'content');   
-    Flight::render('html5', array(
-        'title' => I18n::__("account_head_title"),
-        'language' => Flight::get('language')
-    ));
+
+    Flight::render('domaato/shared/notification', array(
+        'record' => $this->record
+     ), 'notification');
+     //
+     Flight::render('domaato/shared/navigation/account', array(), 'navigation_account');
+     Flight::render('domaato/shared/navigation/main', array(), 'navigation_main');
+     Flight::render('domaato/shared/navigation', array(), 'navigation');
+     Flight::render('domaato/shared/header', array(), 'header');
+     Flight::render('domaato/shared/footer', array(
+     ), 'footer');
+     Flight::render($this->template, array(
+         'language' => Flight::get('language'),
+         'record' => $this->record,
+         'records' => $this->records
+     ), 'content');
+     Flight::render('domaato-html5', array(
+         'page_id' => 'file-a-report',
+         'title' => I18n::__('domaato_report_'),
+         'language' => Flight::get('language')
+     ));
+
+
 
 }
 

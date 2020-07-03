@@ -23,6 +23,13 @@ class Model_Report extends Model
      * @param string (optional) $layout
      * @return array
      */
+    public function getUser() {
+        if ( ! $this->bean->user) {
+            $this->bean->user = R::dispense('user');
+        }
+        return $this->bean->user;
+    }
+
     public function getAttributes($layout = 'table')
     {
         return array(

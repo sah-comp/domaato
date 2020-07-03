@@ -66,8 +66,6 @@ Flight::route('(/[a-z]{2})/profile/(@hash:[0-9a-zA-Z]+)', function ($hash) {
     $profileController->index($hash);
 });
 
-
-
 /**
  * Routes to the admin controller.
  */

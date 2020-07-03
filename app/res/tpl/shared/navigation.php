@@ -11,6 +11,6 @@
 <!-- navigation -->
 <nav>
 	<?php echo $navigation_account ?>
-	<?php echo $navigation_main ?>
+ 	<?php echo $navigation_main ?> 
 </nav>
 <!-- End of navigation -->

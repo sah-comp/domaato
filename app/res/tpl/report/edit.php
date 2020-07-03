@@ -22,7 +22,7 @@ $comments = $record->with(" ORDER BY stamp ")->ownComment;
     <section class="report">
         <header>
             <p><?php echo $record->stamp ?></p>
-            <p><?php echo $record->user->getName() ?></p>
+            <p><?php echo $record->getUser()->getName() ?></p>
         </header>
         <?php echo Flight::textile($record->content) ?>
     </section>
