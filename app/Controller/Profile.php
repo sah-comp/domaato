@@ -82,6 +82,7 @@ class Controller_Profile extends Controller
         $this->render();
     }
 
+
     /**
      * Renders the profile page.
      */
@@ -94,6 +95,7 @@ class Controller_Profile extends Controller
      Flight::render('domaato/shared/navigation/account', array(), 'navigation_account');
      Flight::render('domaato/shared/navigation/main', array(), 'navigation_main');
      Flight::render('domaato/shared/navigation', array(), 'navigation');
+     Flight::render('domaato/shared/navigation2', array(), 'navigation2');
      Flight::render('domaato/shared/header', array(), 'header');
      Flight::render('domaato/shared/footer', array(
      ), 'footer');

@@ -85,6 +85,7 @@ Flight::route('(/[a-z]{2})/autocomplete/@type:[a-z]+/@query:[a-z]+', function ($
 /**
  * Route to file a report
  */
+
 Flight::route('(/[a-z]{2})/file-a-report(/@id:[0-9]+)', function ($id) {
     $reportController = new Controller_Report();
     if ($id === null) {
@@ -95,8 +96,19 @@ Flight::route('(/[a-z]{2})/file-a-report(/@id:[0-9]+)', function ($id) {
 });
 
 /**
+ * Route to file a report in general
+ */
+
+Flight::route('(/[a-z]{2})/report-a-business', function () {
+    $reportController = new Controller_Report();
+    $reportController->_add();
+});
+
+
+/**
  * Route to review a report
  */
+
 Flight::route('(/[a-z]{2})/review-a-report/@id:[0-9]+', function ($id) {
     $reportController = new Controller_Report();
     $reportController->edit($id);
@@ -105,6 +117,7 @@ Flight::route('(/[a-z]{2})/review-a-report/@id:[0-9]+', function ($id) {
 /**
  * Route to add a comment to report bean
  */
+
 Flight::route('POST (/[a-z]{2})/review-a-report/@id:[0-9]+/comment/add', function ($id) {
     $reportController = new Controller_Report();
     $reportController->comment($id);
@@ -113,6 +126,7 @@ Flight::route('POST (/[a-z]{2})/review-a-report/@id:[0-9]+/comment/add', functio
 /**
  * Route to view a business (person bean)
  */
+
 Flight::route('(/[a-z]{2})/business/@id:[0-9]+', function ($id) {
     $businessController = new Controller_Business();
     $businessController->index($id);
@@ -145,7 +159,7 @@ Flight::route('(/[a-z]{2})/api/@apikey:[0-9a-zA-Z]+/@func:[a-zA-Z]+', function (
 /**
  * Routes to the scaffold controller.
  *
- * These routes will handle all models in a basic CURD way.
+ * These routes will handle all models in a basic CRUD way.
  */
 Flight::route('(/[a-z]{2})/admin/@type:[a-z]+/add(/@id:[0-9]+)(/@layout:[a-z]+)', function ($type, $id, $layout) {
     if ($layout === null) {
