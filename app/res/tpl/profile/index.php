@@ -17,7 +17,7 @@
                         <?php if (Flight::has('user')): ?>
                             <div class="edit_profile">
                                 <div class="row">
-                                <a href="#">
+                                <a href="<?php echo Url::build('/profile/edit/' . $record->hash  ) ?>">
                                     <div class="span3">
                                         <img src="/img/glyphicons/glyphicons_030_pencil.png" alt="">
                                     </div>

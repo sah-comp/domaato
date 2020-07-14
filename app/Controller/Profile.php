@@ -57,6 +57,7 @@ class Controller_Profile extends Controller
     public function index ($hash = null)
     {
         $this->template = 'profile/index';
+
         if ($hash === null) {
             session_start();
             Auth::check();
@@ -89,12 +90,34 @@ class Controller_Profile extends Controller
      * 
      */
 
-    public function edit() {
+    public function edit($hash) {
+
         $this->template = 'profile/edit';
-        
+
+            session_start();
+            Auth::check();
+            $hash = Flight::get('user')->hash;
+
+            
+        if (Flight::request()->method == 'POST') {
+            
+            Flight::get('user')->import(Flight::request()->data->dialog);
+            try {
+                R::store(Flight::get('user'));
+                Flight::get('user')->notify(I18n::__('account_edit_success'), 'success');
+                $this->redirect('/profile/');
+            }
+            catch (Exception $e) {
+                Flight::get('user')->notify(I18n::__('account_edit_failure'), 'error');
+            }    
+        }
+
+
+   
+        $this->record = Flight::get('user');
+
         $this->render();
     }
-
 
     /**
      * Renders the profile page.

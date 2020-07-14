@@ -1086,6 +1086,13 @@ mark {background-color: #fcd700; color: #000; font-style: italic; font-weight: b
 .edit_profile .row a img{
   width:25%;
 } 
+
+/*-------- profile styles ------------*/
+
+.profile_edit{
+  margin-top:2rem;
+}
+
 /* ==|== non-semantic helper classes ========================================
    Please define your styles before this section.
    ========================================================================== */

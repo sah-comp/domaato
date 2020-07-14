@@ -66,14 +66,15 @@ Flight::route('(/[a-z]{2})/profile/(@hash:[0-9a-zA-Z]+)', function ($hash) {
     $profileController->index($hash);
 });
 
-
-Flight::route('(/[a-z]{2})/profile/edit', function () {
+Flight::route('(/[a-z]{2})/profile/edit/(@hash:[0-9a-zA-Z]+)', function ($hash) {
     $profileController = new Controller_Profile();
-    $profileController->edit();
+    $profileController->edit($hash);
 });
+
 /**
  * Routes to the admin controller.
  */
+
 Flight::route('(/[a-z]{2})/admin(/index)', function () {
     $adminController = new Controller_Admin();
     $adminController->index();
@@ -82,6 +83,7 @@ Flight::route('(/[a-z]{2})/admin(/index)', function () {
 /**
  * Route to autocomplete for jquery backed autocomplete form fields.
  */
+
 Flight::route('(/[a-z]{2})/autocomplete/@type:[a-z]+/@query:[a-z]+', function ($type, $query) {
     $autocompleteController = new Controller_Autocomplete();
     $autocompleteController->autocomplete($type, $query);
