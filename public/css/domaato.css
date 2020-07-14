@@ -1046,9 +1046,46 @@ mark {background-color: #fcd700; color: #000; font-style: italic; font-weight: b
   background-color:#f8fcf2;
 }
 
+#report_link {
+  text-decoration: none;
+}
 
+.navigation_profile{
+  border-bottom: 1px solid rgb(255, 200, 69);
+}
 
+.navigation_profile ul{
+  list-style: none;
+  text-decoration: none;
+  display: inline-flex;
 
+}
+
+.navigation_profile ul li{
+  margin-right:10px;
+}
+
+/* Report a business files */
+.add_report_main{
+  margin-top:1rem;
+}
+
+#report_business {
+  margin-left:5rem;
+}
+
+.edit_profile{
+  margin-top: 1rem;
+  background-color: #ffff;
+}
+
+.edit_profile .row{
+  padding-top:7px;
+}
+
+.edit_profile .row a img{
+  width:25%;
+} 
 /* ==|== non-semantic helper classes ========================================
    Please define your styles before this section.
    ========================================================================== */

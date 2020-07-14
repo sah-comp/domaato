@@ -2,7 +2,7 @@
 <article>
 
     <section class="user_profile" id="profile">
-        <div class="profile-main clearfix" style="height:500px;">
+        <div class="profile-main clearfix">
             <div class="row">
                 <div class="span3" id="profile_left">
                     <div class="image_wrapper">
@@ -13,9 +13,24 @@
 
                     <div class="user_details">
                         <h2><?php echo $record->name ?></h2>
-                        <h2><?php echo I18n::__('user_reports') ?>:</h2>
+                        <h2><?php echo I18n::__('user_reports') ?>: </h2>
+                        <?php if (Flight::has('user')): ?>
+                            <div class="edit_profile">
+                                <div class="row">
+                                <a href="#">
+                                    <div class="span3">
+                                        <img src="/img/glyphicons/glyphicons_030_pencil.png" alt="">
+                                    </div>
+                                    <div class="span6"><span><?php echo I18n::__('edit_profile') ?></span></div>
+                                </a>
+                                    
+                                </div>
+                            </div>
+                        <?php else: ?>   
+                               asd 
+                        <?php endif; ?>
                     </div>
-                    
+             
                 </div>
                 <div class="span8">
                <?php foreach ($records as $id => $report):
@@ -33,9 +48,12 @@
                                 </div>
                                 <div class="span6">
                                     <div id="report_add">
+                                    <a href="<?php echo Url::build('/file-a-report/' . $report->person->id) ?>">
                                         <button class="profile_button">
                                             <?php echo I18n::__('add_report') ?>
                                         </button>
+                                    </a>
+                                    
                                     </div>
                                 </div>
                             </div>
@@ -44,28 +62,17 @@
                         <div class="report_content">
                             <div class="row">
                                 <div class="span3" id="user_votes">
-                                <?php if ($report_vote == 1): ?>
+                             
                                     <!-- echo $report_vote on positive --> 
-                                      <span><img src="/img/glyphicons/glyphicons_343_thumbs_up.png" alt="">
-                                    </span><span id="vote_positive"><?php echo $report_vote ?></span> 
-                                      <!-- Assign 0 on negative --> 
-                                      <span id="vote_icon2"><img src="/img/glyphicons/glyphicons_344_thumbs_down.png" alt="">
-                                      <span id="vote_negative">0</span></span>
-
-                                <?php else: ?>
-                                       <!-- Assign 0 on positive --> 
                                     <span><img src="/img/glyphicons/glyphicons_343_thumbs_up.png" alt="">
-                                    </span><span id="vote_positive">0</span>  
-                                       <!-- echo $report_vote on negative -->
+                                    </span><span id="vote_positive"><?php echo $report->person->positive ?></span> 
+                                      <!-- Assign 0 on negative --> 
                                     <span id="vote_icon2"><img src="/img/glyphicons/glyphicons_344_thumbs_down.png" alt="">
-                                    <span id="vote_negative"><?php echo $report_vote ?></span></span>
-                                <?php endif; ?>
-                                    
+                                    <span id="vote_negative"><?php echo $report->person->negative ?></span></span>
+
                                 </div>
                             </div>
-                           <p>
-                               <?php echo $report_content ?>
-                           </p>
+                           <a href="<?php echo Url::build('/review-a-report/' . $report->id) ?>" id="report_link"><p> <?php echo $report_content ?> </p> </a>
                         </div>
 
                         <div class="report_content2">

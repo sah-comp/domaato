@@ -66,6 +66,11 @@ Flight::route('(/[a-z]{2})/profile/(@hash:[0-9a-zA-Z]+)', function ($hash) {
     $profileController->index($hash);
 });
 
+
+Flight::route('(/[a-z]{2})/profile/edit', function () {
+    $profileController = new Controller_Profile();
+    $profileController->edit();
+});
 /**
  * Routes to the admin controller.
  */
@@ -99,9 +104,9 @@ Flight::route('(/[a-z]{2})/file-a-report(/@id:[0-9]+)', function ($id) {
  * Route to file a report in general
  */
 
-Flight::route('(/[a-z]{2})/report-a-business', function () {
+Flight::route('(/[a-z]{2})/report-a-business(/@id:[0-9]+)', function ($id) {
     $reportController = new Controller_Report();
-    $reportController->_add();
+    $reportController->_add($id);
 });
 
 

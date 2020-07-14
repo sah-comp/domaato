@@ -29,7 +29,7 @@
         </div>
         <fieldset>
             <legend><?php echo I18n::__('report_vote_legend') ?></legend>
-            <div
+             <div
                 class="row <?php echo $record->hasError('vote') ? 'error' : '' ?>">
                 <label
                     class="radio"
@@ -56,9 +56,8 @@
                     name="dialog[vote]"
                     value="1"
                     <?php echo ($record->vote == 1) ? 'checked="checked"' : '' ?>>
-            </div>
-        </fieldset>
-        <fieldset>
+            </div> 
+ 
             <legend><?php echo I18n::__('report_content_legend') ?></legend>
             <div
                 class="row <?php echo $record->hasError('content') ? 'error' : '' ?>">

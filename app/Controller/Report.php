@@ -34,6 +34,13 @@ class Controller_Report extends Controller
      */
     public $records = array();
 
+     /**
+     * Holds a instance of the bean to handle.
+     *
+     * @var RedBean_OODBBean
+     */
+    public $record;
+
     /**
      * Holds a instance of a Pagination class.
      *
@@ -126,15 +133,50 @@ class Controller_Report extends Controller
             }
         }
         $this->layout = 'add';
-        $this->google_maps = true;
+        //$this->google_maps = true;
         $this->render();
     }
+
+    
+    /**
+     * Renders a page where user files a report on a general business
+     *
+     */
+    
+     public function _add($id) {
+
+        Permission::check(Flight::get('user'), 'report', 'add');
+        $this->record = R::load('report', $id);
+        $this->action = 'add';
+        if (Flight::request()->method == 'POST') {
+            $this->record = R::graph(Flight::request()->data->dialog, true);
+            R::begin();
+          try {
+                R::store($this->record);
+                $this->record->broadcast();
+                R::commit();
+                $this->notifyAbout('success');
+                $this->redirect("/file-a-report/" . $this->record->getId());
+            } catch (Exception $e) {
+                error_log($e);
+                R::rollback();
+                $this->notifyAbout('error');
+            }
+
+        }
+
+        
+        $this->layout = '_add';
+        $this->render();
+     }
+
 
     /**
      * Renders a page where user reviews a report.
      *
      * @param int $report_id The id of the report bean
      */
+
     public function edit($report_id)
     {
         Permission::check(Flight::get('user'), 'report', 'edit');
@@ -197,6 +239,7 @@ class Controller_Report extends Controller
         Flight::render('domaato/shared/navigation/account', array(), 'navigation_account');
         Flight::render('domaato/shared/navigation/main', array(), 'navigation_main');
         Flight::render('domaato/shared/navigation', array(), 'navigation');
+        Flight::render('domaato/shared/navigation2', array(), 'navigation2');
         Flight::render('domaato/shared/header', array(), 'header');
         Flight::render('domaato/shared/footer', array(
             'pagination' => $this->pagination

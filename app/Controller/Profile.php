@@ -75,10 +75,23 @@ class Controller_Profile extends Controller
         $this->records = R::findAll('report',"user_id=?", [$this->record->id]);
         
         /* 
-        [Flight::get('user')->getId()]
+            [Flight::get('user')->getId()]
         */
         
         //Pass the records to the view
+
+        $this->render();
+    }
+
+    /**
+     * Edits the profile page 
+     * 
+     * 
+     */
+
+    public function edit() {
+        $this->template = 'profile/edit';
+        
         $this->render();
     }
 
@@ -86,6 +99,7 @@ class Controller_Profile extends Controller
     /**
      * Renders the profile page.
      */
+
    public function render() {
 
     Flight::render('domaato/shared/notification', array(
