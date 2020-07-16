@@ -205,7 +205,7 @@ SQL;
     {
         return $this->bean->name;
     }
-	
+
 	/**
 	 * Returns a unique name of the person.
 	 *
@@ -302,7 +302,7 @@ SQL;
      */
     public function update()
     {
-        if (! $this->bean->owner_id) {
+        if (!$this->bean->owner()->getId()) {
             unset($this->bean->owner);
         }
         if ($this->bean->email) {
