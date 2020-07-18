@@ -61,12 +61,12 @@ Flight::route('(/[a-z]{2})/logout', function () {
  * Routes to the profile controller.
  */
 
-Flight::route('(/[a-z]{2})/profile(@hash:[0-9a-zA-Z]+)', function ($hash) {
+Flight::route('(/[a-z]{2})/profile(/@hash:[0-9a-zA-Z]+)', function ($hash) {
     $profileController = new Controller_Profile();
     $profileController->index($hash);
 });
 
-Flight::route('(/[a-z]{2})/profile/edit/(@hash:[0-9a-zA-Z]+)', function ($hash) {
+Flight::route('(/[a-z]{2})/profile/edit(/@hash:[0-9a-zA-Z]+)', function ($hash) {
     $profileController = new Controller_Profile();
     $profileController->edit($hash);
 });
