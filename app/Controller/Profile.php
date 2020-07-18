@@ -71,6 +71,7 @@ class Controller_Profile extends Controller
        /* echo '<pre>';
         echo var_dump ( $this->record );
         echo '<pre>';*/
+        
         //Finds all the reports of the specific user
 
         $this->records = R::findAll('report',"user_id=?", [$this->record->id]);
@@ -98,7 +99,6 @@ class Controller_Profile extends Controller
             Auth::check();
             $hash = Flight::get('user')->hash;
 
-            
         if (Flight::request()->method == 'POST') {
             
             Flight::get('user')->import(Flight::request()->data->dialog);
@@ -112,8 +112,6 @@ class Controller_Profile extends Controller
             }    
         }
 
-
-   
         $this->record = Flight::get('user');
 
         $this->render();
