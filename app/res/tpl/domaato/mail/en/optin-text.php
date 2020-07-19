@@ -1,13 +1,12 @@
-Willkommen zum Domaato Newsletter,
+Welcome to the Domaato Newsletter,
 
-bitte rufen Sie den Link <?php echo $url ?> innerhalb
-von 48 Stunden in Ihrem Browser auf. Dadurch wird Ihre
-E-Mailadresse in den Newsletter-Verteiler aufgenommen.
+please click the link <?php echo $url ?> within 48 hours.
+Your e-mail address will than be added to a newsletter list.
 
-Vielen Dank für Ihr Interesse,
+Cheers,
 
-Ihr Domaato-Team
+Your Domaato team
 
 
 Domaato
-Das Kundenservice-Portal
+The Customer Portal
