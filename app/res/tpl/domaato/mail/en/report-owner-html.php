@@ -10,12 +10,12 @@
 			    <tr>
     			<td width="640" valign="top">
                     <p class="headline"><?php echo htmlspecialchars($record->person->owner->getName()) ?>,</p>
-                    <p>das von Ihnen betreute Unternehmen <strong><?php echo htmlspecialchars($record->person->getName()) ?></strong>
-					hat eine neue <strong><?php echo ($record->vote) ? 'positive' : 'negative' ?></strong> Bewertung durch den Benutzer <strong><?php echo htmlspecialchars($record->user->getName()) ?></strong> mit dem folgenden Bericht erhalten:</p>
+                    <p>your business <strong><?php echo htmlspecialchars($record->person->getName()) ?></strong>
+					has received a new <strong><?php echo ($record->vote) ? 'positive' : 'negative' ?></strong> vote by user <strong><?php echo htmlspecialchars($record->user->getName()) ?></strong> who reported the following:</p>
 					<hr />
 					<?php echo Flight::textile($record->content) ?>
 					<hr />
-					<p><a href="<?php echo Url::host() . '/review-a-report/' . $record->getId() ?>">Reagieren Sie kurzfristig darauf</a> und erhöhen Sie die Kundenzufriedenheit.</p>
+					<p><a href="<?php echo Url::host() . '/review-a-report/' . $record->getId() ?>">You should react on short notice</a> to achieve higher customer satisfaction.</p>
                 </td>
 			</tr>
 		    </table>

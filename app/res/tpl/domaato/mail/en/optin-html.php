@@ -9,10 +9,9 @@
 		    <table cellpadding="0" cellspacing="0" border="0" align="center">
 			    <tr>
     			<td width="640" valign="top">
-                    <p class="headline">Willkommen zum Domaato-Newsletter,</p>
-                    <p>klicken Sie bitte innerhalb der nächsten 48 Stunden <a href="<?php echo $url ?>" target="_blank">zur Registrierung Ihrer E-Mailadresse</a>, um zukünftig den Domaato-Newsletter mit interessanten Informationen und Aktionen zu erhalten.</p>
-                    <p>Wenn Sie Ihre E-Mailadresse nicht eingetragen haben oder nur irrtümlich, dann tun Sie nichts weiter. Ihre Adresse verfällt innerhalb von 48 Stunden und wird dann gelöscht.</p>
-                    <p>Domaato ist das Kunden-Serviceportal.</p>
+                    <p class="headline">Welcome to the Domaato-Newsletter,</p>
+                    <p>please click the link <a href="<?php echo $url ?>" target="_blank"> within 48 hours</a>. This will register your e-mail address to our newsletter list.</p>
+                    <p>Your Domaato team.</p>
                 </td>
 			</tr>
 		    </table>

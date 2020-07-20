@@ -1,11 +1,5 @@
-Neuer Bericht,
-
-unter der URL finden Sie einen neuen Bericht.
+English text that a user has added a new report
+to a business that you own as a manager.
 
 Cheers,
-
-Ihr Domaato-Team
-
-
-Domaato
-Das Kundenservice-Portal
+Your Domaato Team
