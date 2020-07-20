@@ -76,7 +76,9 @@
                         </div>
 
                         <div class="report_content2">
-                           content
+                           <h2>Comments  <?php 
+                            $comments = R::count('comment', "report_id=?", [$report->id]);
+                            echo $comments; ?></h2>
                         </div>
 
                     </div>

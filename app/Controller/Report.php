@@ -137,7 +137,6 @@ class Controller_Report extends Controller
         $this->render();
     }
 
-    
     /**
      * Renders a page where user files a report on a general business
      *

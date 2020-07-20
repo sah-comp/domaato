@@ -26,6 +26,7 @@ class Controller_Profile extends Controller
     public $stylesheets = array(
         'bootstrap'
     ); 
+
     /**
      * Holds the template to render.
      *
@@ -33,11 +34,11 @@ class Controller_Profile extends Controller
      */
     public $template;
 
-     /**
-     * Container for beans to browse.
-     *
-     * @var array
-     */
+/**
+ * Container for beans to browse.
+ *
+ * @var array
+ */
     public $records = array();
 
      /**
@@ -68,19 +69,19 @@ class Controller_Profile extends Controller
 
         $this->record = R::findOne('user', " hash = :hash LIMIT 1", [':hash' => $hash]);
         
-       /* echo '<pre>';
-        echo var_dump ( $this->record );
-        echo '<pre>';*/
-        
-        //Finds all the reports of the specific user
+    /* echo '<pre>';
+    echo var_dump ( $this->record );
+    echo '<pre>';*/
+    
+    //Finds all the reports of the specific user
 
         $this->records = R::findAll('report',"user_id=?", [$this->record->id]);
         
-        /* 
-            [Flight::get('user')->getId()]
-        */
-        
-        //Pass the records to the view
+    /* 
+        [Flight::get('user')->getId()]
+    */
+    
+    //Pass the records to the view
 
         $this->render();
     }
