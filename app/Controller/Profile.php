@@ -49,13 +49,72 @@ class Controller_Profile extends Controller
     public $record;
 
     /**
+     * Holds the current page.
+     *
+     * @var int
+     */
+    public $page = 1;
+
+    /**
+     * Holds an instance of a Pagination class.
+     *
+     * @var Pagination
+     */
+    public $pagination;
+
+    /**
+     * Holds the maximum number of records per page.
+     *
+     * @var int
+     */
+    public $limit = 6;
+
+    /**
+     * Holds the current order index.
+     *
+     * @var int
+     */
+    public $order = 0;
+
+    /**
+     * Holds the current sort dir(ection) index.
+     *
+     * @var int
+     */
+    public $dir = 0;
+
+    /**
+     * Container for order dir(ections).
+     *
+     * @var array
+     */
+    public $dir_map = array(
+        0 => 'ASC',
+        1 => 'DESC'
+    );
+
+    /**
+     * Holds the name of the layout to use.
+     *
+     * @var string
+     */
+    public $layout;
+
+    /**
+     * Holds the total number of beans found.
+     *
+     * @var int
+     */
+    public $total_records = 0;
+
+    /**
      * Checks if the URL for the profile is NULL, redirects to the current user hash if logged in.
      * If not logged in redirects to the login page
      * If specified the hash shows the desired user profile page
      *
      * @param string $hash
      */
-    public function index($hash = null)
+    public function index($page, $hash = null)
     {
         $this->template = 'profile/index';
 
@@ -81,9 +140,40 @@ class Controller_Profile extends Controller
             [Flight::get('user')->getId()]
         */
 
+        $this->pagination = new Pagination(
+            Url::build("/profile"),
+            $this->page,
+            $this->limit,
+            $this->layout,
+            $this->order,
+            $this->dir,
+            $this->total_records
+        );
+
         //Pass the records to the view
 
         $this->render();
+    }
+
+    public function getSql($order = null, $offset = null, $limit = null)
+    {
+        $sql = <<<SQL
+    SELECT
+        id
+    FROM
+        report
+    WHERE
+        user_id = Flight::get('user')->getId();
+        SQL;
+        //add optional order by
+        if ($order) {
+            $sql .= " ORDER BY {$order}";
+        }
+        //add optional limit
+        if ($offset || $limit) {
+            $sql .= " LIMIT {$offset}, {$limit}";
+        }
+        return $sql;
     }
 
     /**
@@ -111,10 +201,9 @@ class Controller_Profile extends Controller
         }
 
         $this->record = Flight::get('user');
-
         $this->render();
     }
- //Testing an Unstage change
+
     /**
      * Renders the profile page.
      */

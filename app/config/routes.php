@@ -61,9 +61,9 @@ Flight::route('(/[a-z]{2})/logout', function () {
  * Routes to the profile controller.
  */
 
-Flight::route('(/[a-z]{2})/profile(/@hash:[0-9a-zA-Z]+)', function ($hash) {
+Flight::route('(/[a-z]{2})/profile(/@page:[0-9]+)(/@hash:[0-9a-zA-Z]+)', function ($hash, $page) {
     $profileController = new Controller_Profile();
-    $profileController->index($hash);
+    $profileController->index($hash, $page);
 });
 
 Flight::route('(/[a-z]{2})/profile/edit(/@hash:[0-9a-zA-Z]+)', function ($hash) {
@@ -333,6 +333,7 @@ Flight::route('(/[a-z]{2})/cms/@type:[a-z]+(/@layout:[a-z]+)(/@page:[0-9]+)(/@or
 /**
  * Routes to the language controller.
  */
+
 Flight::route('POST (/[a-z]{2})/language/set', function () {
     $languageController = new Controller_Language();
     $languageController->set();
@@ -341,6 +342,7 @@ Flight::route('POST (/[a-z]{2})/language/set', function () {
 /**
  * Route to the account controller.
  */
+
 Flight::route('(/[a-z]{2})/account', function () {
     $accountController = new Controller_Account();
     $accountController->index();
