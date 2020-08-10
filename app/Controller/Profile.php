@@ -114,6 +114,7 @@ class Controller_Profile extends Controller
      *
      * @param string $hash
      */
+
     public function index($page, $hash = null)
     {
         $this->template = 'profile/index';
@@ -155,25 +156,27 @@ class Controller_Profile extends Controller
         $this->render();
     }
 
-    public function getSql($order = null, $offset = null, $limit = null)
+    public function getSql($fields = 'id', $where = '1', $order = null, $offset = null, $limit = null)
     {
         $sql = <<<SQL
     SELECT
         id
     FROM
-        report
+      report
+
     WHERE
-        user_id = Flight::get('user')->getId();
-        SQL;
+      user_id = Flight::get('user')->getId()
+    SQL
         //add optional order by
         if ($order) {
-            $sql .= " ORDER BY {$order}";
-        }
-        //add optional limit
+                $sql .= " ORDER BY {$order}";
+            }
+            //add optional limit
         if ($offset || $limit) {
-            $sql .= " LIMIT {$offset}, {$limit}";
-        }
+                $sql .= " LIMIT {$offset}, {$limit}";
+            }
         return $sql;
+
     }
 
     /**

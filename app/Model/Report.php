@@ -99,7 +99,7 @@ class Model_Report extends Model
 		LEFT JOIN person ON person.id = person_id
 		WHERE
 		    {$where}
-SQL;
+    SQL;
         //add optional order by
         if ($order) {
             $sql .= " ORDER BY {$order}";
