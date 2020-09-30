@@ -70,8 +70,8 @@
 		<?php echo isset($footer) ? $footer : null ?>
 		<!-- End of optional footer -->
 
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
+        <script src="/js/jquery-1.11.1.min.js"></script>
+        <script src="/js/jquery-ui-1.11.1.min.js"></script>
         <script src="/js/jquery-scrolltofixed-min.js"></script>
         <script src="/js/jquery-clairvoyant.js"></script>
         <?php if (isset($javascripts) && is_array($javascripts)): ?>
