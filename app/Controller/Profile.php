@@ -152,7 +152,7 @@ class Controller_Profile extends Controller
         );
 
         //Pass the records to the view
-
+        //Never mind this comment, just to test the new development enviroment
         $this->render();
     }
 
