@@ -22,3 +22,4 @@
     echo $navigation;
 } ?>
 </header>
+<?php echo $navigation2; ?>

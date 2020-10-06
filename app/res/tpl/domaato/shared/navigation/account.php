@@ -10,6 +10,11 @@
 ?>
 <!-- account menu -->
 <ul class="account-navigation">
+<?php if (! Flight::has('user')): ?>
+        <li><a href="<?php echo Url::build('/login') ?>" rel="nofollow"><?php echo I18n::__('domaato_account_login') ?></a></li>
+        <li><a href="<?php echo Url::build('/register') ?>" rel="nofollow"><?php echo I18n::__('domaato_account_register') ?></a></li>
+    <?php else: ?>
+
     <li>
         <a
             href="<?php echo Url::build('/profile/') ?>">
@@ -28,5 +33,6 @@
             <?php echo I18n::__('domaato_account_logout') ?>
         </a>
     </li>
+    <?php endif; ?>
 </ul>
 <!-- End of account menu -->

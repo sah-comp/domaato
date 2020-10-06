@@ -57,8 +57,7 @@
         <!-- Content (required) -->
 		<?php echo $content; ?>
 		<!-- End of required content -->
-
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="/js/jquery-1.11.1.min.js"></script>
 		<script src="/js/css3-animate-it.js"></script>
         <?php if (isset($javascripts) && is_array($javascripts)): ?>
             <?php foreach ($javascripts as $_n=>$_js): ?>
